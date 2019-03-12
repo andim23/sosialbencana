@@ -18,17 +18,17 @@ class Auth extends CI_Controller {
     public function regbayangan()
     {
             date_default_timezone_set("Asia/Jakarta");
-            $str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
-            $random = date('Y-m-d h:i:s').substr(str_shuffle($str), 0,15);
-            $kodeunik = md5($random);
+            $str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_'; 
+            $random = str_repeat(str_shuffle($str),4);
     
             $data = array(
                 'users_username'=>'admin',
                 'users_email'=>'admin@sosben.com',
                 'users_password' => password_hash('admin', PASSWORD_BCRYPT),
                 'users_level'=>'1',
-                'users_status'=>'Admin',
-                'users_token'=>$kodeunik,
+                'users_status'=>'1',
+                'users_tanggal' => date('Y-m-d H:i:s'),
+                'users_token'=>$random,
             );
     
             $update=$this->Auth_model->insert('users',$data);

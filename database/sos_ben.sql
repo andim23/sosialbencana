@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2019 at 06:11 AM
+-- Generation Time: Mar 12, 2019 at 06:48 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.14
 
@@ -43,7 +43,8 @@ CREATE TABLE `sosben_logauth` (
 --
 
 INSERT INTO `sosben_logauth` (`id`, `username`, `ip`, `browser`, `sistem_operasi`, `waktu`, `status`) VALUES
-(1, 'admin', '::1', 'Chrome 72.0.3626.121', 'Windows 10', '2019-03-12 05:08:39', 'Pengguna Registrasi');
+(1, 'admin', '::1', 'Chrome 72.0.3626.121', 'Windows 10', '2019-03-12 05:45:16', 'Pengguna Registrasi'),
+(2, 'admin', '::1', 'Chrome 72.0.3626.121', 'Windows 10', '2019-03-12 05:47:30', 'Pengguna Registrasi');
 
 -- --------------------------------------------------------
 
@@ -68,7 +69,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `users_username`, `users_email`, `users_password`, `users_level`, `users_status`, `users_token`, `users_tanggal`, `users_verifikasi`) VALUES
-(13, 'admin', 'admin@sosben.com', '$2y$10$az8u0rmAg22EwDr.FGgcOO4FMXuHvxW.XJbrXyRgu58vNpHqyX.W.', 1, 0, 'f61e3d0eb3b3f92dabba92fb5c055cfc', '2019-03-12 05:08:39', '0000-00-00 00:00:00');
+(1, 'admin', 'admin@sosben.com', '$2y$10$fkEcilH370MkSqcIs5beUeGP8nJsCr799LS45mLaLxWHTlM9ZSj9G', 1, 1, 'E0k9ghTGfyKcDJvpz1awmM3ZtLs72Q8FdNVoW4HUXRx-nSu5OYql_rI6ABjeCPibE0k9ghTGfyKcDJvpz1awmM3ZtLs72Q8FdNVoW4HUXRx-nSu5OYql_rI6ABjeCPibE0k9ghTGfyKcDJvpz1awmM3ZtLs72Q8FdNVoW4HUXRx-nSu5OYql_rI6ABjeCPibE0k9ghTGfyKcDJvpz1awmM3ZtLs72Q8FdNVoW4HUXRx-nSu5OYql_rI6ABjeCPib', '2019-03-12 05:47:30', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -84,7 +85,8 @@ ALTER TABLE `sosben_logauth`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_username` (`users_username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -100,7 +102,7 @@ ALTER TABLE `sosben_logauth`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
