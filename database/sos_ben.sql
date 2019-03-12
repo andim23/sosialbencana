@@ -49,6 +49,23 @@ INSERT INTO `sosben_logauth` (`id`, `username`, `ip`, `browser`, `sistem_operasi
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `profil`
+--
+
+CREATE TABLE `profil` (
+  `id` int(10) NOT NULL,
+  `Nama` varchar(255) DEFAULT NULL,
+  `ttl` varchar(20) DEFAULT NULL,
+  `J_kelamin` varchar(50) DEFAULT NULL,
+  `alamat` varchar(255) DEFAULT NULL,
+  `telpn` int(15) DEFAULT NULL,
+  `gambar` int(100) DEFAULT NULL,
+  `level` int(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -87,6 +104,12 @@ ALTER TABLE `sosben_logauth`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_username` (`users_username`);
+	
+--
+-- Indexes for table `profil`
+--
+ALTER TABLE `profil`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -105,6 +128,14 @@ ALTER TABLE `users`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
+--
+-- AUTO_INCREMENT for table `profil`
+--
+ALTER TABLE `profil`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+	
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
