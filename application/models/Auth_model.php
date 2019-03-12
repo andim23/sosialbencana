@@ -11,8 +11,8 @@ class Auth_model extends CI_Model {
     public function cekUser($username)
     {
         $this->db->select('*');
-        $this->db->from('diskomin_user');
-        $this->db->where('username', $username);
+        $this->db->from('users');
+        $this->db->where('users_username', $username);
         $cek = $this->db->get();
         return $cek;
     }

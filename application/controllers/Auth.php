@@ -67,34 +67,34 @@ class Auth extends CI_Controller {
     Public function proses_login()
     {
         date_default_timezone_set('Asia/Jakarta');
-        $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
-        $this->form_validation->set_message('required', 'Maaf! <b>%s</b> Tidak Boleh Kosong');
+        // $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
+        // $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
+        // $this->form_validation->set_message('required', 'Maaf! <b>%s</b> Tidak Boleh Kosong');
 
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
+        $username = 'admin';
+        $password = 'admin';
 
-        if($this->form_validation->run() == FALSE)
-        {
-            $this->load->view('Auth');
-        }
-        else
-        {
+        // if($this->form_validation->run() == FALSE)
+        // {
+        //     $this->load->view('Auth');
+        // }
+        // else
+        // {
             $cek = $this->Auth_model->cekUser($username);
             
             if($cek->num_rows() > 0)
             {
                 $data = $cek->row_array();
-                if(password_verify($password, $data['password']))
+                if(password_verify($password, $data['users_password']))
                 {   
-                          $this->session->set_userdata('username', $data['username']);
-                            if($data['level']=='Super Admin')
-                            {
-                                $this->session->set_userdata('level', 'Super Admin');
-                            }
-                            elseif($data['level']=='Admin')
+                          $this->session->set_userdata('username', $data['users_username']);
+                            if($data['users_level']=='1')
                             {
                                 $this->session->set_userdata('level', 'Admin');
+                            }
+                            elseif($data['users_level']=='2')
+                            {
+                                $this->session->set_userdata('level', 'User');
                             }
                             $this->session->set_userdata('status', 'Login');
 
@@ -116,27 +116,30 @@ class Auth extends CI_Controller {
                             }
                 
                             $data_log = array(
-                                'user' => $this->session->userdata('username'),
+                                'username' => $username,
                                 'ip' => $this->input->ip_address(),
                                 'browser' => $agent,
                                 'sistem_operasi' => $this->agent->platform(),
                                 'waktu' => date('Y-m-d h:i:s'),
                                 'status' => 'Pengguna Login'
                             );
-                            $data_log = $this->Auth_model->insert('diskomin_logauth', $data_log);
-                            redirect(base_url('Pengelola'));
+                            $data_log = $this->Auth_model->insert('sosben_logauth', $data_log);
+                            //redirect(base_url('Pengelola'));
+                            echo 'berhasil login';
                 }
                     
                 else
                 {
-                    $this->session->set_flashdata('Password Salah', 'Maaf Username atau Password Salah.');
-                    redirect(base_url('Auth'));   
+                    //$this->session->set_flashdata('Password Salah', 'Maaf Username atau Password Salah.');
+                    //redirect(base_url('Auth'));   
+                    echo 'error';
                 }
             }
-            else{
-                $this->session->set_flashdata('Username', 'Maaf anda tidak terdaftar.');
-                    redirect(base_url('Auth'));
-            }
-        }
+            // else{
+            //     $this->session->set_flashdata('Username', 'Maaf anda tidak terdaftar.');
+            //         // redirect(base_url('Auth'));
+            //         echo 'error';
+            // }
+        //}
     }
 }
