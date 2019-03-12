@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.8.4
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2019 at 05:09 AM
--- Server version: 10.1.16-MariaDB
--- PHP Version: 7.0.9
+-- Generation Time: Mar 12, 2019 at 06:11 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,50 +25,84 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sosben_logauth`
+--
+
+CREATE TABLE `sosben_logauth` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL DEFAULT '0',
+  `ip` varchar(20) NOT NULL DEFAULT '0',
+  `browser` varchar(25) NOT NULL DEFAULT '0',
+  `sistem_operasi` varchar(25) NOT NULL DEFAULT '0',
+  `waktu` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `status` varchar(50) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sosben_logauth`
+--
+
+INSERT INTO `sosben_logauth` (`id`, `username`, `ip`, `browser`, `sistem_operasi`, `waktu`, `status`) VALUES
+(1, 'admin', '::1', 'Chrome 72.0.3626.121', 'Windows 10', '2019-03-12 05:08:39', 'Pengguna Registrasi');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `id` int(5) NOT NULL,
-  `nama` varchar(100) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `username` varchar(30) DEFAULT NULL,
-  `password` varchar(32) DEFAULT NULL,
-  `id_home` int(11) NOT NULL,
-  `akses_level` varchar(20) NOT NULL,
-  `gambar` varchar(255) NOT NULL,
-  `id_admin` int(11) NOT NULL,
-  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `users_username` varchar(50) NOT NULL,
+  `users_email` varchar(100) NOT NULL,
+  `users_password` varchar(255) NOT NULL,
+  `users_level` int(4) NOT NULL,
+  `users_status` int(4) NOT NULL,
+  `users_token` varchar(256) NOT NULL,
+  `users_tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `users_verifikasi` timestamp NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `nama`, `email`, `username`, `password`, `id_home`, `akses_level`, `gambar`, `id_admin`, `tanggal`) VALUES
-(5, 'jon', 'asalole@gmail.com', 'jhon', '25f9e794323b453885f5181f1b624d0b', 1, 'Admin', '', 0, '2019-03-12 04:09:06'),
-(6, 'ajaib', 'ajaib@gmail.com', 'ajaib', '25f9e794323b453885f5181f1b624d0b', 1, 'User', '', 0, '2018-06-22 03:17:05');
+INSERT INTO `users` (`id`, `users_username`, `users_email`, `users_password`, `users_level`, `users_status`, `users_token`, `users_tanggal`, `users_verifikasi`) VALUES
+(13, 'admin', 'admin@sosben.com', '$2y$10$az8u0rmAg22EwDr.FGgcOO4FMXuHvxW.XJbrXyRgu58vNpHqyX.W.', 1, 0, 'f61e3d0eb3b3f92dabba92fb5c055cfc', '2019-03-12 05:08:39', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `sosben_logauth`
+--
+ALTER TABLE `sosben_logauth`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
+-- AUTO_INCREMENT for table `sosben_logauth`
+--
+ALTER TABLE `sosben_logauth`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
