@@ -25,6 +25,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `image`
+--
+
+CREATE TABLE `image` (
+  `id_image` int(20) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `slug_produk` varchar(255) NOT NULL,
+  `nama_produk` varchar(50) DEFAULT NULL,
+  `deskripsi` varchar(50) DEFAULT NULL,
+  `status_produk` varchar(30) NOT NULL,
+  `gambar` varchar(255) DEFAULT NULL,
+  `tanggal_post` datetime NOT NULL,
+  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `image`
+--
+
+INSERT INTO `image` (`id_image`, `id_user`, `slug_produk`, `nama_produk`, `deskripsi`, `status_produk`, `gambar`, `tanggal_post`, `tanggal`) VALUES
+(3, 1, 'ass-asdas-adsa', 'asdasda asdasd', 'jaskjnasfavanvonaoiaf', 'publish', 'kjaskjnakjsfnkajsnf.jpg', '2019-03-07 00:00:00', '2019-03-13 12:01:47');
+
+-- --------------------------------------------------------
+
+
+--
 -- Table structure for table `sosben_logauth`
 --
 
@@ -93,6 +119,12 @@ INSERT INTO `users` (`id`, `users_username`, `users_email`, `users_password`, `u
 --
 
 --
+-- Indexes for table `image`
+--
+ALTER TABLE `image`
+  ADD PRIMARY KEY (`id_image`);
+
+--
 -- Indexes for table `sosben_logauth`
 --
 ALTER TABLE `sosben_logauth`
@@ -114,6 +146,12 @@ ALTER TABLE `profil`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `image`
+--
+ALTER TABLE `image`
+  MODIFY `id_image` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `sosben_logauth`
