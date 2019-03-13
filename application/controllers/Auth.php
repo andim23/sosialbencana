@@ -142,4 +142,11 @@ class Auth extends CI_Controller {
             // }
         //}
     }
+
+    public function test()
+    {
+        $str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_'; 
+        $random = str_repeat(str_shuffle($str),4);
+        echo $random . "<br>" . time();
+    }
 }

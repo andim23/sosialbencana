@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2019 at 06:48 AM
+-- Generation Time: Mar 13, 2019 at 04:35 PM
 -- Server version: 10.1.37-MariaDB
--- PHP Version: 7.2.14
+-- PHP Version: 7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,10 +25,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `image`
+-- Table structure for table `pengguna`
 --
 
-CREATE TABLE `image` (
+CREATE TABLE `pengguna` (
+  `id` int(10) NOT NULL,
+  `p_nama` varchar(255) DEFAULT NULL,
+  `p_num` varchar(100) DEFAULT NULL,
+  `p_ttl` date DEFAULT NULL,
+  `p_jeniskelamin` enum('Laki-Laki','Perempuan') DEFAULT NULL,
+  `p_alamat` text,
+  `p_notlp` int(15) DEFAULT NULL,
+  `p_avatar` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `post`
+--
+
+CREATE TABLE `post` (
   `id_image` int(20) NOT NULL,
   `id_user` int(11) NOT NULL,
   `slug` varchar(255) NOT NULL,
@@ -41,13 +58,25 @@ CREATE TABLE `image` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `image`
+-- Dumping data for table `post`
 --
 
-INSERT INTO `image` (`id_image`, `id_user`, `slug`, `nama`, `deskripsi`, `status`, `gambar`, `tanggal_post`, `tanggal`) VALUES
+INSERT INTO `post` (`id_image`, `id_user`, `slug`, `nama`, `deskripsi`, `status`, `gambar`, `tanggal_post`, `tanggal`) VALUES
 (3, 1, 'ass-asdas-adsa', 'asdasda asdasd', 'jaskjnasfavanvonaoiaf', 'publish', 'kjaskjnakjsfnkajsnf.jpg', '2019-03-07 00:00:00', '2019-03-13 12:01:47');
+
 -- --------------------------------------------------------
 
+--
+-- Table structure for table `sosben_leveluser`
+--
+
+CREATE TABLE `sosben_leveluser` (
+  `leveluser_id` int(11) NOT NULL,
+  `leveluser_kode` int(4) DEFAULT NULL,
+  `leveluser_nama` int(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `sosben_logauth`
@@ -74,18 +103,13 @@ INSERT INTO `sosben_logauth` (`id`, `username`, `ip`, `browser`, `sistem_operasi
 -- --------------------------------------------------------
 
 --
--- Table structure for table `profil`
+-- Table structure for table `sosben_statususer`
 --
 
-CREATE TABLE `profil` (
-  `id` int(10) NOT NULL,
-  `Nama` varchar(255) DEFAULT NULL,
-  `ttl` varchar(20) DEFAULT NULL,
-  `J_kelamin` varchar(50) DEFAULT NULL,
-  `alamat` varchar(255) DEFAULT NULL,
-  `telpn` int(15) DEFAULT NULL,
-  `gambar` int(100) DEFAULT NULL,
-  `level` int(5) DEFAULT NULL
+CREATE TABLE `sosben_statususer` (
+  `statususer_id` int(11) NOT NULL,
+  `statususer_kode` int(4) DEFAULT NULL,
+  `statususer_nama` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -96,32 +120,46 @@ CREATE TABLE `profil` (
 
 CREATE TABLE `users` (
   `id` int(5) NOT NULL,
+  `users_num` varchar(100) NOT NULL,
   `users_username` varchar(50) NOT NULL,
   `users_email` varchar(100) NOT NULL,
-  `users_password` varchar(255) NOT NULL,
+  `users_password` varchar(72) NOT NULL,
   `users_level` int(4) NOT NULL,
   `users_status` int(4) NOT NULL,
   `users_token` varchar(256) NOT NULL,
-  `users_tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `users_verifikasi` timestamp NULL DEFAULT '0000-00-00 00:00:00'
+  `users_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `users_verifikasi` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `users_username`, `users_email`, `users_password`, `users_level`, `users_status`, `users_token`, `users_tanggal`, `users_verifikasi`) VALUES
-(1, 'admin', 'admin@sosben.com', '$2y$10$fkEcilH370MkSqcIs5beUeGP8nJsCr799LS45mLaLxWHTlM9ZSj9G', 1, 1, 'E0k9ghTGfyKcDJvpz1awmM3ZtLs72Q8FdNVoW4HUXRx-nSu5OYql_rI6ABjeCPibE0k9ghTGfyKcDJvpz1awmM3ZtLs72Q8FdNVoW4HUXRx-nSu5OYql_rI6ABjeCPibE0k9ghTGfyKcDJvpz1awmM3ZtLs72Q8FdNVoW4HUXRx-nSu5OYql_rI6ABjeCPibE0k9ghTGfyKcDJvpz1awmM3ZtLs72Q8FdNVoW4HUXRx-nSu5OYql_rI6ABjeCPib', '2019-03-12 05:47:30', '0000-00-00 00:00:00');
+INSERT INTO `users` (`id`, `users_num`, `users_username`, `users_email`, `users_password`, `users_level`, `users_status`, `users_token`, `users_tanggal`, `users_verifikasi`) VALUES
+(1, '', 'admin', 'admin@sosben.com', '$2y$10$fkEcilH370MkSqcIs5beUeGP8nJsCr799LS45mLaLxWHTlM9ZSj9G', 1, 1, 'E0k9ghTGfyKcDJvpz1awmM3ZtLs72Q8FdNVoW4HUXRx-nSu5OYql_rI6ABjeCPibE0k9ghTGfyKcDJvpz1awmM3ZtLs72Q8FdNVoW4HUXRx-nSu5OYql_rI6ABjeCPibE0k9ghTGfyKcDJvpz1awmM3ZtLs72Q8FdNVoW4HUXRx-nSu5OYql_rI6ABjeCPibE0k9ghTGfyKcDJvpz1awmM3ZtLs72Q8FdNVoW4HUXRx-nSu5OYql_rI6ABjeCPib', '2019-03-12 05:47:30', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `image`
+-- Indexes for table `pengguna`
 --
-ALTER TABLE `image`
+ALTER TABLE `pengguna`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `post`
+--
+ALTER TABLE `post`
   ADD PRIMARY KEY (`id_image`);
+
+--
+-- Indexes for table `sosben_leveluser`
+--
+ALTER TABLE `sosben_leveluser`
+  ADD PRIMARY KEY (`leveluser_id`),
+  ADD UNIQUE KEY `leveluser_kode` (`leveluser_kode`);
 
 --
 -- Indexes for table `sosben_logauth`
@@ -130,27 +168,40 @@ ALTER TABLE `sosben_logauth`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `sosben_statususer`
+--
+ALTER TABLE `sosben_statususer`
+  ADD PRIMARY KEY (`statususer_id`),
+  ADD UNIQUE KEY `statususer_kode` (`statususer_kode`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_username` (`users_username`);
-	
---
--- Indexes for table `profil`
---
-ALTER TABLE `profil`
-  ADD PRIMARY KEY (`id`);
+  ADD UNIQUE KEY `users_num` (`users_num`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `image`
+-- AUTO_INCREMENT for table `pengguna`
 --
-ALTER TABLE `image`
+ALTER TABLE `pengguna`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `post`
+--
+ALTER TABLE `post`
   MODIFY `id_image` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `sosben_leveluser`
+--
+ALTER TABLE `sosben_leveluser`
+  MODIFY `leveluser_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sosben_logauth`
@@ -165,14 +216,6 @@ ALTER TABLE `users`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
---
--- AUTO_INCREMENT for table `profil`
---
-ALTER TABLE `profil`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
-	
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
