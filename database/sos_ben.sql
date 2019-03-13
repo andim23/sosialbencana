@@ -31,10 +31,10 @@ SET time_zone = "+00:00";
 CREATE TABLE `image` (
   `id_image` int(20) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `slug_produk` varchar(255) NOT NULL,
-  `nama_produk` varchar(50) DEFAULT NULL,
+  `slug` varchar(255) NOT NULL,
+  `nama` varchar(50) DEFAULT NULL,
   `deskripsi` varchar(50) DEFAULT NULL,
-  `status_produk` varchar(30) NOT NULL,
+  `status` varchar(30) NOT NULL,
   `gambar` varchar(255) DEFAULT NULL,
   `tanggal_post` datetime NOT NULL,
   `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -44,9 +44,8 @@ CREATE TABLE `image` (
 -- Dumping data for table `image`
 --
 
-INSERT INTO `image` (`id_image`, `id_user`, `slug_produk`, `nama_produk`, `deskripsi`, `status_produk`, `gambar`, `tanggal_post`, `tanggal`) VALUES
+INSERT INTO `image` (`id_image`, `id_user`, `slug`, `nama`, `deskripsi`, `status`, `gambar`, `tanggal_post`, `tanggal`) VALUES
 (3, 1, 'ass-asdas-adsa', 'asdasda asdasd', 'jaskjnasfavanvonaoiaf', 'publish', 'kjaskjnakjsfnkajsnf.jpg', '2019-03-07 00:00:00', '2019-03-13 12:01:47');
-
 -- --------------------------------------------------------
 
 
