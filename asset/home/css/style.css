@@ -1,0 +1,16 @@
+.navbar-custom{
+    background: #1565c0;
+}
+.navbar-custom a{
+    color: #fff;
+}
+#main .card h2.post-title{
+    font-size: 1.5em;
+}
+#main .card h5.post-username{
+    font-size: 1em;
+    margin: 0;
+}
+#main .card span{
+    font-size: 14px;
+}
