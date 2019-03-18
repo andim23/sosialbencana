@@ -6,13 +6,70 @@ class Auth extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-        // Load Model
         $this->load->model('Auth_model');
-	}
+    }
+    
+    public function proseslogin()
+    {
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
 
-	public function index()
-	{
-		$this->load->view('welcome_message');
+        $cek = $this->Auth_model->cekUser($email);
+        if($cek->num_rows() > 0)
+        {
+            $data = $cek->row_array();
+            print_r($data);
+            if(password_verify($password, $data['users_password']))
+            {
+                /**
+                 * STATUS
+                 * 1 = AKTIF
+                 * 2 = TIDAK AKTIF
+                 * 3 = BANNED
+                 */
+                if($data['users_status'] == '1')
+                {
+                    /**
+                     * LEVEL
+                     * 1 = DEVELOPER
+                     * 2 = RELAWAN
+                     */
+                    if($data['users_level'] == '1')
+                    {
+                        $session = array(
+                            'username' => $data['users_username'],
+                            'email' => $data['users_email'],
+                            'level' => 'Developer',
+                        );
+                        $this->session->set_userdata($session);
+                        redirect(base_url('developer'));
+                    }
+                    if($data['users_level'] == '2')
+                    {
+                        $session = array(
+                            'username' => $data['users_username'],
+                            'email' => $data['users_email'],
+                            'level' => 'Relawan',
+                        );
+                        $this->session->set_userdata($session);
+                        redirect(base_url('relawan'));
+                    }
+                }
+                if($data['users_status'] == '2')
+                {
+                    $this->session->set_flashdata('gagal', 'Maaf! Akun Anda Belum Aktif');
+                    redirect(base_url('login'));
+                }
+            }
+            else
+            {
+                echo "Password Salah";
+            }
+        }
+        else
+        {
+            echo "Akun Tidak Ditemukan";
+        }
     }
     
     public function regbayangan()
