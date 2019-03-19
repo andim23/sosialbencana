@@ -12,7 +12,7 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col">
                 <div class="auth-body">
                     <div class="auth-title">
-                        <h2 class="text-center">Sosial Bencana</h2>
+                        <h2 class="text-center"><a href="<?php echo base_url('/'); ?>">Sosial Bencana</a></h2>
                     </div>
                     <div class="auth-register">
                         <?php echo form_open('auth/proseslogin'); ?>

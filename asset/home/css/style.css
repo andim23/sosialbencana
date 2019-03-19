@@ -24,6 +24,14 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+.auth a{
+    color: #fff;
+    text-decoration: none;
+}
+.auth a:hover{
+    color: #03a9f4;
+    transition: all 0.5s;
+}
 .auth-body{
     width: 450px;
     margin: 0 auto;
