@@ -84,7 +84,7 @@ class Auth extends CI_Controller {
                 }
                 else
                 {
-                    $this->session->set_flashdata('gagal', 'Maaf! Password Anda Salah');
+                    $this->session->set_flashdata('gagal', 'Maaf! Username atau Password Anda Salah');
                     redirect(base_url('login'));
                 }
             }
@@ -131,9 +131,9 @@ class Auth extends CI_Controller {
             $random = str_repeat(str_shuffle($str),4);
     
             $data = array(
-                'users_username'=>'admin',
+                'users_username'=>'admin123',
                 'users_email'=>'admin@sosben.com',
-                'users_password' => password_hash('admin', PASSWORD_BCRYPT),
+                'users_password' => password_hash('12345678', PASSWORD_BCRYPT),
                 'users_level'=>'1',
                 'users_status'=>'1',
                 'users_tanggal' => date('Y-m-d H:i:s'),
