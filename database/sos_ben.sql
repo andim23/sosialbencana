@@ -131,6 +131,37 @@ CREATE TABLE `users` (
   `users_verifikasi` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `kecamatan`
+--
+
+CREATE TABLE `kecamatan` (
+  `id_kecamatan` int(11) NOT NULL,
+  `kode_kecamatan` varchar(10) NOT NULL,
+  `nama_kecamatan` varchar(255) NOT NULL,
+  `urutan` int(11) DEFAULT NULL,
+  `keterangan` int(11) DEFAULT NULL,
+  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ranking`
+--
+
+CREATE TABLE `ranking` (
+  `id_rank` int(11) NOT NULL,
+  `id_kecamatan` int(11) NOT NULL,
+  `status` varchar(100) DEFAULT NULL,
+  `urutan` int(50) DEFAULT NULL,
+  `tanggal` datetime NOT NULL,
+  `tglupdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
 --
 -- Dumping data for table `users`
 --
@@ -182,6 +213,19 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `users_num` (`users_num`);
 
 --
+-- Indexes for table `kecamatan`
+--
+ALTER TABLE `kecamatan`
+  ADD PRIMARY KEY (`id_kecamatan`);
+
+--
+-- Indexes for table `ranking`
+--
+ALTER TABLE `ranking`
+  ADD PRIMARY KEY (`id_rank`),
+  ADD UNIQUE KEY `id_kecamatan` (`id_kecamatan`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -215,6 +259,17 @@ ALTER TABLE `sosben_logauth`
 ALTER TABLE `users`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
+
+--
+-- AUTO_INCREMENT for table `kecamatan`
+--
+ALTER TABLE `kecamatan`
+  MODIFY `id_kecamatan` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `ranking`
+--
+ALTER TABLE `ranking`
+  MODIFY `id_rank` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
