@@ -5,7 +5,22 @@
     <?php $this->load->view('Home/include/css'); ?>
 </head>
 <body>
-
+<?php
+if($this->session->flashdata('sukses'))
+{
+	echo '<script src="'.base_url('asset/home/js/sweetalert2.all.min.js').'"></script>';
+	echo '<script>
+			swal("'.$this->session->flashdata('sukses').'", "", "success");
+		</script>';
+}
+if($this->session->flashdata('gagal'))
+{
+	echo '<script src="'.base_url('asset/home/js/sweetalert2.all.min.js').'"></script>';
+	echo '<script>
+			swal("'.$this->session->flashdata('gagal').'", "", "error");
+		</script>';
+}
+?>
 <div class="auth">
     <div class="container">
         <div class="row">

@@ -26,7 +26,7 @@ class Auth_model extends CI_Model {
 		$config['protocol'] = "smtp";
 		$config['smtp_host'] = "ssl://smtp.gmail.com";
 		$config['smtp_port'] = "465";
-		$config['smtp_user'] = "testingmahasiswa@gmail.com";
+		$config['smtp_user'] = "testingemailmahasiswa@gmail.com";
 		$config['smtp_pass'] = "akusayangkamu123";
 		$config['charset'] = "utf-8";
 		$config['mailtype'] = "html";
@@ -37,7 +37,7 @@ class Auth_model extends CI_Model {
 		$isi = '<table>';
 		$isi .= '<tr><td><h4>Aktifkan Akun Sosial Bencana!</h4></td></tr>';
 		$isi .= '<tr><td><p>Halo <b>' . $email . '</b> terima kasih telah melakukan pendaftaran di Sosial Bencana. Kami beritahukan kepada Anda untuk melakukan aktivasi akun agar bisa digunakan.</p></td></tr>';
-		$isi .= '<tr><td><a href="'.base_url().'/aktivasi/'.$random.'">AKTIVASI AKUN</a></td></tr>';
+		$isi .= '<tr><td><a href="'.base_url().'aktivasi/'.$random.'">AKTIVASI AKUN</a></td></tr>';
 		$isi .= '<tr><td><p>Terima Kasih, Salam Hormat</p></td></tr>';
 		$isi .= '</table>';
 		
@@ -52,12 +52,30 @@ class Auth_model extends CI_Model {
             'users_username'=> $username,
             'users_email'=> $email,
             'users_password' => password_hash($password, PASSWORD_BCRYPT),
-            'users_level'=> '1',
-            'users_status'=>'1',
-            'users_tanggal' => date('Y-m-d H:i:s'),
+            'users_level'=> '2',
+            'users_status'=>'2',
             'users_token'=> $random,
+            'users_tanggal' => date('Y-m-d H:i:s'),
         );
         return $this->db->insert('users',$data);
+    }
+
+    public function cekAktivasi($token)
+    {
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('users_token', $token);
+        return $this->db->get();
+    }
+
+    public function updateAktivasi($token)
+    {
+        $data = array(
+            'users_status' => '1',
+            'users_verifikasi' => date('Y-m-d H:i:s'),
+        );
+        $this->db->where('users_token', $token);
+        return $this->db->update('users', $data);
     }
     
     public function insert($table,$data)

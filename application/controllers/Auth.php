@@ -84,7 +84,7 @@ class Auth extends CI_Controller {
                 }
                 else
                 {
-                    $this->session->set_flashdata('gagal', 'Maaf! Username atau Password Anda Salah');
+                    $this->session->set_flashdata('gagal', 'Maaf! Password Anda Salah');
                     redirect(base_url('login'));
                 }
             }
@@ -119,78 +119,34 @@ class Auth extends CI_Controller {
         else
         {
             $this->Auth_model->daftarAkun();
-            $this->session->set_flashdata('sukses', 'Berhasil Melakukan Registrasi');
+            $this->session->set_flashdata('sukses', 'Berhasil Melakukan Registrasi! Silahkan Cek Email.');
             redirect(base_url('login'));
         }
     }
-    
-    public function regbayangan()
+
+    public function aktivasi($token)
     {
-            date_default_timezone_set("Asia/Jakarta");
-            $str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_'; 
-            $random = str_repeat(str_shuffle($str),4);
-    
-            $data = array(
-                'users_username'=>'admin123',
-                'users_email'=>'admin@sosben.com',
-                'users_password' => password_hash('12345678', PASSWORD_BCRYPT),
-                'users_level'=>'1',
-                'users_status'=>'1',
-                'users_tanggal' => date('Y-m-d H:i:s'),
-                'users_token'=>$random,
-            );
-    
-            $update=$this->Auth_model->insert('users',$data);
-            if($update)
-                {
-                    if ($this->agent->is_browser())
-                    {
-                        $agent = $this->agent->browser().' '.$this->agent->version();
-                    }
-                    elseif ($this->agent->is_robot())
-                    {
-                        $agent = $this->agent->robot();
-                    }
-                    elseif ($this->agent->is_mobile())
-                    {
-                        $agent = $this->agent->mobile();
-                    }
-                    else
-                    {
-                        $agent = 'Unidentified User Agent';
-                    }
-        
-                    $data_log = array(
-                        'username' => 'admin',
-                        'ip' => $this->input->ip_address(),
-                        'browser' => $agent,
-                        'sistem_operasi' => $this->agent->platform(),
-                        'waktu' => date('Y-m-d h:i:s'),
-                        'status' => 'Pengguna Registrasi'
-                    );
-                    $data_log = $this->db->insert('sosben_logauth', $data_log);	
-                }
-                echo 'done';
-    }
-
-    Public function proses_login()
-    {
-        date_default_timezone_set('Asia/Jakarta');
-        // $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
-        // $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
-        // $this->form_validation->set_message('required', 'Maaf! <b>%s</b> Tidak Boleh Kosong');
-
-        $username = 'admin';
-        $password = 'admin';
-
-        // if($this->form_validation->run() == FALSE)
-        // {
-        //     $this->load->view('Auth');
-        // }
-        // else
-        // {
-            $cek = $this->Auth_model->cekUser($username);
-            
+        $cek = $this->Auth_model->cekAktivasi($token);
+        if($cek->num_rows() > 0)
+        {
+            $data = $cek->row_array();
+            if($data['users_status'] == 2 && $data['users_verifikasi'] == NULL)
+            {
+                $this->Auth_model->updateAktivasi($token);
+                $this->session->set_flashdata('sukses', 'Akun Anda Berhasil Aktif! Silahkan Login');
+                redirect(base_url('login'));
+            }
+            else
+            {
+                $this->session->set_flashdata('gagal', 'Akun Telah Aktif.');
+                redirect(base_url('login'));
+            }
+        }
+        else
+        {
+            $this->session->set_flashdata('gagal', 'Maaf! Akun Tidak Ditemukan');
+            redirect(base_url('login'));
+        }
     }
 
     public function test()
