@@ -16,35 +16,54 @@
 }
 
 /**
-AUTH
+----------- AUTH -----------
 */
 .auth{
-    background: #f5f5f5;
+    background: linear-gradient(0deg,rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3)),url("../../img/sosial/foto10.jpg");
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-.auth .auth-kanan{
-    width: 600px;
+.auth-body{
+    width: 450px;
     margin: 0 auto;
+    padding: 120px 0;
 }
-.auth-img img{
-    width: 100%;
-    height: 100vh;
-    padding: 0;
-    margin: 0;
+.auth-body .auth-title h2{
+    color: #fff;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    font-size: 3em;
 }
-.auth-kanan .auth-title h2{
-    margin: 40px 0;
+.auth-body .auth-register input{
+    border-radius: 40px;
+    padding: 25px;
 }
-.auth-kanan .auth-body{
-    padding-top: 100px;
-}
-.auth-kanan .auth-register{
-    padding-top: 50px;
-}
-.auth-kanan .auth-footer{
-    padding-top: 75px;
+.auth-body label{
+    color: #fff;
 }
 .auth .auth-btn{
+    background: #fff;
+    border-radius: 40px;
+    color: #000;
+    height: 50px;
+    transition: all 0.5s;
+}
+.auth .auth-btn:hover{
     background: #03a9f4;
-    border-radius: 25px;
     color: #fff;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    transition: all 0.5s;
+    font-weight: 700;
+}
+.auth .auth-footer p{
+    margin-top: 15px;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.auth .auth-footer p a{
+    color: #fff;
+    text-transform: uppercase;
 }

@@ -7,32 +7,31 @@
 <body>
 
 <div class="auth">
-    <div class="row">
-        <div class="col-xl-4 col-lg-4 col-md-12 col">
-            <div class="auth-img">
-                <img src="<?php echo base_url('asset/img/sosial/foto7.jpg'); ?>" alt="">
-            </div>
-        </div>
-        <div class="col-xl-8 col-lg-8 col-md-12 col">
-            <div class="auth-kanan">
-                <div class="auth-title">
-                    <h2 class="text-center">Sosial Bencana</h2>
-                </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col">
                 <div class="auth-body">
-                    <?php echo form_open('auth/proseslogin'); ?>
-                        <div class="form-group">
-                            <label>Email address</label>
-                            <input type="email" name="email" class="form-control" placeholder="Email Address">
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" name="password" class="form-control" placeholder="******">
-                        </div>
-                        <button type="submit" class="btn form-control auth-btn">Login</button>
-                    <?php echo form_close(); ?>
-                </div>
-                <div class="auth-footer">
-                    <h4 class="text-center">Don't have a member? <span><a href="<?php echo base_url('register'); ?>">Register</a></span></h4>
+                    <div class="auth-title">
+                        <h2 class="text-center">Sosial Bencana</h2>
+                    </div>
+                    <div class="auth-register">
+                        <?php echo form_open('auth/proseslogin'); ?>
+                            <div class="form-group">
+                                <!-- <label>Email address</label> -->
+                                <input type="email" name="email" class="form-control <?php echo form_error('email') ? 'is-invalid' : '' ?>" placeholder="Email Address" value="<?php echo set_value('email'); ?>">
+                                <?php echo form_error('email', '<p class="text-white">', '</p>'); ?>
+                            </div>
+                            <div class="form-group">
+                                <!-- <label>Password</label> -->
+                                <input type="password" name="password" class="form-control <?php echo form_error('password') ? 'is-invalid' : '' ?>" placeholder="Password">
+                                <?php echo form_error('password', '<p class="text-white">', '</p>'); ?>
+                            </div>
+                            <button type="submit" class="btn form-control auth-btn">Login</button>
+                        <?php echo form_close(); ?>
+                    </div>
+                    <div class="auth-footer">
+                        <p><a href="<?php echo base_url('register'); ?>" class="mr-auto">Create Account</a> <a href="" class="ml-auto">Lupa Password</a> </p>
+                    </div>
                 </div>
             </div>
         </div>

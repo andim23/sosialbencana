@@ -13,62 +13,114 @@ class Auth extends CI_Controller {
     {
         $email = $this->input->post('email');
         $password = $this->input->post('password');
+        
+        // VALIDASI
+        $this->form_validation->set_rules('email', 'Email Address', 'trim|required|xss_clean|valid_email|valid_emails');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|min_length[8]');
 
-        $cek = $this->Auth_model->cekUser($email);
-        if($cek->num_rows() > 0)
+        // PESAN VALIDASI
+        $this->form_validation->set_message('required', 'Maaf! <b>%s</b> Tidak Boleh Kosong!');
+        $this->form_validation->set_message('valid_email', 'Maaf! <b>%s</b> Tidak Valid');
+        $this->form_validation->set_message('valid_emails', 'Maaf! <b>%s</b> Tidak Valid');
+        $this->form_validation->set_message('min_length', 'Maaf! <b>%s</b> Minimal <b>%s</b> Karakter.');
+
+        if($this->form_validation->run() == FALSE)
         {
-            $data = $cek->row_array();
-            print_r($data);
-            if(password_verify($password, $data['users_password']))
+            $this->load->view('Home/login');
+        }
+        else
+        {
+            $cek = $this->Auth_model->cekUser($email);
+            if($cek->num_rows() > 0)
             {
-                /**
-                 * STATUS
-                 * 1 = AKTIF
-                 * 2 = TIDAK AKTIF
-                 * 3 = BANNED
-                 */
-                if($data['users_status'] == '1')
+                $data = $cek->row_array();
+                print_r($data);
+                if(password_verify($password, $data['users_password']))
                 {
                     /**
-                     * LEVEL
-                     * 1 = DEVELOPER
-                     * 2 = RELAWAN
+                     * STATUS
+                     * 1 = AKTIF
+                     * 2 = TIDAK AKTIF
+                     * 3 = BANNED
                      */
-                    if($data['users_level'] == '1')
+                    if($data['users_status'] == '1')
                     {
-                        $session = array(
-                            'username' => $data['users_username'],
-                            'email' => $data['users_email'],
-                            'level' => 'Developer',
-                        );
-                        $this->session->set_userdata($session);
-                        redirect(base_url('developer'));
+                        /**
+                         * LEVEL
+                         * 1 = DEVELOPER
+                         * 2 = RELAWAN
+                         */
+                        if($data['users_level'] == '1')
+                        {
+                            $session = array(
+                                'username' => $data['users_username'],
+                                'email' => $data['users_email'],
+                                'level' => 'Developer',
+                            );
+                            $this->session->set_userdata($session);
+                            redirect(base_url('developer'));
+                        }
+                        if($data['users_level'] == '2')
+                        {
+                            $session = array(
+                                'username' => $data['users_username'],
+                                'email' => $data['users_email'],
+                                'level' => 'Relawan',
+                            );
+                            $this->session->set_userdata($session);
+                            redirect(base_url('relawan'));
+                        }
                     }
-                    if($data['users_level'] == '2')
+                    if($data['users_status'] == '2')
                     {
-                        $session = array(
-                            'username' => $data['users_username'],
-                            'email' => $data['users_email'],
-                            'level' => 'Relawan',
-                        );
-                        $this->session->set_userdata($session);
-                        redirect(base_url('relawan'));
+                        $this->session->set_flashdata('gagal', 'Maaf! Akun Anda Belum Aktif.');
+                        redirect(base_url('login'));
+                    }
+                    if($data['users_status'] == '3')
+                    {
+                        $this->session->set_flashdata('gagal', 'Maaf! Akun Anda Dinonaktifkan, Silahkan Hubungi Customer Service.');
+                        redirect(base_url('login'));
                     }
                 }
-                if($data['users_status'] == '2')
+                else
                 {
-                    $this->session->set_flashdata('gagal', 'Maaf! Akun Anda Belum Aktif');
+                    $this->session->set_flashdata('gagal', 'Maaf! Password Anda Salah');
                     redirect(base_url('login'));
                 }
             }
             else
             {
-                echo "Password Salah";
+                $this->session->set_flashdata('gagal', 'Maaf! Akun Tidak Ditemukan');
+                redirect(base_url('login'));
             }
+        }
+    }
+
+    public function prosesregister()
+    {
+        // VALIDASI
+        $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean|is_unique[users.users_username]');
+        $this->form_validation->set_rules('email', 'Email Address', 'trim|required|xss_clean|valid_email|valid_emails|is_unique[users.users_email]');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|min_length[8]');
+        $this->form_validation->set_rules('konfirmasi', 'Konfirmasi Password', 'trim|required|xss_clean|matches[password]');
+
+        // PESAN VALIDASI
+        $this->form_validation->set_message('required', 'Maaf! <b>%s</b> Tidak Boleh Kosong!');
+        $this->form_validation->set_message('is_unique', 'Maaf! <b>%s</b> Telah Digunakan. Harap Menggunakan Akun lain.');
+        $this->form_validation->set_message('valid_email', 'Maaf! <b>%s</b> Tidak Valid');
+        $this->form_validation->set_message('valid_emails', 'Maaf! <b>%s</b> Tidak Valid');
+        $this->form_validation->set_message('matches', 'Maaf! <b>%s</b> Tidak Sama.');
+        $this->form_validation->set_message('min_length', 'Maaf! <b>%s</b> Minimal <b>%s</b> Karakter.');
+
+        if($this->form_validation->run() == FALSE)
+        {
+            $this->load->view('Home/register');
         }
         else
         {
-            echo "Akun Tidak Ditemukan";
+            $this->Auth_model->daftarAkun();
+            $this->session->set_flashdata('sukses', 'Berhasil Melakukan Registrasi');
+            redirect(base_url('login'));
         }
     }
     
