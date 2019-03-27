@@ -15,6 +15,6 @@
 <link rel="stylesheet" href="<?php echo base_url(); ?>asset/admin/plugin/sweet-alert/sweetalert.css">
 <!-- Morris Chart -->
 <link rel="stylesheet" href="<?php echo base_url(); ?>asset/admin/plugin/chart/morris/morris.css">
-<!-- FullCalendar -->
-<link rel="stylesheet" href="<?php echo base_url(); ?>asset/admin/plugin/fullcalendar/fullcalendar.min.css">
-<link rel="stylesheet" href="<?php echo base_url(); ?>asset/admin/plugin/fullcalendar/fullcalendar.print.css" media='print'>
+<!-- Data Tables -->
+<link rel="stylesheet" href="<?php echo base_url(); ?>asset/admin/plugin/datatables/media/css/dataTables.bootstrap.min.css">
+<link rel="stylesheet" href="<?php echo base_url(); ?>asset/admin/plugin/datatables/extensions/Responsive/css/responsive.bootstrap.min.css">

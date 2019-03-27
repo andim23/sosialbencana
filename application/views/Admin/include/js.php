@@ -9,18 +9,11 @@
 <script src="<?php echo base_url(); ?>asset/admin/plugin/chart/morris/morris.min.js"></script>
 <script src="<?php echo base_url(); ?>asset/admin/plugin/chart/morris/raphael-min.js"></script>
 <script src="<?php echo base_url(); ?>asset/admin/scripts/chart.morris.init.min.js"></script>
-<!-- Flot Chart -->
-<script src="<?php echo base_url(); ?>asset/admin/plugin/chart/plot/jquery.flot.min.js"></script>
-<script src="<?php echo base_url(); ?>asset/admin/plugin/chart/plot/jquery.flot.tooltip.min.js"></script>
-<script src="<?php echo base_url(); ?>asset/admin/plugin/chart/plot/jquery.flot.categories.min.js"></script>
-<script src="<?php echo base_url(); ?>asset/admin/plugin/chart/plot/jquery.flot.pie.min.js"></script>
-<script src="<?php echo base_url(); ?>asset/admin/plugin/chart/plot/jquery.flot.stack.min.js"></script>
-<script src="<?php echo base_url(); ?>asset/admin/scripts/chart.flot.init.min.js"></script>
-<!-- Sparkline Chart -->
-<script src="<?php echo base_url(); ?>asset/admin/plugin/chart/sparkline/jquery.sparkline.min.js"></script>
-<script src="<?php echo base_url(); ?>asset/admin/scripts/chart.sparkline.init.min.js"></script>
-<!-- FullCalendar -->
-<script src="<?php echo base_url(); ?>asset/admin/plugin/moment/moment.js"></script>
-<script src="<?php echo base_url(); ?>asset/admin/plugin/fullcalendar/fullcalendar.min.js"></script>
-<script src="<?php echo base_url(); ?>asset/admin/scripts/fullcalendar.init.js"></script>
+<!-- Data Tables -->
+<script src="<?php echo base_url(); ?>asset/admin/plugin/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url(); ?>asset/admin/plugin/datatables/media/js/dataTables.bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>asset/admin/plugin/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?php echo base_url(); ?>asset/admin/plugin/datatables/extensions/Responsive/js/responsive.bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>asset/admin/scripts/datatables.demo.min.js"></script>
+<!-- Main JS -->
 <script src="<?php echo base_url(); ?>asset/admin/scripts/main.min.js"></script>

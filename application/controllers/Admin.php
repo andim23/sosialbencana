@@ -3,6 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
 
+    /**
+     * PT = PROSES TAMBAH
+     * PU = PROSES UPDATE
+     */
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -12,6 +17,45 @@ class Admin extends CI_Controller {
     public function index()
     {
         $this->load->view('Admin/index');
+    }
+
+    /** 
+     * USER
+     */
+    /* ---------- USER VIEW ---------- */
+    public function user()
+    {
+        $this->load->view('Admin/User/index');
+    }
+
+    public function detailuser($kode)
+    {
+        $this->load->view('Admin/User/detail');
+    }
+
+    public function tambahuser()
+    {
+        $this->load->view('Admin/User/tambah');
+    }
+
+    public function pt_user()
+    {
+
+    }
+
+    public function edituser($kode)
+    {
+        $this->load->view('Admin/User/edit');
+    }
+
+    public function pu_user()
+    {
+
+    }
+
+    public function hapususer($kode)
+    {
+
     }
 
     // DELETE
