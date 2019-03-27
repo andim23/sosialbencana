@@ -67,8 +67,8 @@
                                 <div class="btn-group margin-top-10">
                                     <button type="button" class="btn btn-xs btn-block btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi <span class="caret"></span></button> 
                                     <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="#">Detail Data</a></li>
-                                        <li><a href="#">Ubah Data</a></li>
+                                        <li><a href="<?php echo base_url('admin/user/detail/1'); ?>">Detail Data</a></li>
+                                        <li><a href="<?php echo base_url('admin/user/edit/1'); ?>">Ubah Data</a></li>
                                         <li role="separator" class="divider"></li>
                                         <li><a href="#">Hapus Data</a></li>
                                     </ul>
