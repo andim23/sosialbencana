@@ -77,9 +77,9 @@ class Auth_model extends CI_Model {
         $this->db->where('users_token', $token);
         return $this->db->update('users', $data);
     }
-    
-    public function insert($table,$data)
+
+    public function dataUser()
     {
-        return $this->db->insert($table,$data);
+        return $this->db->get('users');
     }
 }

@@ -149,8 +149,15 @@ class Auth extends CI_Controller {
         }
     }
 
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect(base_url('login'), 'refresh');
+    }
+
     public function test()
     {
-        echo "10".rand(1,9).date('dmY').time();
+        echo $this->security->get_csrf_token_name()."<br>";
+        echo $this->security->get_csrf_hash();
     }
 }
