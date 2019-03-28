@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 13, 2019 at 04:35 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Host: localhost
+-- Generation Time: Mar 28, 2019 at 11:51 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,18 +25,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengguna`
+-- Table structure for table `kategori`
 --
 
-CREATE TABLE `pengguna` (
-  `id` int(10) NOT NULL,
-  `p_nama` varchar(255) DEFAULT NULL,
-  `p_num` varchar(100) DEFAULT NULL,
-  `p_ttl` date DEFAULT NULL,
-  `p_jeniskelamin` enum('Laki-Laki','Perempuan') DEFAULT NULL,
-  `p_alamat` text,
-  `p_notlp` int(15) DEFAULT NULL,
-  `p_avatar` varchar(100) DEFAULT NULL
+CREATE TABLE `kategori` (
+  `id_kategori` int(11) NOT NULL,
+  `kode_kategori` varchar(10) NOT NULL,
+  `nama_kategori` varchar(50) NOT NULL,
+  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `level`
+--
+
+CREATE TABLE `level` (
+  `id_level` int(11) NOT NULL,
+  `kode_level` varchar(10) NOT NULL,
+  `level` varchar(50) NOT NULL,
+  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -46,230 +55,158 @@ CREATE TABLE `pengguna` (
 --
 
 CREATE TABLE `post` (
-  `id_image` int(20) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `slug` varchar(255) NOT NULL,
-  `nama` varchar(50) DEFAULT NULL,
-  `deskripsi` varchar(50) DEFAULT NULL,
-  `status` varchar(30) NOT NULL,
-  `gambar` varchar(255) DEFAULT NULL,
-  `tanggal_post` datetime NOT NULL,
-  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `post`
---
-
-INSERT INTO `post` (`id_image`, `id_user`, `slug`, `nama`, `deskripsi`, `status`, `gambar`, `tanggal_post`, `tanggal`) VALUES
-(3, 1, 'ass-asdas-adsa', 'asdasda asdasd', 'jaskjnasfavanvonaoiaf', 'publish', 'kjaskjnakjsfnkajsnf.jpg', '2019-03-07 00:00:00', '2019-03-13 12:01:47');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sosben_leveluser`
---
-
-CREATE TABLE `sosben_leveluser` (
-  `leveluser_id` int(11) NOT NULL,
-  `leveluser_kode` int(4) DEFAULT NULL,
-  `leveluser_nama` int(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sosben_logauth`
---
-
-CREATE TABLE `sosben_logauth` (
-  `id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL DEFAULT '0',
-  `ip` varchar(20) NOT NULL DEFAULT '0',
-  `browser` varchar(25) NOT NULL DEFAULT '0',
-  `sistem_operasi` varchar(25) NOT NULL DEFAULT '0',
+  `id_post` int(11) NOT NULL,
+  `id_kategori` int(11) NOT NULL,
+  `id_reac` int(11) NOT NULL,
+  `nama_img` varchar(255) NOT NULL,
+  `type_img` varchar(50) NOT NULL,
+  `size_img` int(11) NOT NULL,
+  `slug_post` varchar(255) NOT NULL,
+  `lttd_img` varchar(255) NOT NULL,
+  `lgttd_img` varchar(255) NOT NULL,
+  `lttd_loc` varchar(255) NOT NULL,
+  `lgttd_loc` varchar(255) NOT NULL,
+  `caption` varchar(255) NOT NULL,
   `waktu` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `status` varchar(50) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `sosben_logauth`
---
-
-INSERT INTO `sosben_logauth` (`id`, `username`, `ip`, `browser`, `sistem_operasi`, `waktu`, `status`) VALUES
-(1, 'admin', '::1', 'Chrome 72.0.3626.121', 'Windows 10', '2019-03-12 05:45:16', 'Pengguna Registrasi'),
-(2, 'admin', '::1', 'Chrome 72.0.3626.121', 'Windows 10', '2019-03-12 05:47:30', 'Pengguna Registrasi');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sosben_statususer`
---
-
-CREATE TABLE `sosben_statususer` (
-  `statususer_id` int(11) NOT NULL,
-  `statususer_kode` int(4) DEFAULT NULL,
-  `statususer_nama` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `id` int(5) NOT NULL,
-  `users_num` varchar(100) NOT NULL,
-  `users_username` varchar(50) NOT NULL,
-  `users_email` varchar(100) NOT NULL,
-  `users_password` varchar(72) NOT NULL,
-  `users_level` int(4) NOT NULL,
-  `users_status` int(4) NOT NULL,
-  `users_token` varchar(256) NOT NULL,
-  `users_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `users_verifikasi` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `kecamatan`
---
-
-CREATE TABLE `kecamatan` (
-  `id_kecamatan` int(11) NOT NULL,
-  `kode_kecamatan` varchar(10) NOT NULL,
-  `nama_kecamatan` varchar(255) NOT NULL,
-  `urutan` int(11) DEFAULT NULL,
-  `keterangan` int(11) DEFAULT NULL,
   `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ranking`
+-- Table structure for table `reaction`
 --
 
-CREATE TABLE `ranking` (
-  `id_rank` int(11) NOT NULL,
-  `id_kecamatan` int(11) NOT NULL,
-  `status` varchar(100) DEFAULT NULL,
-  `urutan` int(50) DEFAULT NULL,
-  `tanggal` datetime NOT NULL,
-  `tglupdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+CREATE TABLE `reaction` (
+  `id` int(11) NOT NULL,
+  `user_num` varchar(255) NOT NULL,
+  `nilai` int(11) NOT NULL,
+  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `users`
+-- Table structure for table `status`
 --
 
-INSERT INTO `users` (`id`, `users_num`, `users_username`, `users_email`, `users_password`, `users_level`, `users_status`, `users_token`, `users_tanggal`, `users_verifikasi`) VALUES
-(1, '', 'admin', 'admin@sosben.com', '$2y$10$fkEcilH370MkSqcIs5beUeGP8nJsCr799LS45mLaLxWHTlM9ZSj9G', 1, 1, 'E0k9ghTGfyKcDJvpz1awmM3ZtLs72Q8FdNVoW4HUXRx-nSu5OYql_rI6ABjeCPibE0k9ghTGfyKcDJvpz1awmM3ZtLs72Q8FdNVoW4HUXRx-nSu5OYql_rI6ABjeCPibE0k9ghTGfyKcDJvpz1awmM3ZtLs72Q8FdNVoW4HUXRx-nSu5OYql_rI6ABjeCPibE0k9ghTGfyKcDJvpz1awmM3ZtLs72Q8FdNVoW4HUXRx-nSu5OYql_rI6ABjeCPib', '2019-03-12 05:47:30', '0000-00-00 00:00:00');
+CREATE TABLE `status` (
+  `id_status` int(11) NOT NULL,
+  `kode_status` varchar(10) NOT NULL,
+  `nama_status` varchar(50) NOT NULL,
+  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id_user` int(11) NOT NULL,
+  `id_level` int(11) NOT NULL,
+  `id_status` int(11) DEFAULT NULL,
+  `num` int(50) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `username` varchar(32) NOT NULL,
+  `password` varchar(72) NOT NULL,
+  `tgl_lahir` date NOT NULL,
+  `j_kel` enum('Laki Laki','Perempuan','','') NOT NULL,
+  `phone` int(12) NOT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
+  `token` varchar(255) NOT NULL,
+  `verifikasi` datetime NOT NULL,
+  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `pengguna`
+-- Indexes for table `kategori`
 --
-ALTER TABLE `pengguna`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `kategori`
+  ADD PRIMARY KEY (`id_kategori`),
+  ADD UNIQUE KEY `kode_kategori` (`kode_kategori`,`nama_kategori`);
+
+--
+-- Indexes for table `level`
+--
+ALTER TABLE `level`
+  ADD PRIMARY KEY (`id_level`),
+  ADD UNIQUE KEY `kode_level` (`kode_level`,`level`);
 
 --
 -- Indexes for table `post`
 --
 ALTER TABLE `post`
-  ADD PRIMARY KEY (`id_image`);
+  ADD PRIMARY KEY (`id_post`);
 
 --
--- Indexes for table `sosben_leveluser`
+-- Indexes for table `reaction`
 --
-ALTER TABLE `sosben_leveluser`
-  ADD PRIMARY KEY (`leveluser_id`),
-  ADD UNIQUE KEY `leveluser_kode` (`leveluser_kode`);
-
---
--- Indexes for table `sosben_logauth`
---
-ALTER TABLE `sosben_logauth`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `sosben_statususer`
---
-ALTER TABLE `sosben_statususer`
-  ADD PRIMARY KEY (`statususer_id`),
-  ADD UNIQUE KEY `statususer_kode` (`statususer_kode`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
+ALTER TABLE `reaction`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_num` (`users_num`);
+  ADD UNIQUE KEY `user_num` (`user_num`);
 
 --
--- Indexes for table `kecamatan`
+-- Indexes for table `status`
 --
-ALTER TABLE `kecamatan`
-  ADD PRIMARY KEY (`id_kecamatan`);
+ALTER TABLE `status`
+  ADD PRIMARY KEY (`id_status`),
+  ADD UNIQUE KEY `kode_status` (`kode_status`),
+  ADD UNIQUE KEY `nama_status` (`nama_status`);
 
 --
--- Indexes for table `ranking`
+-- Indexes for table `user`
 --
-ALTER TABLE `ranking`
-  ADD PRIMARY KEY (`id_rank`),
-  ADD UNIQUE KEY `id_kecamatan` (`id_kecamatan`);
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id_user`),
+  ADD UNIQUE KEY `num` (`num`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `pengguna`
+-- AUTO_INCREMENT for table `kategori`
 --
-ALTER TABLE `pengguna`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `kategori`
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `level`
+--
+ALTER TABLE `level`
+  MODIFY `id_level` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id_image` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `sosben_leveluser`
+-- AUTO_INCREMENT for table `reaction`
 --
-ALTER TABLE `sosben_leveluser`
-  MODIFY `leveluser_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `reaction`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `sosben_logauth`
+-- AUTO_INCREMENT for table `status`
 --
-ALTER TABLE `sosben_logauth`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `status`
+  MODIFY `id_status` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT for table `user`
 --
-ALTER TABLE `users`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `user`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
-
---
--- AUTO_INCREMENT for table `kecamatan`
---
-ALTER TABLE `kecamatan`
-  MODIFY `id_kecamatan` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `ranking`
---
-ALTER TABLE `ranking`
-  MODIFY `id_rank` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
