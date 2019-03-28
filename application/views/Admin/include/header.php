@@ -2,7 +2,7 @@
 <button type="button" class="button-close fa fa-times js__menu_close"></button>
 <div class="user">
     <a href="#" class="avatar"><img src="assets/images/avatar-sm-5.jpg" alt=""><span class="status online"></span></a>
-    <h5 class="name"><a href="profile.html">Denise Emily</a></h5>
+    <h5 class="name"><a href="profile.html"><?php echo $this->session->userdata('username'); ?></a></h5>
     <h5 class="position">Administrator</h5>
     <!-- /.name -->
     <div class="control-wrap js__drop_down">

@@ -30,7 +30,7 @@ if($this->session->flashdata('gagal'))
                         <h2 class="text-center"><a href="<?php echo base_url('/'); ?>">Sosial Bencana</a></h2>
                     </div>
                     <div class="auth-register">
-                        <?php echo form_open('auth/prosesregister'); ?>
+                        <?php echo form_open('auth/prosesregister', array('autocomplete' => 'off')); ?>
                             <div class="form-group">
                                 <!-- <label>Username</label> -->
                                 <input type="text" name="username" class="form-control <?php echo form_error('username') ? 'is-invalid' : '' ?>" placeholder="Username" value="<?php echo set_value('username'); ?>" autofocus>
