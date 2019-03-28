@@ -29,7 +29,7 @@ if($this->session->flashdata('sukses'))
 {
 	echo '<script src="'.base_url().'asset/admin/plugin/sweet-alert/sweetalert.min.js"></script>';
 	echo '<script>
-			swal({title:"'.$this->session->flashdata('sukses').'",text:"",type:"success",confirmButtonColor:"#304ffe"})
+			swal({title:"'.$this->session->flashdata('sukses').'",type:"success",confirmButtonColor:"#304ffe"})
 		</script>';
 }
 if($this->session->flashdata('gagal'))
@@ -45,9 +45,38 @@ if($this->session->flashdata('gagal'))
 	<div class="main-content">
 		<div class="row small-spacing">
             <div class="col-lg-12">
+				<div class="box-content card danger js__card">
+					<h4 class="box-title bg-primary with-control">
+						Tambah Level
+						<span class="controls">
+							<button type="button" class="control fa fa-minus js__card_minus"></button>
+							<button type="button" class="control fa fa-times js__card_remove"></button>
+						</span>
+						<!-- /.controls -->
+					</h4>
+					<!-- /.box-title -->
+					<div class="card-content js__card_content">
+						<?php echo form_open('admin/pt_leveluser', array('autocomplete' => 'off')); ?>
+							<div class="form-group">
+								<label>Kode</label>
+								<input type="text" class="form-control" name="kode" id="kode" placeholder="Masukkan Kode Level" value="<?php echo set_value('kode'); ?>">
+								<?php echo form_error('kode', '<p class="text-danger">', '</p>'); ?>
+							</div>
+							<div class="form-group">
+								<label>Nama Level</label>
+								<input type="text" class="form-control" name="level" id="level" placeholder="Masukkan Nama Level" value="<?php echo set_value('level'); ?>">
+								<?php echo form_error('level', '<p class="text-danger">', '</p>'); ?>
+							</div>
+							<button type="submit" class="btn btn-primary btn-sm waves-effect waves-light">PROSES</button>
+						<?php echo form_close(); ?>
+					</div>
+				</div>
+				<!-- /.box-content -->
+			</div>
+            <div class="col-lg-12">
 				<!-- BOX CONTENT -->
 				<div class="box-content">
-					<h4 class="box-title">Data User</h4>
+					<h4 class="box-title">Data Level</h4>
 					<!-- /.box-title -->
 					<div class="dropdown js__drop_down">
                         <a href="<?php echo base_url('admin/user/tambah'); ?>" class="btn btn-xs btn-primary btn-icon btn-icon-left waves-effect waves-light"><i class="ico fa fa-plus"></i> Tambah Data</a>
@@ -57,62 +86,48 @@ if($this->session->flashdata('gagal'))
 						<thead>
 							<tr>
 								<th>#</th>
-								<th>User Number</th>
-								<th>Username</th>
-								<th>Email</th>
+								<th>Kode</th>
 								<th>Level</th>
-								<th>Status</th>
-								<th>Tanggal Daftar</th>
 								<th>Aksi</th>
 							</tr>
 						</thead>
 						<tfoot>
 							<tr>
 								<th>#</th>
-								<th>User Number</th>
-								<th>Username</th>
-								<th>Email</th>
+								<th>Kode</th>
 								<th>Level</th>
-								<th>Status</th>
-								<th>Tanggal Daftar</th>
 								<th>Aksi</th>
 							</tr>
 						</tfoot>
 						<tbody>
-							<?php
-							$no = 1;
-							foreach($user as $user):
-							?>
-							<tr>
-								<td><?php echo $no++; ?></td>
-								<td><?php echo $user['num']; ?></td>
-								<td><?php echo $user['username']; ?></td>
-								<td><?php echo $user['email']; ?></td>
-								<td><?php echo $user['id_level']; ?></td>
-								<td><?php echo $user['id_status']; ?></td>
-								<td><?php echo $user['tanggal']; ?></td>
-								<td>
+                            <?php
+                            $no=1;
+                            foreach($level as $level):
+                            ?>
+                            <tr>
+                                <td><?php echo $no++; ?></td>
+                                <td><?php echo $level['kode_level']; ?></td>
+                                <td><?php echo $level['level']; ?></td>
+                                <td>
 									<div class="btn-group margin-top-10">
 										<button type="button" class="btn btn-xs btn-block btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi <span class="caret"></span></button> 
 										<ul class="dropdown-menu dropdown-menu-right">
-											<li><a href="<?php echo base_url('admin/user/detail/').$user['num']; ?>">Detail Data</a></li>
-											<li><a href="<?php echo base_url('admin/user/edit/1').$user['num']; ?>">Ubah Data</a></li>
+											<li><a href="<?php echo base_url('admin/user/detail/').$level['kode_level']; ?>">Detail Data</a></li>
+											<li><a href="<?php echo base_url('admin/user/edit/1').$level['kode_level']; ?>">Ubah Data</a></li>
 											<li role="separator" class="divider"></li>
-											<li><a href="javascript:void(0);" class="item-hapus" onClick="return hapus('<?php echo base_url('admin/user/hapus/').$user['num']; ?>');">Hapus Data</a></li>
+											<li><a href="javascript:void(0);" class="item-hapus" onClick="return hapus('<?php echo base_url('admin/user/hapus/').$level['kode_level']; ?>');">Hapus Data</a></li>
 										</ul>
 									</div>
                                 </td>
                             </tr>
-							<?php endforeach; ?>
+                            <?php endforeach; ?>
                         </tbody>
 					</table>
 				</div>
 				<!-- BOX CONTENT -->
 			</div>
 		</div>
-		<!-- .row -->
-
-		
+		<!-- .row -->		
 
 		<footer class="footer">
 			<?php $this->load->view('Admin/include/footer'); ?>

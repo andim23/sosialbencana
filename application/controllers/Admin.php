@@ -20,12 +20,16 @@ class Admin extends CI_Controller {
     }
 
     /** 
-     * USER
+     * ---------- USER ----------
      */
-    /* ---------- USER VIEW ---------- */
+    /* ----- USER ----- */
     public function user()
     {
-        $this->load->view('Admin/User/index');
+        $data1 = $this->Admin_model->dataUser()->result_array();
+        $data = array(
+            'user' => $data1,
+        );
+        $this->load->view('Admin/User/index', $data);
     }
 
     public function detailuser($kode)
@@ -40,7 +44,32 @@ class Admin extends CI_Controller {
 
     public function pt_user()
     {
+        // VALIDASI
+        $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean|is_unique[user.username]');
+        $this->form_validation->set_rules('email', 'Email Address', 'trim|required|xss_clean|valid_email|valid_emails|is_unique[user.email]');
+        $this->form_validation->set_rules('level', 'Level', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('status', 'Status', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|min_length[8]');
+        $this->form_validation->set_rules('konfirmasi', 'Konfirmasi Password', 'trim|required|xss_clean|matches[password]');
 
+        // PESAN VALIDASI
+        $this->form_validation->set_message('required', 'Maaf! <b>%s</b> Tidak Boleh Kosong!');
+        $this->form_validation->set_message('is_unique', 'Maaf! <b>%s</b> Telah Digunakan. Harap Menggunakan Akun lain.');
+        $this->form_validation->set_message('valid_email', 'Maaf! <b>%s</b> Tidak Valid');
+        $this->form_validation->set_message('valid_emails', 'Maaf! <b>%s</b> Tidak Valid');
+        $this->form_validation->set_message('matches', 'Maaf! <b>%s</b> Tidak Sama.');
+        $this->form_validation->set_message('min_length', 'Maaf! <b>%s</b> Minimal <b>%s</b> Karakter.');
+
+        if($this->form_validation->run() == FALSE)
+        {
+            $this->load->view('Admin/User/tambah');
+        }
+        else
+        {
+            $this->Admin_model->tambahUser();
+            $this->session->set_flashdata('sukses', 'Berhasil Melakukan Registrasi!');
+            redirect(base_url('admin/user'));
+        }
     }
 
     public function edituser($kode)
@@ -55,8 +84,70 @@ class Admin extends CI_Controller {
 
     public function hapususer($kode)
     {
+        if($this->Admin_model->hapusUser($kode))
+        {
+            $this->session->set_flashdata('sukses', 'Berhasil Menghapus Data');
+            redirect(base_url('admin/user'));
+        }
+        else
+        {
+            $this->session->set_flashdata('gagal', 'Gagal Menghapus Data');
+            redirect(base_url('admin/user'));
+        }
+    }
+
+    /* ----- LEVEL USER ----- */
+    public function leveluser()
+    {
+        $data1 = $this->Admin_model->dataLevel()->result_array();
+        $data = array(
+            'level' => $data1,
+        );
+        $this->load->view('Admin/User/leveluser', $data);
+    }
+
+    public function pt_leveluser()
+    {
+        // VALIDASI
+        $this->form_validation->set_rules('kode', 'Kode Level', 'trim|required|xss_clean|is_unique[level.kode_level]');
+        $this->form_validation->set_rules('level', 'Nama Level', 'trim|required|xss_clean');
+
+        // PESAN VALIDASI
+        $this->form_validation->set_message('required', 'Maaf! <b>%s</b> Tidak Boleh Kosong.');
+        $this->form_validation->set_message('is_unique', 'Maaf! <b>%s</b> Telah Digunakan');
+
+        if($this->form_validation->run() == FALSE)
+        {
+            $data1 = $this->Admin_model->dataLevel()->result_array();
+            $data = array(
+                'level' => $data1,
+            );
+            $this->load->view('Admin/User/leveluser', $data);
+        }
+        else
+        {
+            $this->Admin_model->tambahLevel();
+            $this->session->set_flashdata('sukses', 'Berhasil Menambahkan Data');
+            redirect(base_url('admin/leveluser'));
+        }
+    }
+
+    public function editleveluser($kode)
+    {
 
     }
+
+    public function pu_leveluser()
+    {
+
+    }
+
+    public function hapusleveluser($kode)
+    {
+
+    }
+
+    /* ----- STATUS USER ----- */
 
     // DELETE
     public function deleteprofile($id)

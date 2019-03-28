@@ -31,7 +31,7 @@
 			<div class="col-lg-3 col-xs-12">
 				<div class="box-content bordered primary margin-bottom-20">
 					<div class="profile-avatar">
-						<img src="<?php echo base_url('upload/user/avatar.png'); ?>" alt="">
+						<img src="<?php echo base_url('uploads/user/avatar.png'); ?>" alt="">
 						<h3><strong>Betty Simmons</strong></h3>
 						<h4>Relawan Divisi xxxx.</h4>
 					</div>

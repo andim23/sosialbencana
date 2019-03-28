@@ -34,30 +34,59 @@
                     <h4 class="box-title">Form User</h4>
                     <!-- CARD -->
 					<div class="card-content">
-						<?php echo form_open('', array('autocomplete' => 'off')); ?>
+						<?php echo form_open('admin/pt_user', array('autocomplete' => 'off')); ?>
 							<div class="form-group">
 								<label>Username</label>
-								<input type="text" class="form-control" name="username_user" id="username_user" placeholder="Masukkan Username">
+								<input type="text" class="form-control" name="username" id="username" placeholder="Masukkan Username" value="<?php echo set_value('username'); ?>">
+								<?php echo form_error('username', '<p class="text-danger">', '</p>'); ?>
 							</div>
 							<div class="form-group">
-								<label>Email address</label>
-								<input type="email" class="form-control" name="email_user" id="email_user" placeholder="Masukkan Email Yang Aktif.">
+								<label>Email Address</label>
+								<input type="email" class="form-control" name="email" id="email" placeholder="Masukkan Email Yang Aktif" value="<?php echo set_value('email'); ?>">
+								<?php echo form_error('email', '<p class="text-danger">', '</p>'); ?>
+							</div>
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label>Level</label>
+										<select name="level" id="level" class="form-control">
+											<option value="">--- Pilih Level ---</option>
+											<option value="Admin">Admin</option>
+											<option value="Relawan">Relawan</option>
+										</select>
+										<?php echo form_error('level', '<p class="text-danger">', '</p>'); ?>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label>Status</label>
+										<select name="status" id="status" class="form-control">
+											<option value="">--- Pilih Status ---</option>
+											<option value="Aktif">Aktif</option>
+											<option value="Tidak Aktif">Tidak Aktif</option>
+											<option value="Diblokir">Diblokir</option>
+										</select>
+										<?php echo form_error('status', '<p class="text-danger">', '</p>'); ?>
+									</div>
+								</div>
 							</div>
 							<div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="password" class="form-control" name="password_user" id="password_user" placeholder="Masukkan Kata Sandi/Password Minimal 8 Karakter.">
+                                        <input type="password" class="form-control" name="password" id="password" placeholder="Masukkan Kata Sandi/Password Minimal 8 Karakter.">
+										<?php echo form_error('password', '<p class="text-danger">', '</p>'); ?>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Konfirmasi Password</label>
-                                        <input type="konfirmasi" class="form-control" name="konfirmasi_user" id="konfirmasi_user" placeholder="Masukkan Konfirmasi Kata Sandi/Password Minimal 8 Karakter.">
+                                        <input type="password" class="form-control" name="konfirmasi" id="konfirmasi" placeholder="Masukkan Konfirmasi Kata Sandi/Password Minimal 8 Karakter.">
+										<?php echo form_error('konfirmasi', '<p class="text-danger">', '</p>'); ?>
                                     </div>
                                 </div>
                             </div>
-                            <a href="<?php echo base_url('admin/user'); ?>" class="btn btn-danger btn-sm">KEMBALI</a>
+                            <a href="<?php echo base_url('admin/user'); ?>" class="btn btn-danger btn-sm"><i class="fa fa-rotate-left"></i> KEMBALI</a>
 							<button type="submit" class="btn btn-primary btn-sm waves-effect waves-light">PROSES</button>
 						<?php echo form_close(); ?>
 					</div>
