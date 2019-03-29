@@ -32,7 +32,7 @@
 				<div class="box-content bordered primary margin-bottom-20">
 					<div class="profile-avatar">
 						<img src="<?php echo base_url('uploads/user/avatar.png'); ?>" alt="">
-						<h3><strong>Betty Simmons</strong></h3>
+						<h3><strong><?php echo $user['username']; ?></strong></h3>
 						<h4>Relawan Divisi xxxx.</h4>
 					</div>
 					<!-- .profile-avatar -->
@@ -43,8 +43,8 @@
 								<td><span class="notice notice-danger">Active</span></td>
 							</tr>
 							<tr>
-								<td>Member Since</td>
-								<td>Jan 07, 2014</td>
+								<td>Registrasi</td>
+								<td><?php echo $user['tanggal']; ?></td>
                             </tr>
                             <tr>
                                 <td><a href="<?php echo base_url('admin/user'); ?>" class="btn btn-sm btn-danger">KEMBALI</a></td>
@@ -65,9 +65,9 @@
 								<div class="row">
 									<div class="col-md-6">
 										<div class="row">
-											<div class="col-xs-5"><label>First Name:</label></div>
+											<div class="col-xs-5"><label>Kode Number:</label></div>
 											<!-- /.col-xs-5 -->
-											<div class="col-xs-7">Betty</div>
+											<div class="col-xs-7"><?php echo $user['num']; ?></div>
 											<!-- /.col-xs-7 -->
 										</div>
 										<!-- /.row -->
@@ -75,9 +75,9 @@
 									<!-- /.col-md-6 -->
 									<div class="col-md-6">
 										<div class="row">
-											<div class="col-xs-5"><label>Last Name:</label></div>
+											<div class="col-xs-5"><label>Nama:</label></div>
 											<!-- /.col-xs-5 -->
-											<div class="col-xs-7">Simmons</div>
+											<div class="col-xs-7"><?php echo $user['nama']; ?></div>
 											<!-- /.col-xs-7 -->
 										</div>
 										<!-- /.row -->
@@ -85,9 +85,9 @@
 									<!-- /.col-md-6 -->
 									<div class="col-md-6">
 										<div class="row">
-											<div class="col-xs-5"><label>User Name:</label></div>
+											<div class="col-xs-5"><label>Username:</label></div>
 											<!-- /.col-xs-5 -->
-											<div class="col-xs-7">Betty</div>
+											<div class="col-xs-7"><?php echo $user['username']; ?></div>
 											<!-- /.col-xs-7 -->
 										</div>
 										<!-- /.row -->
@@ -97,7 +97,7 @@
 										<div class="row">
 											<div class="col-xs-5"><label>Email:</label></div>
 											<!-- /.col-xs-5 -->
-											<div class="col-xs-7">youremail@gmail.com</div>
+											<div class="col-xs-7"><?php echo $user['email']; ?></div>
 											<!-- /.col-xs-7 -->
 										</div>
 										<!-- /.row -->
@@ -105,9 +105,9 @@
 									<!-- /.col-md-6 -->
 									<div class="col-md-6">
 										<div class="row">
-											<div class="col-xs-5"><label>City:</label></div>
+											<div class="col-xs-5"><label>Jenis Kelamin:</label></div>
 											<!-- /.col-xs-5 -->
-											<div class="col-xs-7">Los Angeles</div>
+											<div class="col-xs-7"><?php echo $user['j_kel']; ?></div>
 											<!-- /.col-xs-7 -->
 										</div>
 										<!-- /.row -->
@@ -115,54 +115,13 @@
 									<!-- /.col-md-6 -->
 									<div class="col-md-6">
 										<div class="row">
-											<div class="col-xs-5"><label>Country:</label></div>
+											<div class="col-xs-5"><label>Tanggal Lahir:</label></div>
 											<!-- /.col-xs-5 -->
-											<div class="col-xs-7">United States</div>
+											<div class="col-xs-7"><?php echo $user['tgl_lahir']; ?></div>
 											<!-- /.col-xs-7 -->
 										</div>
 										<!-- /.row -->
 									</div>
-									<!-- /.col-md-6 -->
-									<div class="col-md-6">
-										<div class="row">
-											<div class="col-xs-5"><label>Birthday:</label></div>
-											<!-- /.col-xs-5 -->
-											<div class="col-xs-7">Jan 22, 1984</div>
-											<!-- /.col-xs-7 -->
-										</div>
-										<!-- /.row -->
-									</div>
-									<!-- /.col-md-6 -->
-									<div class="col-md-6">
-										<div class="row">
-											<div class="col-xs-5"><label>Interests:</label></div>
-											<!-- /.col-xs-5 -->
-											<div class="col-xs-7">Basketball, Web, Design, etc.</div>
-											<!-- /.col-xs-7 -->
-										</div>
-										<!-- /.row -->
-									</div>
-									<!-- /.col-md-6 -->
-									<div class="col-md-6">
-										<div class="row">
-											<div class="col-xs-5"><label>Website:</label></div>
-											<!-- /.col-xs-5 -->
-											<div class="col-xs-7"><a href="#">yourwebsite.com</a></div>
-											<!-- /.col-xs-7 -->
-										</div>
-										<!-- /.row -->
-									</div>
-									<!-- /.col-md-6 -->
-									<div class="col-md-6">
-										<div class="row">
-											<div class="col-xs-5"><label>Phone:</label></div>
-											<!-- /.col-xs-5 -->
-											<div class="col-xs-7">+1-234-5678</div>
-											<!-- /.col-xs-7 -->
-										</div>
-										<!-- /.row -->
-									</div>
-									<!-- /.col-md-6 -->
 								</div>
 								<!-- /.row -->
 							</div>

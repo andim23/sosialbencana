@@ -34,7 +34,11 @@ class Admin extends CI_Controller {
 
     public function detailuser($kode)
     {
-        $this->load->view('Admin/User/detail');
+        $data1 = $this->Admin_model->detailUser($kode)->row_array();
+        $data = array(
+            'user' => $data1,
+        );
+        $this->load->view('Admin/User/detail', $data);
     }
 
     public function tambahuser()
