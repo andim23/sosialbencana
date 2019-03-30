@@ -118,8 +118,9 @@ class Auth extends CI_Controller {
         else
         {
             $this->Auth_model->daftarAkun();
-            $this->session->set_flashdata('sukses', 'Berhasil Melakukan Registrasi! Silahkan Cek Email.');
-            redirect(base_url('login'));
+            // $this->session->set_flashdata('sukses', 'Berhasil Melakukan Registrasi! Silahkan Cek Email.');
+            $this->session->set_userdata('emailregister', $this->input->post('email'));
+            redirect(base_url('home/konfirmasi'));
         }
     }
 
