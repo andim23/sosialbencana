@@ -137,14 +137,122 @@
                             <h4 class="box-title"><i class="fa fa-globe ico"></i> Aktivitas</h4>
                             
 							<div class="card-content">
-								<ul class="notice-list">
-									<li>
-									    <span class="name"><?php echo date('d-m-Y H:i:s'); ?></span>
-                                        <span class="desc">Username Melakukan Login.</span>
-									</li>
-								</ul>
-								<!-- /.notice-list -->
-								<div class="text-center margin-top-20"><a href="#" class="btn btn-default">Lihat Selengkapnya <i class="fa fa-angle-double-right"></i></a></div>
+								<div class="activity-list">
+						<div class="activity-item">
+							<div class="bar bg-primary">
+								<div class="dot bg-primary"></div>
+								<!-- /.dot -->
+							</div>
+							<!-- /.bar -->
+							<div class="content">
+								<div class="date">10 min</div>
+								<!-- /.date -->
+								<div class="text">
+									Harry has finished "Amaza HTML" task
+								</div>
+								<!-- /.text -->
+							</div>
+							<!-- /.content -->
+						</div>
+						<!-- /.activity-item -->
+						<div class="activity-item">
+							<div class="bar bg-danger">
+								<div class="dot bg-danger"></div>
+								<!-- /.dot -->
+							</div>
+							<!-- /.bar -->
+							<div class="content">
+								<div class="date">15 min</div>
+								<!-- /.date -->
+								<div class="text">
+									You completed your task
+								</div>
+								<!-- /.text -->
+							</div>
+							<!-- /.content -->
+						</div>
+						<!-- /.activity-item -->
+						<div class="activity-item">
+							<div class="bar bg-success">
+								<div class="dot bg-success"></div>
+								<!-- /.dot -->
+							</div>
+							<!-- /.bar -->
+							<div class="content">
+								<div class="date">30 min</div>
+								<!-- /.date -->
+								<div class="text">
+									New updated has been installed
+								</div>
+								<!-- /.text -->
+							</div>
+							<!-- /.content -->
+						</div>
+						<!-- /.activity-item -->
+						<div class="activity-item">
+							<div class="bar bg-violet">
+								<div class="dot bg-violet"></div>
+								<!-- /.dot -->
+							</div>
+							<!-- /.bar -->
+							<div class="content">
+								<div class="date">1 hour ago</div>
+								<!-- /.date -->
+								<div class="text">Write some comments</div>
+								<!-- /.text -->
+							</div>
+							<!-- /.content -->
+						</div>
+						<!-- /.activity-item -->
+						<div class="activity-item">
+							<div class="bar bg-warning">
+								<div class="dot bg-warning"></div>
+								<!-- /.dot -->
+							</div>
+							<!-- /.bar -->
+							<div class="content">
+								<div class="date">1 day ago</div>
+								<!-- /.date -->
+								<div class="text">4 friends request accepted</div>
+								<!-- /.text -->
+							</div>
+							<!-- /.content -->
+						</div>
+						<!-- /.activity-item -->
+						<div class="activity-item">
+							<div class="bar bg-orange">
+								<div class="dot bg-orange"></div>
+								<!-- /.dot -->
+							</div>
+							<!-- /.bar -->
+							<div class="content">
+								<div class="date">6 days ago</div>
+								<!-- /.date -->
+								<div class="text">Betty has joined your team</div>
+								<!-- /.text -->
+							</div>
+							<!-- /.content -->
+						</div>
+						<!-- /.activity-item -->
+						<div class="activity-item">
+							<div class="bar bg-orange">
+								<div class="dot bg-orange"></div>
+								<div class="last-dot bg-orange"></div>
+								<!-- /.dot -->
+							</div>
+							<!-- /.bar -->
+							<div class="content">
+								<div class="date">12 days ago</div>
+								<!-- /.date -->
+								<div class="text">Daisy has joined your team</div>
+								<!-- /.text -->
+							</div>
+							<!-- /.content -->
+						</div>
+						<!-- /.activity-item -->
+					</div>
+					<!-- /.activity-list -->
+					<a href="#" class="activity-link">View all activity <i class="fa fa-angle-down"></i></a>
 							</div>
 							<!-- /.card-content -->
 						</div>

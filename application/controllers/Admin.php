@@ -26,9 +26,14 @@ class Admin extends CI_Controller {
     public function user()
     {
         $data1 = $this->Admin_model->dataUser()->result_array();
+        $data2 = $this->Admin_model->dataLevel()->result_array();
+        $data3 = $this->Admin_model->dataStatus()->result_array();
         $data = array(
             'user' => $data1,
+            'level' => $data2,
+            'status' => $data3,
         );
+        // print_r($data);
         $this->load->view('Admin/User/index', $data);
     }
 
@@ -136,22 +141,122 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function editleveluser($kode)
-    {
-
-    }
-
     public function pu_leveluser()
     {
+        // VALIDASI
+        $this->form_validation->set_rules('kode', 'Kode Level', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('level', 'Nama Level', 'trim|required|xss_clean');
 
+        // PESAN VALIDASI
+        $this->form_validation->set_message('required', 'Maaf! <b>%s</b> Tidak Boleh Kosong.');
+
+        if($this->form_validation->run() == FALSE)
+        {
+            $data1 = $this->Admin_model->dataLevel()->result_array();
+            $data = array(
+                'level' => $data1,
+            );
+            $this->load->view('Admin/User/leveluser', $data);
+        }
+        else
+        {
+            $this->Admin_model->ubahLevel($this->input->post('kode'));
+            $this->session->set_flashdata('sukses', 'Berhasil Mengubah Data');
+            redirect(base_url('admin/leveluser'));
+        }
     }
 
     public function hapusleveluser($kode)
     {
-
+        $query = $this->Admin_model->hapusLevel($kode);
+        if($query)
+        {
+            $this->session->set_flashdata('sukses', 'Berhasil Menghapus Data');
+            redirect(base_url('admin/leveluser'));
+        }
+        else
+        {
+            $this->session->set_flashdata('gagal', 'Gagal Menghapus Data');
+            redirect(base_url('admin/leveluser'));
+        }
     }
 
     /* ----- STATUS USER ----- */
+    public function statususer()
+    {
+        $data1 = $this->Admin_model->dataStatus()->result_array();
+        $data = array(
+            'status' => $data1,
+        );
+        $this->load->view('Admin/User/statususer', $data);
+    }
+
+    public function pt_statususer()
+    {
+        // VALIDASI
+        $this->form_validation->set_rules('kode', 'Kode Status', 'trim|required|xss_clean|is_unique[status.kode_status]');
+        $this->form_validation->set_rules('status', 'Nama Status', 'trim|required|xss_clean');
+
+        // PESAN VALIDASI
+        $this->form_validation->set_message('required', 'Maaf! <b>%s</b> Tidak Boleh Kosong.');
+        $this->form_validation->set_message('is_unique', 'Maaf! <b>%s</b> Telah Digunakan');
+
+        if($this->form_validation->run() == FALSE)
+        {
+            $data1 = $this->Admin_model->dataStatus()->result_array();
+            $data = array(
+                'status' => $data1,
+            );
+            $this->load->view('Admin/User/statususer', $data);
+            // echo validation_errors();
+        }
+        else
+        {
+            $this->Admin_model->tambahStatus();
+            $this->session->set_flashdata('sukses', 'Berhasil Menambahkan Data');
+            redirect(base_url('admin/statususer'));
+        }
+    }
+
+    public function pu_statususer()
+    {
+        // VALIDASI
+        $this->form_validation->set_rules('kode', 'Kode Status', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('status', 'Nama Status', 'trim|required|xss_clean');
+
+        // PESAN VALIDASI
+        $this->form_validation->set_message('required', 'Maaf! <b>%s</b> Tidak Boleh Kosong.');
+
+        if($this->form_validation->run() == FALSE)
+        {
+            $data1 = $this->Admin_model->dataStatus()->result_array();
+            $data = array(
+                'status' => $data1,
+            );
+            $this->load->view('Admin/User/statususer', $data);
+        }
+        else
+        {
+            $this->Admin_model->ubahStatus($this->input->post('kode'));
+            $this->session->set_flashdata('sukses', 'Berhasil Mengubah Data');
+            redirect(base_url('admin/statususer'));
+        }
+    }
+
+    public function hapusstatususer($kode)
+    {
+        $query = $this->Admin_model->hapusStatus($kode);
+        if($query)
+        {
+            $this->session->set_flashdata('sukses', 'Berhasil Menghapus Data');
+            redirect(base_url('admin/statususer'));
+        }
+        else
+        {
+            $this->session->set_flashdata('gagal', 'Gagal Menghapus Data');
+            redirect(base_url('admin/statususer'));
+        }
+    }
 
     // DELETE
     public function deleteprofile($id)

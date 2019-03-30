@@ -81,15 +81,23 @@ if($this->session->flashdata('gagal'))
 						<tbody>
 							<?php
 							$no = 1;
-							foreach($user as $user):
+							foreach($user as $user) {
 							?>
 							<tr>
 								<td><?php echo $no++; ?></td>
 								<td><?php echo $user['num']; ?></td>
 								<td><?php echo $user['username']; ?></td>
 								<td><?php echo $user['email']; ?></td>
-								<td><?php echo $user['id_level']; ?></td>
-								<td><?php echo $user['id_status']; ?></td>
+								<td>
+									<?php
+									echo $user['id_level'];
+									?>
+								</td>
+								<td>
+									<?php
+									echo $user['id_status'];
+									?>
+								</td>
 								<td><?php echo $user['tanggal']; ?></td>
 								<td>
 									<div class="btn-group margin-top-10">
@@ -103,7 +111,7 @@ if($this->session->flashdata('gagal'))
 									</div>
                                 </td>
                             </tr>
-							<?php endforeach; ?>
+							<?php } ?>
                         </tbody>
 					</table>
 				</div>

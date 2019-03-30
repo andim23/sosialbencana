@@ -44,14 +44,11 @@ if($this->session->flashdata('gagal'))
 <div id="wrapper">
 	<div class="main-content">
 		<div class="row small-spacing">
-			<div class="col-lg-12">
-				<div class="alert alert-info" role="alert"> Silahkan Pilih di Tabel Untuk Melakukan Pengubahan Data.</div>
-			</div>
 			<!-- COL -->
             <div class="col-lg-6">
 				<div class="box-content card danger js__card">
 					<h4 class="box-title bg-primary with-control">
-						Tambah Level
+						Tambah Status
 						<span class="controls">
 							<button type="button" class="control fa fa-minus js__card_minus"></button>
 							<button type="button" class="control fa fa-times js__card_remove"></button>
@@ -60,16 +57,16 @@ if($this->session->flashdata('gagal'))
 					</h4>
 					<!-- /.box-title -->
 					<div class="card-content js__card_content">
-						<?php echo form_open('admin/pt_leveluser', array('autocomplete' => 'off')); ?>
+						<?php echo form_open('admin/pt_statususer', array('autocomplete' => 'off')); ?>
 							<div class="form-group">
 								<label>Kode</label>
-								<input type="text" class="form-control" name="kode" placeholder="Masukkan Kode Level" value="<?php echo set_value('kode'); ?>">
+								<input type="text" class="form-control" name="kode" placeholder="Masukkan Kode Status" value="<?php echo set_value('kode'); ?>">
 								<?php echo form_error('kode', '<p class="text-danger">', '</p>'); ?>
 							</div>
 							<div class="form-group">
-								<label>Nama Level</label>
-								<input type="text" class="form-control" name="level" placeholder="Masukkan Nama Level" value="<?php echo set_value('level'); ?>">
-								<?php echo form_error('level', '<p class="text-danger">', '</p>'); ?>
+								<label>Nama Status</label>
+								<input type="text" class="form-control" name="status" placeholder="Masukkan Nama Level" value="<?php echo set_value('status'); ?>">
+								<?php echo form_error('status', '<p class="text-danger">', '</p>'); ?>
 							</div>
 							<button type="submit" class="btn btn-primary btn-sm waves-effect waves-light">PROSES</button>
 						<?php echo form_close(); ?>
@@ -77,41 +74,42 @@ if($this->session->flashdata('gagal'))
 				</div>
 				<!-- /.box-content -->
 			</div>
-            <!-- COL -->
 			<!-- COL -->
-            <div class="col-lg-6">
-				<div class="box-content card danger js__card">
-					<h4 class="box-title bg-primary with-control">
-						Edit Level
-						<span class="controls">
-							<button type="button" class="control fa fa-minus js__card_minus"></button>
-							<button type="button" class="control fa fa-times js__card_remove"></button>
-						</span>
-						<!-- /.controls -->
-					</h4>
-					<!-- /.box-title -->
-					<div class="card-content js__card_content">
-						<?php echo form_open('admin/pu_leveluser', array('autocomplete' => 'off')); ?>
-							<div class="form-group">
-								<label>Kode</label>
-								<input type="text" class="form-control" name="kode" id="kode" placeholder="Masukkan Kode Level" value="<?php echo set_value('kode'); ?>" readonly>
-								<?php echo form_error('kode', '<p class="text-danger">', '</p>'); ?>
-							</div>
-							<div class="form-group">
-								<label>Nama Level</label>
-								<input type="text" class="form-control" name="level" id="level" placeholder="Masukkan Nama Level" value="<?php echo set_value('level'); ?>">
-								<?php echo form_error('level', '<p class="text-danger">', '</p>'); ?>
-							</div>
-							<button type="submit" class="btn btn-primary btn-sm waves-effect waves-light">PROSES</button>
-						<?php echo form_close(); ?>
-					</div>
-				</div>
-				<!-- /.box-content -->
-			</div>
-            <!-- COL -->
 
 			<!-- COL -->
-			<div class="col-lg-12">
+            <div class="col-lg-6">
+				<div class="box-content card danger js__card">
+					<h4 class="box-title bg-primary with-control">
+						Edit Status
+						<span class="controls">
+							<button type="button" class="control fa fa-minus js__card_minus"></button>
+							<button type="button" class="control fa fa-times js__card_remove"></button>
+						</span>
+						<!-- /.controls -->
+					</h4>
+					<!-- /.box-title -->
+					<div class="card-content js__card_content">
+						<?php echo form_open('admin/pu_statususer', array('autocomplete' => 'off')); ?>
+							<div class="form-group">
+								<label>Kode</label>
+								<input type="text" class="form-control" name="kode" id="kode" placeholder="Masukkan Kode Status" value="<?php echo set_value('kode'); ?>" readonly>
+								<?php echo form_error('kode', '<p class="text-danger">', '</p>'); ?>
+							</div>
+							<div class="form-group">
+								<label>Nama Status</label>
+								<input type="text" class="form-control" name="status" id="status" placeholder="Masukkan Nama Level" value="<?php echo set_value('status'); ?>">
+								<?php echo form_error('status', '<p class="text-danger">', '</p>'); ?>
+							</div>
+							<button type="submit" class="btn btn-primary btn-sm waves-effect waves-light">PROSES</button>
+						<?php echo form_close(); ?>
+					</div>
+				</div>
+				<!-- /.box-content -->
+			</div>
+			<!-- COL -->
+
+
+            <div class="col-lg-12">
 				<!-- BOX CONTENT -->
 				<div class="box-content">
 					<h4 class="box-title">Data Level</h4>
@@ -120,7 +118,7 @@ if($this->session->flashdata('gagal'))
 							<tr>
 								<th>#</th>
 								<th>Kode</th>
-								<th>Level</th>
+								<th>Status</th>
 								<th>Aksi</th>
 							</tr>
 						</thead>
@@ -128,26 +126,27 @@ if($this->session->flashdata('gagal'))
 							<tr>
 								<th>#</th>
 								<th>Kode</th>
-								<th>Level</th>
+								<th>Status</th>
 								<th>Aksi</th>
 							</tr>
 						</tfoot>
 						<tbody>
                             <?php
                             $no=1;
-                            foreach($level as $level):
+                            foreach($status as $status):
                             ?>
                             <tr>
                                 <td><?php echo $no++; ?></td>
-                                <td><?php echo $level['kode_level']; ?></td>
-                                <td><?php echo $level['level']; ?></td>
+                                <td><?php echo $status['kode_status']; ?></td>
+                                <td><?php echo $status['nama_status']; ?></td>
                                 <td>
 									<div class="btn-group margin-top-10">
 										<button type="button" class="btn btn-xs btn-block btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi <span class="caret"></span></button> 
 										<ul class="dropdown-menu dropdown-menu-right">
-											<li><a href="<?php echo base_url('admin/user/edit/1').$level['kode_level']; ?>">Ubah Data</a></li>
+											<li><a href="<?php echo base_url('admin/user/detail/').$status['kode_status']; ?>">Detail Data</a></li>
+											<li><a href="<?php echo base_url('admin/user/edit/1').$status['kode_status']; ?>">Ubah Data</a></li>
 											<li role="separator" class="divider"></li>
-											<li><a href="javascript:void(0);" class="item-hapus" onClick="return hapus('<?php echo base_url('admin/hapusleveluser/').$level['kode_level']; ?>');">Hapus Data</a></li>
+											<li><a href="javascript:void(0);" class="item-hapus" onClick="return hapus('<?php echo base_url('admin/hapusstatususer/').$status['kode_status']; ?>');">Hapus Data</a></li>
 										</ul>
 									</div>
                                 </td>
@@ -207,7 +206,7 @@ for(var i=1; i<table.rows.length; i++)
     table.rows[i].onclick = function()
     {
         document.getElementById("kode").value = this.cells[1].innerHTML;
-        document.getElementById("level").value = this.cells[2].innerHTML;
+        document.getElementById("status").value = this.cells[2].innerHTML;
     };
 }
 </script>
