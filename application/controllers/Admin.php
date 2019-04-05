@@ -12,13 +12,25 @@ class Admin extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Admin_model');
+		$this->load->model('Jumlah_model');
     }
     
     public function index()
     {
-        $this->load->view('Admin/index');
+        $data1 = $this->Jumlah_model->jumlahUser();
+        $data2 = $this->Jumlah_model->jumlahReact();
+        $data3 = $this->Jumlah_model->jumlahPost();
+        $data4 = $this->Jumlah_model->userAktif();
+        $data5 = $this->Jumlah_model->userTidakAktif();
+        $data = array(
+            'user' => $data1,
+            'react' => $data2,
+            'post' => $data3,
+            'aktif' => $data4,
+            'tidakAktif' => $data5,
+        );
+        $this->load->view('Admin/index', $data);
     }
-
     /** 
      * ---------- USER ----------
      */

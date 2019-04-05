@@ -9,6 +9,9 @@
 <script src="<?php echo base_url(); ?>asset/admin/plugin/chart/morris/morris.min.js"></script>
 <script src="<?php echo base_url(); ?>asset/admin/plugin/chart/morris/raphael-min.js"></script>
 <script src="<?php echo base_url(); ?>asset/admin/scripts/chart.morris.init.min.js"></script>
+<!-- Jquery Knob -->
+<script src="<?php echo base_url(); ?>asset/admin/plugin/knob/jquery.knob.min.js"></script>
+<script src="<?php echo base_url(); ?>asset/admin/scripts/jquery.knob.init.min.js"></script>
 <!-- Data Tables -->
 <script src="<?php echo base_url(); ?>asset/admin/plugin/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>asset/admin/plugin/datatables/media/js/dataTables.bootstrap.min.js"></script>

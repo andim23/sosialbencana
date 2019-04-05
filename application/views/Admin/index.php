@@ -26,53 +26,70 @@
 
 <div id="wrapper">
 	<div class="main-content">
+		<!-- ROW -->
 		<div class="row small-spacing">
-			<div class="col-lg-3 col-md-6 col-xs-12">
+			<!-- STATISTIK ATAS -->
+			<div class="col-lg-4 col-md-6 col-xs-12">
 				<div class="box-content bg-success text-white">
 					<div class="statistics-box with-icon">
-						<i class="ico small fa fa-diamond"></i>
-						<p class="text text-white">SUCCESS</p>
-						<h2 class="counter">72943</h2>
+						<i class="ico small fa fa-user"></i>
+						<p class="text text-white">USER</p>
+						<h2 class="counter"><?php echo $user; ?></h2>
 					</div>
 				</div>
-				<!-- /.box-content -->
 			</div>
-			<!-- /.col-lg-3 col-md-6 col-xs-12 -->
-			<div class="col-lg-3 col-md-6 col-xs-12">
+			<div class="col-lg-4 col-md-6 col-xs-12">
 				<div class="box-content bg-info text-white">
 					<div class="statistics-box with-icon">
-						<i class="ico small fa fa-download"></i>
-						<p class="text text-white">DOWNLOAD</p>
-						<h2 class="counter">6382</h2>
+						<i class="ico small fa fa-heart"></i>
+						<p class="text text-white">REACTION</p>
+						<h2 class="counter"><?php echo $react; ?></h2>
 					</div>
 				</div>
-				<!-- /.box-content -->
 			</div>
-			<!-- /.col-lg-3 col-md-6 col-xs-12 -->
-			<div class="col-lg-3 col-md-6 col-xs-12">
+			<div class="col-lg-4 col-md-6 col-xs-12">
 				<div class="box-content bg-danger text-white">
 					<div class="statistics-box with-icon">
-						<i class="ico small fa fa-bug"></i>
-						<p class="text text-white">FIXED BUG</p>
-						<h2 class="counter">12564</h2>
+						<i class="ico small fa fa-line-chart"></i>
+						<p class="text text-white">POST</p>
+						<h2 class="counter"><?php echo $post; ?></h2>
 					</div>
 				</div>
-				<!-- /.box-content -->
 			</div>
-			<!-- /.col-lg-3 col-md-6 col-xs-12 -->
-			<div class="col-lg-3 col-md-6 col-xs-12">
-				<div class="box-content bg-warning text-white">
-					<div class="statistics-box with-icon">
-						<i class="ico small fa fa-usd"></i>
-						<p class="text text-white">SALES</p>
-						<h2 class="counter">2,637</h2>
+			<!-- STATISTIK ATAS -->
+
+			<!-- STATISTIK PERSENTASE -->
+			<div class="col-lg-6 col-md-6 col-xs-12">
+				<div class="box-content">
+					<h4 class="box-title">User Aktif (Persen / %)</h4>
+					<div class="text-center">
+						<?php
+						$persenAktif = ($aktif / $user)*100;
+						?>
+						<div class="knob-wrap">
+							<input class="knob" data-width="150" data-height="150" data-bgColor="#ebeff2" data-fgColor="#304ffe" data-readOnly=true data-thickness=".4" value="<?php echo $persenAktif; ?>"  />
+						</div>
+						<!-- .knob-wrap -->
 					</div>
 				</div>
-				<!-- /.box-content -->
 			</div>
-			<!-- /.col-lg-3 col-md-6 col-xs-12 -->
+			<div class="col-lg-6 col-md-6 col-xs-12">
+				<div class="box-content">
+					<h4 class="box-title">User Tidak Aktif (Persen / %)</h4>
+					<div class="text-center">
+						<?php
+						$persenTidakAktif = ($tidakAktif / $user)*100;
+						?>
+						<div class="knob-wrap">
+							<input class="knob" data-width="150" data-height="150" data-bgColor="#ebeff2" data-fgColor="#304ffe" data-readOnly=true data-thickness=".4" value="<?php echo $persenTidakAktif; ?>"  />
+						</div>
+						<!-- .knob-wrap -->
+					</div>
+				</div>
+			</div>
+			<!-- STATISTIK PERSENTASE -->
 		</div>
-		<!-- .row -->
+		<!-- ROW -->
 	
 		<footer class="footer">
 			<?php $this->load->view('Admin/include/footer'); ?>

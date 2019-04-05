@@ -16,13 +16,12 @@ class Auth extends CI_Controller {
         
         // VALIDASI
         $this->form_validation->set_rules('email', 'Email Address', 'trim|required|xss_clean|valid_email|valid_emails');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|min_length[8]');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
 
         // PESAN VALIDASI
         $this->form_validation->set_message('required', 'Maaf! <b>%s</b> Tidak Boleh Kosong!');
         $this->form_validation->set_message('valid_email', 'Maaf! <b>%s</b> Tidak Valid');
         $this->form_validation->set_message('valid_emails', 'Maaf! <b>%s</b> Tidak Valid');
-        $this->form_validation->set_message('min_length', 'Maaf! <b>%s</b> Minimal <b>%s</b> Karakter.');
 
         if($this->form_validation->run() == FALSE)
         {
