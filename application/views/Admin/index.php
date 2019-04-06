@@ -117,6 +117,20 @@
 				</div>
 			</div>
 			<!-- ACTIVITY -->
+			<div class="col-lg-12 col-xs-12">
+				<div class="box-content">
+					<h4 class="box-title">Grafik User</h4>
+					<div id="lines-morris-chart" class="morris-chart" style="height: 320px"></div>
+					<div class="text-center">
+						<ul class="list-inline morris-chart-detail-list">
+							<li><i class="fa fa-circle"></i>User</li>
+						</ul>
+					</div>
+					<!-- /#lines-morris-chart.morris-chart -->
+				</div>
+				<!-- /.box-content -->
+			</div>
+			<!-- /.col-lg-6 col-xs-12 -->
 		</div>
 		<!-- ROW -->
 	

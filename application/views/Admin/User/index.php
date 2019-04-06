@@ -94,15 +94,20 @@ if($this->session->flashdata('gagal'))
 									{
 										if($lev['kode_level'] == $user['id_level'])
 										{
-											echo $user['level'];
+											echo $lev['level'];
 										}
 									}
-									echo $user['id_level'];
 									?>
 								</td>
 								<td>
 									<?php
-									echo $user['id_status'];
+									foreach($status as $stat)
+									{
+										if($stat['kode_status'] == $user['id_status'])
+										{
+											echo $stat['nama_status'];
+										}
+									}
 									?>
 								</td>
 								<td><?php echo $user['tanggal']; ?></td>
