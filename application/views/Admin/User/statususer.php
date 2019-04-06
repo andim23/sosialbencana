@@ -44,6 +44,9 @@ if($this->session->flashdata('gagal'))
 <div id="wrapper">
 	<div class="main-content">
 		<div class="row small-spacing">
+			<div class="col-lg-12">
+				<div class="alert alert-info" role="alert"> Silahkan Pilih di Tabel Untuk Melakukan Pengubahan Data.</div>
+			</div>
 			<!-- COL -->
             <div class="col-lg-6">
 				<div class="box-content card danger js__card">
@@ -60,7 +63,7 @@ if($this->session->flashdata('gagal'))
 						<?php echo form_open('admin/pt_statususer', array('autocomplete' => 'off')); ?>
 							<div class="form-group">
 								<label>Kode</label>
-								<input type="text" class="form-control" name="kode" placeholder="Masukkan Kode Status" value="<?php echo set_value('kode'); ?>">
+								<input type="text" class="form-control" name="kode" value="<?php echo set_value('kode', $jumlahstatus); ?>">
 								<?php echo form_error('kode', '<p class="text-danger">', '</p>'); ?>
 							</div>
 							<div class="form-group">
@@ -113,7 +116,7 @@ if($this->session->flashdata('gagal'))
 				<!-- BOX CONTENT -->
 				<div class="box-content">
 					<h4 class="box-title">Data Level</h4>
-					<table id="example" class="table table-striped table-bordered display" style="width:100%">
+					<table id="example" class="table table-striped table-bordered table-hover display" style="width:100%">
 						<thead>
 							<tr>
 								<th>#</th>

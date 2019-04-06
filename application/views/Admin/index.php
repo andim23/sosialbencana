@@ -67,7 +67,7 @@
 						$persenAktif = ($aktif / $user)*100;
 						?>
 						<div class="knob-wrap">
-							<input class="knob" data-width="150" data-height="150" data-bgColor="#ebeff2" data-fgColor="#304ffe" data-readOnly=true data-thickness=".4" value="<?php echo $persenAktif; ?>"  />
+							<input class="knob" data-width="150" data-height="150" data-bgColor="#ebeff2" data-fgColor="#304ffe" data-readOnly=true data-thickness=".4" value="<?php echo round($persenAktif, 2); ?>"  />
 						</div>
 						<!-- .knob-wrap -->
 					</div>
@@ -81,13 +81,42 @@
 						$persenTidakAktif = ($tidakAktif / $user)*100;
 						?>
 						<div class="knob-wrap">
-							<input class="knob" data-width="150" data-height="150" data-bgColor="#ebeff2" data-fgColor="#304ffe" data-readOnly=true data-thickness=".4" value="<?php echo $persenTidakAktif; ?>"  />
+							<input class="knob" data-width="150" data-height="150" data-bgColor="#ebeff2" data-fgColor="#304ffe" data-readOnly=true data-thickness=".4" value="<?php echo round($persenTidakAktif, 2); ?>"  />
 						</div>
 						<!-- .knob-wrap -->
 					</div>
 				</div>
 			</div>
 			<!-- STATISTIK PERSENTASE -->
+
+			<!-- ACTIVITY -->
+			<div class="col-md-6 col-xs-12">
+				<div class="box-content card">
+					<h4 class="box-title"><i class="fa fa-globe ico"></i> Aktivitas</h4>
+					<!-- CARD CONTENT -->
+					<div class="card-content">
+						<!-- ACTIVITY LIST -->
+						<div class="activity-list">
+							<div class="activity-item">
+								<div class="bar bg-primary">
+									<div class="dot bg-primary"></div>
+								</div>
+								<div class="content">
+									<div class="date">10 min</div>
+									<!-- /.date -->
+									<div class="text">
+										Harry has finished "Amaza HTML" task
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- ACTIVITY LIST -->
+						<a href="#" class="activity-link">View all activity <i class="fa fa-angle-down"></i></a>
+					</div>
+					<!-- CARD CONTENT -->
+				</div>
+			</div>
+			<!-- ACTIVITY -->
 		</div>
 		<!-- ROW -->
 	

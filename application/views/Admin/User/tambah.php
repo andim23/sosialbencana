@@ -51,8 +51,12 @@
 										<label>Level</label>
 										<select name="level" id="level" class="form-control">
 											<option value="">--- Pilih Level ---</option>
-											<option value="Admin">Admin</option>
-											<option value="Relawan">Relawan</option>
+											<?php
+											foreach($level as $level)
+											{
+												echo '<option value="'.$level['kode_level'].'">'.$level['level'].'</option>';
+											}
+											?>
 										</select>
 										<?php echo form_error('level', '<p class="text-danger">', '</p>'); ?>
 									</div>
@@ -62,9 +66,12 @@
 										<label>Status</label>
 										<select name="status" id="status" class="form-control">
 											<option value="">--- Pilih Status ---</option>
-											<option value="Aktif">Aktif</option>
-											<option value="Tidak Aktif">Tidak Aktif</option>
-											<option value="Diblokir">Diblokir</option>
+											<?php
+											foreach($status as $status)
+											{
+												echo '<option value="'.$status['kode_status'].'">'.$status['nama_status'].'</option>';
+											}
+											?>
 										</select>
 										<?php echo form_error('status', '<p class="text-danger">', '</p>'); ?>
 									</div>

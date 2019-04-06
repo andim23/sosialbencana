@@ -60,7 +60,13 @@ class Admin extends CI_Controller {
 
     public function tambahuser()
     {
-        $this->load->view('Admin/User/tambah');
+        $data1 = $this->Admin_model->dataLevel()->result_array();
+        $data2 = $this->Admin_model->dataStatus()->result_array();
+        $data = array(
+            'level' => $data1,
+            'status' => $data2,
+        );
+        $this->load->view('Admin/User/tambah', $data);
     }
 
     public function pt_user()
@@ -95,7 +101,11 @@ class Admin extends CI_Controller {
 
     public function edituser($kode)
     {
-        $this->load->view('Admin/User/edit');
+        $data1 = $this->Admin_model->detailUser($kode)->row_array();
+        $data = array(
+            'user' => $data1,
+        );
+        $this->load->view('Admin/User/edit', $data);
     }
 
     public function pu_user()
@@ -121,8 +131,10 @@ class Admin extends CI_Controller {
     public function leveluser()
     {
         $data1 = $this->Admin_model->dataLevel()->result_array();
+        $data2 = $this->Jumlah_model->jumlahLevel();
         $data = array(
             'level' => $data1,
+            'jumlahlevel' => $data2+1,
         );
         $this->load->view('Admin/User/leveluser', $data);
     }
@@ -197,8 +209,10 @@ class Admin extends CI_Controller {
     public function statususer()
     {
         $data1 = $this->Admin_model->dataStatus()->result_array();
+        $data2 = $this->Jumlah_model->jumlahStatus();
         $data = array(
             'status' => $data1,
+            'jumlahstatus' => $data2+1,
         );
         $this->load->view('Admin/User/statususer', $data);
     }
@@ -638,5 +652,13 @@ class Admin extends CI_Controller {
             'image'=>$this->Dokterumum_model->get('post')
         );
         $this->load->view('',$data);
+    }
+
+    public function test()
+    {
+        $where = "1106280320191553779847";
+        $data = $this->Admin_model->detailUser($where)->result_array();
+        print_r($data);
+        print_r($where);
     }
 }

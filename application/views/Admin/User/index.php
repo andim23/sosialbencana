@@ -90,6 +90,13 @@ if($this->session->flashdata('gagal'))
 								<td><?php echo $user['email']; ?></td>
 								<td>
 									<?php
+									foreach($level as $lev)
+									{
+										if($lev['kode_level'] == $user['id_level'])
+										{
+											echo $user['level'];
+										}
+									}
 									echo $user['id_level'];
 									?>
 								</td>
@@ -104,7 +111,7 @@ if($this->session->flashdata('gagal'))
 										<button type="button" class="btn btn-xs btn-block btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi <span class="caret"></span></button> 
 										<ul class="dropdown-menu dropdown-menu-right">
 											<li><a href="<?php echo base_url('admin/user/detail/').$user['num']; ?>">Detail Data</a></li>
-											<li><a href="<?php echo base_url('admin/user/edit/1').$user['num']; ?>">Ubah Data</a></li>
+											<li><a href="<?php echo base_url('admin/user/edit/').$user['num']; ?>">Ubah Data</a></li>
 											<li role="separator" class="divider"></li>
 											<li><a href="javascript:void(0);" class="item-hapus" onClick="return hapus('<?php echo base_url('admin/user/hapus/').$user['num']; ?>');">Hapus Data</a></li>
 										</ul>

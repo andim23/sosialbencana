@@ -27,7 +27,14 @@ class Jumlah_model extends CI_Model {
     public function jumlahLevel()
     {
         $this->db->select('*');
-        $this->db->from('user');
+        $this->db->from('level');
+        return $this->db->get()->num_rows();
+    }
+    
+    public function jumlahStatus()
+    {
+        $this->db->select('*');
+        $this->db->from('status');
         return $this->db->get()->num_rows();
     }
 
