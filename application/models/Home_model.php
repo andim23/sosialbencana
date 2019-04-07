@@ -5,6 +5,11 @@ class Home_model extends CI_Model {
 
     public function getUser()
     {
-        return $this->db->get('users')->result_array();
+        return $this->db->get('user')->result_array();
+    }
+
+    public function dataPost()
+    {
+        return $this->db->get('post');
     }
 }

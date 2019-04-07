@@ -15,4 +15,10 @@ class Api extends CI_Controller {
         $data1 = $this->Auth_model->dataUser()->result();
         echo json_encode($data1);
     }
+
+    public function post_api()
+    {
+        $data1 = $this->Home_model->dataPost()->result();
+        echo json_encode($data1);
+    }
 }
