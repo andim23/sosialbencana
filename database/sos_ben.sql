@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2019 at 02:05 PM
+-- Generation Time: Apr 09, 2019 at 05:43 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -64,19 +64,19 @@ INSERT INTO `level` (`id_level`, `kode_level`, `level`, `tanggal`) VALUES
 
 CREATE TABLE `post` (
   `id_post` int(11) NOT NULL,
-  `id_kategori` int(11) NOT NULL,
-  `id_reac` int(11) NOT NULL,
-  `nama_img` varchar(255) NOT NULL,
-  `type_img` varchar(50) NOT NULL,
-  `size_img` int(11) NOT NULL,
-  `slug_post` varchar(255) NOT NULL,
-  `lttd_img` varchar(255) NOT NULL,
-  `lgttd_img` varchar(255) NOT NULL,
-  `lttd_loc` varchar(255) NOT NULL,
-  `lgttd_loc` varchar(255) NOT NULL,
-  `caption` varchar(255) NOT NULL,
-  `waktu` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `nama_img` varchar(255) DEFAULT NULL,
+  `tipe_img` varchar(50) DEFAULT NULL,
+  `size_img` int(11) DEFAULT NULL,
+  `slug_post` varchar(255) DEFAULT NULL,
+  `lttd_img` varchar(255) DEFAULT NULL,
+  `lgttd_img` varchar(255) DEFAULT NULL,
+  `lokasi` varchar(255) NOT NULL,
+  `lttd_loc` varchar(255) DEFAULT NULL,
+  `lgttd_loc` varchar(255) DEFAULT NULL,
+  `caption` text,
+  `tanggal` date DEFAULT NULL,
+  `waktu` time DEFAULT NULL,
+  `username` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -112,7 +112,7 @@ CREATE TABLE `status` (
 INSERT INTO `status` (`id_status`, `kode_status`, `nama_status`, `tanggal`) VALUES
 (1, 1, 'Aktif', '2019-03-30 07:15:21'),
 (2, 2, 'Belum Aktif', '2019-03-30 07:15:29'),
-(3, 3, 'Diblokir', '2019-03-30 07:15:36');
+(3, 3, 'Diblokir', '2019-04-06 07:28:00');
 
 -- --------------------------------------------------------
 
@@ -143,7 +143,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `num`, `id_level`, `id_status`, `nama`, `email`, `username`, `password`, `tgl_lahir`, `j_kel`, `phone`, `avatar`, `token`, `verifikasi`, `tanggal`) VALUES
-(2, '106280320191553779843', 2, 1, NULL, 'wrep17@gmail.com', 'iniwahyu', '$2y$10$qZToRQVcpbLDaT23slaML.wbWcl2a3yIEgcVOeRmt4A07Suo.1xoe', NULL, NULL, NULL, NULL, 'T9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQmT9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQmT9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQmT9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQm', '2019-03-28 13:33:21', '2019-03-28 13:30:49'),
+(2, '106280320191553779843', 2, 2, NULL, 'wrep17@gmail.com', 'iniwahyu', '$2y$10$qZToRQVcpbLDaT23slaML.wbWcl2a3yIEgcVOeRmt4A07Suo.1xoe', NULL, NULL, NULL, NULL, 'T9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQmT9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQmT9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQmT9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQm', '2019-03-28 13:33:21', '2019-03-28 13:30:49'),
 (3, '106280320191553779847', 1, 1, 'Admin', 'admin@sosben.com', 'admin', '$2y$10$qZToRQVcpbLDaT23slaML.wbWcl2a3yIEgcVOeRmt4A07Suo.1xoe', '2019-03-28', 'Laki Laki', '08123456789', NULL, 'T9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQmT9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQmT9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQmT9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQm', '2019-03-28 13:33:23', '2019-03-28 13:30:49');
 
 --
@@ -229,7 +229,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
