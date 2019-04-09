@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<title>
-		<?php echo SITE_NAME; ?>
-	</title>
-	<?php $this->load->view('Home/include/css'); ?>
-</head>
-
-<body>
 <?php
 if($this->session->flashdata('sukses'))
 {
@@ -56,9 +45,3 @@ if($this->session->flashdata('gagal'))
         </div>
     </div>
 </div>
-
-<!-- JAVASCRIPT -->
-<?php $this->load->view('Home/include/js'); ?>
-<!-- JAVASCRIPT -->
-</body>
-</html>

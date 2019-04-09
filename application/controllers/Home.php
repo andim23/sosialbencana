@@ -11,21 +11,37 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('Home/index');
+		$data = array('title' => 'Sosial Bencana',
+									// '' => ,
+									'isi' => 'home/index'
+								);
+		$this->load->view('layout/file',$data,FALSE);
 	}
 
 	public function login()
 	{
-		$this->load->view('Home/login');
+		$data = array('title' => 'Sosial Bencana',
+									// '' => ,
+									'isi' => 'home/login'
+								);
+		$this->load->view('layout/file',$data,FALSE);
 	}
 
 	public function register()
 	{
-		$this->load->view('Home/register');
+		$data = array('title' => 'Sosial Bencana',
+									// '' => ,
+									'isi' => 'home/register'
+								);
+		$this->load->view('layout/file',$data,FALSE);
 	}
 
 	public function konfirmasi()
 	{
-		$this->load->view('Home/konfirmasi');
+		$data = array('title' => 'Sosial Bencana',
+									// '' => ,
+									'isi' => 'home/konfirmasi'
+								);
+		$this->load->view('layout/file',$data,FALSE);
 	}
 }
