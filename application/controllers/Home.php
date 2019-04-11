@@ -20,20 +20,12 @@ class Home extends CI_Controller {
 
 	public function login()
 	{
-		$data = array('title' => 'Sosial Bencana',
-									// '' => ,
-									'isi' => 'home/login'
-								);
-		$this->load->view('layout/file',$data,FALSE);
+		$this->load->view('home/login');
 	}
 
 	public function register()
 	{
-		$data = array('title' => 'Sosial Bencana',
-									// '' => ,
-									'isi' => 'home/register'
-								);
-		$this->load->view('layout/file',$data,FALSE);
+		$this->load->view('home/register');
 	}
 
 	public function konfirmasi()

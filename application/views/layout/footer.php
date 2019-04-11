@@ -1,8 +1,9 @@
 
 <div class="footsosben">
   <!-- footer-->
-  <!-- <div class="fsb-top">
+  <div class="fsb-top">
     <div class="container">
+      <div class="row">
       <div class="fsb-left col-md-3 col-sm-6">
         <h3>About Us</h3>
         <h4>
@@ -49,9 +50,10 @@
             <input type="submit" value="Subscribe">
         </form>
       </div>
+      </div>
       <div class="clearfix"></div>
     </div>
-  </div> -->
+  </div>
   <!-- /footer -->
 </div>
 
