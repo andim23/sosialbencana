@@ -661,4 +661,9 @@ class Admin extends CI_Controller {
         print_r($data);
         print_r($where);
     }
+
+    public function post()
+    {
+        $this->load->view('Admin/posting');
+    }
 }

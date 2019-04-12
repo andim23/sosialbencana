@@ -18,5 +18,9 @@
 <script src="<?php echo base_url(); ?>asset/admin/plugin/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?php echo base_url(); ?>asset/admin/plugin/datatables/extensions/Responsive/js/responsive.bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>asset/admin/scripts/datatables.demo.min.js"></script>
+
+<!-- Validator -->
+<script src="<?php echo base_url(); ?>asset/admin/plugin/validator/validator.min.js"></script>
+
 <!-- Main JS -->
 <script src="<?php echo base_url(); ?>asset/admin/scripts/main.min.js"></script>

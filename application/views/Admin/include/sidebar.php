@@ -3,15 +3,18 @@
 	<!-- /.title -->
 	<ul class="menu js__accordion">
 		<li class="">
-			<a class="waves-effect" href="<?php echo base_url('admin'); ?>"><i class="menu-icon mdi mdi-view-dashboard"></i><span>Dashboard</span></a>
+			<a class="waves-effect" href="<?php echo base_url('Admin'); ?>"><i class="menu-icon mdi mdi-view-dashboard"></i><span>Dashboard</span></a>
 		</li>
 		<li>
 			<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon fa fa-user"></i><span>User</span><span class="menu-arrow fa fa-angle-down"></span></a>
 			<ul class="sub-menu js__content">
-				<li><a href="<?php echo base_url('admin/user'); ?>">Data</a></li>
-				<li><a href="<?php echo base_url('admin/leveluser'); ?>">Level</a></li>
-				<li><a href="<?php echo base_url('admin/statususer'); ?>">Status</a></li>
+				<li><a href="<?php echo base_url('Admin/user'); ?>">Data</a></li>
+				<li><a href="<?php echo base_url('Admin/leveluser'); ?>">Level</a></li>
+				<li><a href="<?php echo base_url('Admin/statususer'); ?>">Status</a></li>
 			</ul>
+		</li>
+		<li class="">
+			<a class="waves-effect" href="<?php echo base_url('Admin/post'); ?>"><i class="menu-icon mdi mdi-airballoon"></i><span>Posting</span></a>
 		</li>
 	</ul>
 </div>
