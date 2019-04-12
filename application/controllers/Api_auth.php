@@ -14,79 +14,56 @@ class Api_auth extends CI_Controller {
         $email = $this->input->post('email');
         $password = $this->input->post('password');
         
-        // VALIDASI
-        $this->form_validation->set_rules('email', 'Email Address', 'trim|required|xss_clean|valid_email|valid_emails');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
-
-        // PESAN VALIDASI
-        $this->form_validation->set_message('required', 'Maaf! <b>%s</b> Tidak Boleh Kosong!');
-        $this->form_validation->set_message('valid_email', 'Maaf! <b>%s</b> Tidak Valid');
-        $this->form_validation->set_message('valid_emails', 'Maaf! <b>%s</b> Tidak Valid');
-
-        if($this->form_validation->run() == FALSE)
+        $cek = $this->Auth_model->cekUser($email);
+        if($cek->num_rows() > 0)
         {
-            $this->load->view('Home/login');
-        }
-        else
-        {
-            $cek = $this->Auth_model->cekUser($email);
-            if($cek->num_rows() > 0)
+            $data = $cek->row_array();
+            if(password_verify($password, $data['password']))
             {
-                $data = $cek->row_array();
-                if(password_verify($password, $data['password']))
+                /**
+                 * STATUS
+                 * 1 = AKTIF
+                 * 2 = TIDAK AKTIF
+                 * 3 = BANNED
+                 */
+                if($data['id_status'] == '1')
                 {
                     /**
-                     * STATUS
-                     * 1 = AKTIF
-                     * 2 = TIDAK AKTIF
-                     * 3 = BANNED
+                     * LEVEL
+                     * 1 = DEVELOPER
+                     * 2 = RELAWAN
                      */
-                    if($data['id_status'] == '1')
+                    if($data['id_level'] == '1')
                     {
-                        /**
-                         * LEVEL
-                         * 1 = DEVELOPER
-                         * 2 = RELAWAN
-                         */
-                        if($data['id_level'] == '1')
-                        {
-                            $session = array(
-                                'username' => $data['username'],
-                                'email' => $data['email'],
-                                'level' => 'Admin',
-                            );
-                            echo json_encode($data);
-                        }
-                        if($data['id_level'] == '2')
-                        {
-                            $session = array(
-                                'username' => $data['username'],
-                                'email' => $data['email'],
-                                'level' => 'Relawan',
-                            );
-                            echo json_encode($data);
-                        }
+                        $session = array(
+                            'username' => $data['username'],
+                            'email' => $data['email'],
+                            'level' => 'Admin',
+                        );
+                        echo json_encode($data);
                     }
-                    if($data['id_status'] == '2')
+                    if($data['id_level'] == '2')
                     {
-                        echo json_encode(array(
-                            'result' => 'Error',
-                            'message' => 'Maaf! Akun Anda Belum Aktif'
-                        ));
-                    }
-                    if($data['id_status'] == '3')
-                    {
-                        echo json_encode(array(
-                            'result' => 'Error',
-                            'message' => 'Maaf! Akun Anda Dinonaktifkan, Silahkan Hubungi Customer Service'
-                        ));
+                        $session = array(
+                            'username' => $data['username'],
+                            'email' => $data['email'],
+                            'level' => 'Relawan',
+                        );
+                        echo json_encode($data);
                     }
                 }
-                else
+                if($data['id_status'] == '2')
                 {
                     echo json_encode(array(
                         'result' => 'Error',
-                        'message' => 'Maaf! Password Anda Salah'
+                        'message' => 'Maaf! Akun Anda Belum Aktif'
+                    ));
+                }
+                if($data['id_status'] == '3')
+                {
+                    echo json_encode(array(
+                        'result' => 'Error',
+                        'message' => 'Maaf! Akun Anda Dinonaktifkan, Silahkan Hubungi Customer Service'
                     ));
                 }
             }
@@ -94,9 +71,16 @@ class Api_auth extends CI_Controller {
             {
                 echo json_encode(array(
                     'result' => 'Error',
-                    'message' => 'Maaf! Akun Tidak Ditemukan'
+                    'message' => 'Maaf! Password Anda Salah'
                 ));
             }
+        }
+        else
+        {
+            echo json_encode(array(
+                'result' => 'Error',
+                'message' => 'Maaf! Akun Tidak Ditemukan'
+            ));
         }
     }
 
