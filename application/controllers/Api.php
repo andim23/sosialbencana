@@ -13,12 +13,32 @@ class Api extends CI_Controller {
     public function user_api()
     {
         $data1 = $this->Auth_model->dataUser()->result();
-        echo json_encode($data1);
+        if($data1)
+        {
+            echo json_encode(array('result' => $data1), TRUE);    
+        }
+        else
+        {
+            echo json_encode(array(
+                'result' => 'Error',
+                'message' => 'Data Kosong'
+            ));
+        }
     }
 
     public function post_api()
     {
         $data1 = $this->Home_model->dataPost()->result();
-        echo json_encode($data1);
+        if($data1)
+        {
+            echo json_encode(array('result' => $data1), TRUE);    
+        }
+        else
+        {
+            echo json_encode(array(
+                'result' => 'Error',
+                'message' => 'Data Kosong'
+            ));
+        }
     }
 }
