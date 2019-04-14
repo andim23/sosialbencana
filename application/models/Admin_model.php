@@ -143,26 +143,9 @@ class Admin_model extends CI_Model {
         return $this->db->delete('status');
     }
 
-    public function delete($where,$table)
+    public function userPosting($where)
     {
-        $this->db->where($where);
-        return $this->db->delete($table);
-    }
-
-    public function insert($table, $data)
-    {
-        return $this->db->insert($table, $data);
-    }
-
-    public function update($table, $id, $data)
-    {
-        $this->db->where($id);
-        return $this->db->update($table, $data);
-    }
-
-    public function get($table)
-    {
-        $query=$this->db->get($table);
-        return $query->result_query();
+        $this->db->where('username', $where);
+        return $this->db->get('post');
     }
 }
