@@ -1,18 +1,83 @@
-<div id="header">
-    <nav class="navbar navbar-expand-lg navbar-custom">
-        <div class="container">
-            <a class="navbar-brand" href="<?php echo base_url('/'); ?>">Sosial Bencana</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="<?php echo base_url('login'); ?>"><i class="fas fa-user"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<div class="agileits_main">
+<!-- menu -->
+<nav class="navbar navbar-inverse ">
+	<div class="container">
+    <!-- header -->
+    <div class="w3_agile_logo"><h1 class="text-left"><a href="index.html">candid</a></h1></div>
+    <!-- //header -->
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+		</button>
+
+  	<div class="collapse navbar-collapse top-nav w3l navbar-right" id="bs-example-navbar-collapse-1">
+  		<ul class="nav navbar-nav linkEffects linkHoverEffect_11 custom-menu">
+  			<li class="agile_active"><a href="<?php echo base_url() ?>" class="scroll"><span>home</span></a></li>
+  			<li><a href="#about" class="scroll"><span>about us</span></a></li>
+  			<li><a href="#gallery" class="scroll"><span>gallery </span></a></li>
+  			<li><a href="#team" class="scroll"><span>team</span></a></li>
+        <li><a href="#contact" class="scroll"><span>Contact</span></a></li>
+        <li><a href="<?php echo base_url('home/login') ?>"><i class="fa fa-user"></i></a></li>
+  		</ul>
+  	</div>
+	</div>
+</nav>
+<!-- //menu -->
+
+<!-- banner -->
+<div class="w3_banner">
+	<div class="container">
+		<div class="slider">
+			<div class="callbacks_container">
+			   <ul class="rslides callbacks callbacks1" id="slider4">
+					<li>
+						<div class="banner_text_w3layouts">
+							<h3>Maur egetire sit tmae.</h3>
+							<span> </span>
+							<p>Casp Eestibulum </p>
+						</div>
+					</li>
+					 <li>
+						<div class="banner_text_w3layouts">
+							<h3>Eget Integer sit amet.</h3>
+							<span> </span>
+							<p>Rlua vestibulum </p>
+						</div>
+					</li>
+					 <li>
+						<div class="banner_text_w3layouts">
+							<h3>Amet sitamet tus libe.</h3>
+							<span> </span>
+							<p>Cras vestibulum </p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		  <script src="<?php echo base_url() ?>asset/front/js/responsiveslides.min.js"></script>
+		  <script>
+			// You can also use "$(window).load(function() {"
+			$(function () {
+			  // Slideshow 4
+			  $("#slider4").responsiveSlides({
+				auto: true,
+				pager:true,
+				nav:true,
+				speed: 500,
+				namespace: "callbacks",
+				before: function () {
+				  $('.events').append("<li>before event fired.</li>");
+				},
+				after: function () {
+				  $('.events').append("<li>after event fired.</li>");
+				}
+			  });
+
+			});
+		 </script>
+	   </div>
+	</div>
 </div>
+  </div>
