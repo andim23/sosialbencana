@@ -16,10 +16,10 @@
   	<div class="collapse navbar-collapse top-nav w3l navbar-right" id="bs-example-navbar-collapse-1">
   		<ul class="nav navbar-nav linkEffects linkHoverEffect_11 custom-menu">
   			<li class="agile_active"><a href="<?php echo base_url() ?>" class="scroll"><span>home</span></a></li>
-  			<li><a href="#about" class="scroll"><span>about us</span></a></li>
-  			<li><a href="#gallery" class="scroll"><span>gallery </span></a></li>
-  			<li><a href="#team" class="scroll"><span>team</span></a></li>
-        <li><a href="#contact" class="scroll"><span>Contact</span></a></li>
+  			<li><a href="#about"><span>about us</span></a></li>
+  			<li><a href="#gallery"><span>gallery </span></a></li>
+  			<li><a href="#team" ><span>team</span></a></li>
+        <li><a href="<?php echo base_url('home/contact') ?>"><span>Contact</span></a></li>
         <li><a href="<?php echo base_url('home/login') ?>"><i class="fa fa-user"></i></a></li>
   		</ul>
   	</div>

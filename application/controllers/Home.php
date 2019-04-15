@@ -18,6 +18,15 @@ class Home extends CI_Controller {
 		$this->load->view('layout/file',$data,FALSE);
 	}
 
+	public function contact()
+	{
+		$data = array('title' => 'Sosial Bencana',
+									// '' => ,
+									'isi' => 'home/contact'
+								);
+		$this->load->view('layout/file',$data,FALSE);
+	}
+
 	public function login()
 	{
 		$this->load->view('home/login');
