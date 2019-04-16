@@ -666,4 +666,62 @@ class Admin extends CI_Controller {
     {
         $this->load->view('Admin/posting');
     }
+
+    public function proses_post()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $this->form_validation->set_rules('nama', 'Nama', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('status', 'Status', 'trim|required|xss_clean');
+        $this->form_validation->set_message('required', 'Maaf! <b>%s</b> Tidak Boleh Kosong');
+
+        if($this->form_validation->run() == FALSE)
+        {
+            echo validation_errors();
+        }
+        else
+        {
+            $config['upload_path']   = "./asset/upload";
+            $config['allowed_types'] = "jpg|png|jpeg";
+            $config['max_size']      = "10240";
+            $config['remove_space']  = TRUE;
+            $config['encrypt_name'] = TRUE;
+            
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('gambar')) {
+                
+                $upload = array(
+                    'upload_data' => $this->upload->data()
+                );
+
+                $slug   = url_title($this->input->post('nama'), 'dash', TRUE);
+
+                $data = array(
+                    'id_user'=>'1',
+                    'slug' => $slug,
+                    'nama'=>$this->input->post('nama'),
+                    'gambar' => $upload['upload_data']['file_name'],
+                    'deskripsi' => $this->input->post('deskripsi'),
+                    'status' => 'coba',
+                    'tanggal_post'=>date('m-d-Y')
+                    );
+                
+                if($this->Admin_model->insert('post', $data)){
+
+                    echo 'berhasil';
+                }
+                else{
+                    echo 'gagal1';
+                }
+            }
+            else{
+                //$this->session->set_flashdata('error_add_image', 'Maaf image gagal ditambahkan.');
+                $result = $this->upload->data();
+                echo "<pre>";
+                print_r($result);
+                echo "</pre>";
+            }
+        }
+    }
 }

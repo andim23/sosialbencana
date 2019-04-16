@@ -148,4 +148,9 @@ class Admin_model extends CI_Model {
         $this->db->where('username', $where);
         return $this->db->get('post');
     }
+
+    public function insert($table,$data)
+    {
+        return $this->db->insert($table, $data);
+    }
 }

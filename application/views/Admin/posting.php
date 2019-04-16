@@ -31,65 +31,31 @@
 			<div class="row small-spacing">
 				<div class="col-12">
 					<div class="box-content">
-						<form>
+					<?php echo form_open('Admin/proses_post', array('enctype' => 'multipart/form-data','id'=>'form_validation')); ?>
 							<div class="form-group">
-								<label for="inputName" class="control-label">Name</label>
-								<input type="text" class="form-control" id="inputName" placeholder="Cina Saffary"
+								<label for="inputNama" class="control-label">Nama</label>
+								<input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Anda"
 									required>
 							</div>
-							<div class="form-group has-feedback">
-								<label for="inputTwitter" class="control-label">Twitter</label>
-								<div class="input-group">
-									<span class="input-group-addon">@</span>
-									<input type="text" pattern="^[_A-z0-9]{1,}$" maxlength="15" class="form-control"
-										id="inputTwitter" placeholder="1000hz" required>
-								</div>
-								<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-								<div class="help-block with-errors">Hey look, this one has feedback icons!</div>
+							<div class="form-group">
+								<label for="inputNama" class="control-label">Deskripsi</label>
+								<input type="text" class="form-control" name="deskripsi" placeholder="Masukkan Deskripsi"
+									required>
 							</div>
 							<div class="form-group">
-								<label for="inputEmail" class="control-label">Email</label>
-								<input type="email" class="form-control" id="inputEmail" placeholder="Email"
-									data-error="Bruh, that email address is invalid" required>
-								<div class="help-block with-errors"></div>
+								<label for="inputNama" class="control-label">Status</label>
+								<input type="text" class="form-control" name="status" placeholder="Masukkan Status Anda"
+									required>
 							</div>
 							<div class="form-group">
-								<label for="inputPassword" class="control-label">Password</label>
-								<div class="row">
-									<div class="form-group col-sm-6">
-										<input type="password" data-minlength="6" class="form-control"
-											id="inputPassword" placeholder="Password" required>
-										<div class="help-block">Minimum of 6 characters</div>
-									</div>
-									<div class="form-group col-sm-6">
-										<input type="password" class="form-control" id="inputPasswordConfirm"
-											data-match="#inputPassword" data-match-error="Whoops, these don't match"
-											placeholder="Confirm" required>
-										<div class="help-block with-errors"></div>
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="radio">
-									<input type="radio" name="underwear" id="underwear1" required>
-									<label for="underwear1">Boxers</label>
-								</div>
-								<div class="radio">
-									<input type="radio" name="underwear" id="underwear2" required>
-									<label for="underwear2">Briefs</label>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="checkbox">
-									<input type="checkbox" id="terms" data-error="Before you wreck yourself" required>
-									<label for="terms">Check yourself</label>
-									<div class="help-block with-errors"></div>
-								</div>
+								<label for="inputNama" class="control-label">Gambar</label>
+								<input type="file" class="form-control" name="gambar" placeholder="Pilih Gambar"
+									required>
 							</div>
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
 							</div>
-						</form>
+							<?php echo form_close(); ?>
 					</div>
 					<!-- /.box-content -->
 				</div>
