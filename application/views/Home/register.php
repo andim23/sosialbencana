@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title><?php echo SITE_NAME; ?></title>
-    <?php $this->load->view('Home/include/css'); ?>
-</head>
-<body>
+
 <?php
 if($this->session->flashdata('sukses'))
 {
@@ -21,6 +15,30 @@ if($this->session->flashdata('gagal'))
 		</script>';
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><?php echo SITE_NAME; ?></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge; text/html;">
+    <link rel="stylesheet" href="<?php echo base_url('asset/home/css/bootstrap.min.css'); ?>" type="text/css" media="all">
+    <link rel="stylesheet" href="<?php echo base_url('asset/home/css/style.css'); ?>" type="text/css" media="all">
+    <link rel="stylesheet" href="<?php echo base_url('asset/home/css/sweetalert2.min.css'); ?>" type="text/css" media="all">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!-- online-fonts -->
+    <!-- logo -->
+    <link href="//fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
+    <!-- titles -->
+    <link href="//fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i,800,800i" rel="stylesheet">
+    <!-- body -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    <!-- //online-fonts -->
+    <!-- font-awesome icons -->
+    <link href="<?php echo base_url()?>asset/home/css/font-awesome.css" rel="stylesheet">
+</head>
+<body>
+
 <div class="auth">
     <div class="container">
         <div class="row">
@@ -30,7 +48,7 @@ if($this->session->flashdata('gagal'))
                         <h2 class="text-center"><a href="<?php echo base_url('/'); ?>">Sosial Bencana</a></h2>
                     </div>
                     <div class="auth-register">
-                        <?php echo form_open('auth/prosesregister'); ?>
+                        <?php echo form_open('auth/prosesregister', array('autocomplete' => 'off')); ?>
                             <div class="form-group">
                                 <!-- <label>Username</label> -->
                                 <input type="text" name="username" class="form-control <?php echo form_error('username') ? 'is-invalid' : '' ?>" placeholder="Username" value="<?php echo set_value('username'); ?>" autofocus>
@@ -70,7 +88,9 @@ if($this->session->flashdata('gagal'))
 </div>
 
 <!-- JAVASCRIPT -->
-<?php $this->load->view('Home/include/js'); ?>
-<!-- JAVASCRIPT -->
+<script src="<?php echo base_url('asset/home/js/jquery.min.js'); ?>"></script>
+<script src="<?php echo base_url('asset/home/js/bootstrap.min.js'); ?>"></script>
+<script src="<?php echo base_url('asset/home/js/sweetalert2.all.min.js'); ?>"></script>
+<!-- //JAVASCRIPT -->
 </body>
 </html>

@@ -6,8 +6,8 @@ class Auth_model extends CI_Model {
     public function cekUser($email)
     {
         $this->db->select('*');
-        $this->db->from('users');
-        $this->db->where('users_email', $email);
+        $this->db->from('user');
+        $this->db->where('email', $email);
         return $this->db->get();
     }
 
@@ -48,38 +48,38 @@ class Auth_model extends CI_Model {
 		$this->email->send();
 
         $data = array(
-            'users_num' => $num,
-            'users_username'=> $username,
-            'users_email'=> $email,
-            'users_password' => password_hash($password, PASSWORD_BCRYPT),
-            'users_level'=> '2',
-            'users_status'=>'2',
-            'users_token'=> $random,
-            'users_tanggal' => date('Y-m-d H:i:s'),
+            'num' => $num,
+            'id_level'=> 2,
+            'id_status'=> 2,
+            'username' => $username,
+            'email' => $email,
+            'password' => password_hash($password, PASSWORD_BCRYPT),
+            'token'=> $random,
+            'tanggal' => date('Y-m-d H:i:s'),
         );
-        return $this->db->insert('users',$data);
+        return $this->db->insert('user',$data);
     }
 
     public function cekAktivasi($token)
     {
         $this->db->select('*');
-        $this->db->from('users');
-        $this->db->where('users_token', $token);
+        $this->db->from('user');
+        $this->db->where('token', $token);
         return $this->db->get();
     }
 
     public function updateAktivasi($token)
     {
         $data = array(
-            'users_status' => '1',
-            'users_verifikasi' => date('Y-m-d H:i:s'),
+            'id_status' => '1',
+            'verifikasi' => date('Y-m-d H:i:s'),
         );
-        $this->db->where('users_token', $token);
-        return $this->db->update('users', $data);
+        $this->db->where('token', $token);
+        return $this->db->update('user', $data);
     }
-    
-    public function insert($table,$data)
+
+    public function dataUser()
     {
-        return $this->db->insert($table,$data);
+        return $this->db->get('user');
     }
 }
