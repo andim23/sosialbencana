@@ -698,13 +698,19 @@ class Admin extends CI_Controller {
                 $slug   = url_title($this->input->post('nama'), 'dash', TRUE);
 
                 $data = array(
-                    'id_user'=>'1',
-                    'slug' => $slug,
-                    'nama'=>$this->input->post('nama'),
-                    'gambar' => $upload['upload_data']['file_name'],
-                    'deskripsi' => $this->input->post('deskripsi'),
-                    'status' => 'coba',
-                    'tanggal_post'=>date('m-d-Y')
+                    'slug_post' => $slug,
+                    'nama_img' => $upload['upload_data']['file_name'],
+                    'tipe_img'=>$upload['upload_data']['file_type'],
+                    'size_img'=>$upload['upload_data']['file_size'],
+                    'lttd_img'=>'11111',
+                    'lgttd_img'=>'11111',
+                    'lokasi'=>$this->input->post('lokasi'),
+                    'lttd_loc'=>'1111',
+                    'lgttd_loc'=>'1111',
+                    'caption' => $this->input->post('deskripsi'),
+                    'tanggal'=>date('Y-m-d'),
+                    'waktu'=>date('H:i:s'),
+                    'username'=>'admin'
                     );
                 
                 if($this->Admin_model->insert('post', $data)){
@@ -717,10 +723,9 @@ class Admin extends CI_Controller {
             }
             else{
                 //$this->session->set_flashdata('error_add_image', 'Maaf image gagal ditambahkan.');
-                $result = $this->upload->data();
-                echo "<pre>";
-                print_r($result);
-                echo "</pre>";
+                $error = $this->upload->display_errors();
+                // menampilkan pesan error
+                print_r($error);
             }
         }
     }

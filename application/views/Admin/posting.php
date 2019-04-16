@@ -48,6 +48,11 @@
 									required>
 							</div>
 							<div class="form-group">
+								<label for="inputNama" class="control-label">Lokasi</label>
+								<input type="text" class="form-control" name="lokasi" placeholder="Masukkan Status Anda"
+									required>
+							</div>
+							<div class="form-group">
 								<label for="inputNama" class="control-label">Gambar</label>
 								<input type="file" class="form-control" name="gambar" placeholder="Pilih Gambar"
 									required>
