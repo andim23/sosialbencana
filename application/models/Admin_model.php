@@ -3,6 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin_model extends CI_Model {
 
+    public function __construct(){
+        $this->load->database();
+    }
     /** 
      * ---------- USER ----------
      */
@@ -116,6 +119,15 @@ class Admin_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('status');
         return $this->db->get();
+    }
+
+    public function list()
+    {
+        $this->db->select('user.*, status.nama_status');
+        $this->db->from('user');
+        $this->db->join('user', 'user.id_user = status.nama_status', 'LEFT');
+        $query = $this->db->get();
+        return $query->result();
     }
 
     public function tambahStatus()

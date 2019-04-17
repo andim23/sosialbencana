@@ -664,7 +664,8 @@ class Admin extends CI_Controller {
 
     public function post()
     {
-        $this->load->view('Admin/posting');
+        $status=$this->Admin_model->dataStatus();
+		$this->load->view('Admin/posting');
     }
 
     public function proses_post()
