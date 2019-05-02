@@ -39,13 +39,17 @@
 							</div>
 							<div class="form-group">
 								<label for="inputNama" class="control-label">Deskripsi</label>
-								<input type="text" class="form-control" name="deskripsi" placeholder="Masukkan Deskripsi"
-									required>
+								<textarea type="text" class="form-control" name="deskripsi" placeholder="Masukkan Deskripsi"
+									required> </textarea>
 							</div>
 							<div class="form-group">
 								<label for="inputNama" class="control-label">Status</label>
-								<input type="text" class="form-control" name="status" placeholder="Masukkan Status Anda"
-									required>
+								<select name="id_status" class="form-control">
+								<?php foreach($status as $status) { ?>
+									<option value="<?php echo $status->id_status ?>">
+									<?php echo $status->nama_status ?></option>
+								<?php } ?>
+								</select>	
 							</div>
 							<div class="form-group">
 								<label for="inputNama" class="control-label">Lokasi</label>
