@@ -7,39 +7,21 @@
 
 <body>
 <div class="main-menu">
+	<!-- HEADER -->
 	<header class="header">
 		<?php $this->load->view('Admin/include/header'); ?>
 	</header>
-	<!-- /.header -->
+	<!-- HEADER -->
 	<div class="content">
         <!-- SIDEBAR -->
         <?php $this->load->view('Admin/include/sidebar'); ?>
         <!-- SIDEBAR -->
 	</div>
-	<!-- /.content -->
 </div>
-<!-- /.main-menu -->
 
 <div class="fixed-navbar">
 	<?php $this->load->view('Admin/include/navbar'); ?>
 </div>
-
-<?php
-if($this->session->flashdata('sukses'))
-{
-	echo '<script src="'.base_url().'asset/admin/plugin/sweet-alert/sweetalert.min.js"></script>';
-	echo '<script>
-			swal({title:"'.$this->session->flashdata('sukses').'",text:"",type:"success",confirmButtonColor:"#304ffe"})
-		</script>';
-}
-if($this->session->flashdata('gagal'))
-{
-	echo '<script src="'.base_url().'asset/admin/plugin/sweet-alert/sweetalert.min.js"></script>';
-	echo '<script>
-			swal({title:"'.$this->session->flashdata('gagal').'",text:"",type:"error",confirmButtonColor:"#304ffe"})
-		</script>';
-}
-?>
 
 <div id="wrapper">
 	<div class="main-content">
@@ -48,17 +30,14 @@ if($this->session->flashdata('gagal'))
 				<!-- BOX CONTENT -->
 				<div class="box-content">
 					<h4 class="box-title">Data User</h4>
-					<!-- /.box-title -->
 					<div class="dropdown js__drop_down">
-                        <a href="<?php echo base_url('admin/user/tambah'); ?>" class="btn btn-xs btn-primary btn-icon btn-icon-left waves-effect waves-light"><i class="ico fa fa-plus"></i> Tambah Data</a>
+                        <a href="<?php echo base_url('user/tambah'); ?>" class="btn btn-xs btn-primary btn-icon btn-icon-left waves-effect waves-light"><i class="ico fa fa-plus"></i> Tambah Data</a>
 					</div>
-					<!-- /.dropdown js__dropdown -->
 					<table id="example" class="table table-striped table-bordered display" style="width:100%">
 						<thead>
 							<tr>
 								<th>#</th>
-								<th>User Number</th>
-								<th>Username</th>
+								<th>Kode Relawan/User</th>
 								<th>Email</th>
 								<th>Level</th>
 								<th>Status</th>
@@ -69,8 +48,7 @@ if($this->session->flashdata('gagal'))
 						<tfoot>
 							<tr>
 								<th>#</th>
-								<th>User Number</th>
-								<th>Username</th>
+								<th>Kode Relawan/User</th>
 								<th>Email</th>
 								<th>Level</th>
 								<th>Status</th>
@@ -85,28 +63,21 @@ if($this->session->flashdata('gagal'))
 							?>
 							<tr>
 								<td><?php echo $no++; ?></td>
-								<td><?php echo $user['num']; ?></td>
-								<td><?php echo $user['username']; ?></td>
+								<td><?php echo $user['user_kode']; ?></td>
 								<td><?php echo $user['email']; ?></td>
 								<td>
 									<?php
 									foreach($level as $lev)
 									{
-										if($lev['kode_level'] == $user['id_level'])
-										{
-											echo $lev['level'];
-										}
+										echo $lev['kode_level'] == $user['id_level'] ? $lev['level'] : '';
 									}
 									?>
 								</td>
 								<td>
 									<?php
-									foreach($status as $stat)
+									foreach($status as $s)
 									{
-										if($stat['kode_status'] == $user['id_status'])
-										{
-											echo $stat['nama_status'];
-										}
+										echo $s['kode_status'] == $user['id_status'] ? $s['nama_status'] : '';
 									}
 									?>
 								</td>
@@ -115,10 +86,10 @@ if($this->session->flashdata('gagal'))
 									<div class="btn-group margin-top-10">
 										<button type="button" class="btn btn-xs btn-block btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi <span class="caret"></span></button> 
 										<ul class="dropdown-menu dropdown-menu-right">
-											<li><a href="<?php echo base_url('admin/user/detail/').$user['num']; ?>">Detail Data</a></li>
-											<li><a href="<?php echo base_url('admin/user/edit/').$user['num']; ?>">Ubah Data</a></li>
+											<li><a href="<?php echo base_url('user/detail/').$user['user_kode']; ?>">Detail Data</a></li>
+											<li><a href="<?php echo base_url('user/edit/').$user['user_kode']; ?>">Ubah Data</a></li>
 											<li role="separator" class="divider"></li>
-											<li><a href="javascript:void(0);" class="item-hapus" onClick="return hapus('<?php echo base_url('admin/user/hapus/').$user['num']; ?>');">Hapus Data</a></li>
+											<li><a href="javascript:void(0);" class="item-hapus" onClick="return hapus('<?php echo base_url('user/hapus/').$user['user_kode']; ?>');">Hapus Data</a></li>
 										</ul>
 									</div>
                                 </td>
@@ -131,8 +102,6 @@ if($this->session->flashdata('gagal'))
 			</div>
 		</div>
 		<!-- .row -->
-
-		
 
 		<footer class="footer">
 			<?php $this->load->view('Admin/include/footer'); ?>
@@ -165,6 +134,22 @@ if($this->session->flashdata('gagal'))
 
 <!-- JAVASCRIPT -->
 <?php $this->load->view('Admin/include/js'); ?>
+<?php
+if($this->session->flashdata('sukses'))
+{
+	echo '<script src="'.base_url().'asset/admin/plugin/sweet-alert/sweetalert.min.js"></script>';
+	echo '<script>
+			swal({title:"'.$this->session->flashdata('sukses').'",text:"",type:"success",confirmButtonColor:"#304ffe"})
+		</script>';
+}
+if($this->session->flashdata('gagal'))
+{
+	echo '<script src="'.base_url().'asset/admin/plugin/sweet-alert/sweetalert.min.js"></script>';
+	echo '<script>
+			swal({title:"'.$this->session->flashdata('gagal').'",text:"",type:"error",confirmButtonColor:"#304ffe"})
+		</script>';
+}
+?>
 <script>
 function hapus(url)
 {

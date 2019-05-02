@@ -31,23 +31,32 @@
 			<div class="col-lg-3 col-xs-12">
 				<div class="box-content bordered primary margin-bottom-20">
 					<div class="profile-avatar">
-						<img src="<?php echo base_url('uploads/user/avatar.png'); ?>" alt="">
-						<h3><strong><?php echo $user['username']; ?></strong></h3>
-						<h4>Relawan Divisi xxxx.</h4>
+						<img src="<?php echo $user['avatar']; ?>" alt="">
+						<h5 class="text-center"><strong><?php echo $user['user_kode']; ?></strong></h5>
+						<h4><?php echo $user['nama']; ?></h4>
 					</div>
 					<!-- .profile-avatar -->
 					<table class="table table-hover no-margin">
 						<tbody>
 							<tr>
 								<td>Status</td>
-								<td><span class="notice notice-danger">Active</span></td>
+								<td>
+									<span class="notice notice-danger">
+										<?php
+										foreach($status as $s)
+										{
+											echo $s['kode_status'] == $user['id_status'] ? $s['nama_status'] : '';
+										}
+										?>
+									</span>
+								</td>
 							</tr>
 							<tr>
 								<td>Registrasi</td>
 								<td><?php echo $user['tanggal']; ?></td>
                             </tr>
                             <tr>
-                                <td><a href="<?php echo base_url('admin/user'); ?>" class="btn btn-sm btn-danger">KEMBALI</a></td>
+                                <td><a href="<?php echo base_url('user'); ?>" class="btn btn-sm btn-danger">KEMBALI</a></td>
                             </tr>
 						</tbody>
 					</table>
@@ -65,9 +74,9 @@
 								<div class="row">
 									<div class="col-md-6">
 										<div class="row">
-											<div class="col-xs-5"><label>Kode Number:</label></div>
+											<div class="col-xs-5"><label>Kode User/Relawan:</label></div>
 											<!-- /.col-xs-5 -->
-											<div class="col-xs-7"><?php echo $user['num']; ?></div>
+											<div class="col-xs-7"><?php echo $user['user_kode']; ?></div>
 											<!-- /.col-xs-7 -->
 										</div>
 										<!-- /.row -->
@@ -78,16 +87,6 @@
 											<div class="col-xs-5"><label>Nama:</label></div>
 											<!-- /.col-xs-5 -->
 											<div class="col-xs-7"><?php echo $user['nama']; ?></div>
-											<!-- /.col-xs-7 -->
-										</div>
-										<!-- /.row -->
-									</div>
-									<!-- /.col-md-6 -->
-									<div class="col-md-6">
-										<div class="row">
-											<div class="col-xs-5"><label>Username:</label></div>
-											<!-- /.col-xs-5 -->
-											<div class="col-xs-7"><?php echo $user['username']; ?></div>
 											<!-- /.col-xs-7 -->
 										</div>
 										<!-- /.row -->
