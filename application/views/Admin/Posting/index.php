@@ -37,10 +37,10 @@
 						<thead>
 							<tr>
 								<th>#</th>
-								<th>Lokasi</th>
+								<th width="25%">Lokasi</th>
 								<th>Latitude</th>
 								<th>Longitude</th>
-								<th>Caption</th>
+								<th width="10%">Caption</th>
 								<th>Tanggal</th>
 								<th>Aksi</th>
 							</tr>
@@ -48,10 +48,10 @@
 						<tfoot>
 							<tr>
 								<th>#</th>
-								<th>Lokasi</th>
+								<th width="25%">Lokasi</th>
 								<th>Latitude</th>
 								<th>Longitude</th>
-								<th>Caption</th>
+								<th width="10%">Caption</th>
 								<th>Tanggal</th>
 								<th>Aksi</th>
 							</tr>
@@ -63,13 +63,15 @@
 							?>
 							<tr>
 								<td><?php echo $no++; ?></td>
-                                <td><?php echo $post['lokasi']; ?></td>
+                                <td style="word-wrap: break-word;"><?php echo $post['lokasi']; ?></td>
                                 <td><?php echo $post['lttd_loc']; ?></td>
                                 <td><?php echo $post['lgttd_loc']; ?></td>
                                 <td><?php echo $post['caption']; ?></td>
                                 <td><?php echo $post['tanggal']; ?></td>
 								<td>
                                     <a href="#" onClick="show_image(<?php echo $post['id_post']; ?>)" data-toggle="modal" data-target="#imageModal" data-image="<?php echo $post['nama_img']; ?>" id="showimage<?php $post['id_post']; ?>" class="btn btn-success btn-circle waves-effect waves-light" title="Show Image"><i class="ico fa fa-image"></i></a>
+                                    <a href="<?php echo base_url('posting/detail/').$post['id_post']; ?>" class="btn btn-primary btn-circle waves-effect waves-light" title="Show Post"><i class="ico fa fa-info"></i></a>
+                                    <a href="<?php echo base_url('posting/edit/').$post['id_post']; ?>" class="btn btn-primary btn-circle waves-effect waves-light" title="Show Post"><i class="ico fa fa-edit"></i></a>
                                     <a href="#" onClick="return hapus('<?php echo base_url('posting/hapus/').$post['id_post']; ?>');" class="btn btn-danger btn-circle waves-effect waves-light" title="Show Image"><i class="ico fa fa-times"></i></a>
                                 </td>
                             </tr>
@@ -130,6 +132,20 @@
 
 <!-- JAVASCRIPT -->
 <?php $this->load->view('Admin/include/js'); ?>
+<script>
+function show_image(id)
+{
+    var image = $('#showimage'+id).data('image');
+    $("#image").attr('src','<?php echo base_url('uploads/'); ?>'+image);
+}
+</script>
+<script>
+function hapus(url)
+{
+    $('#delete').attr('href', url);
+	$('#modalHapus').modal();
+}
+</script>
 <?php
 if($this->session->flashdata('sukses'))
 {
@@ -146,20 +162,6 @@ if($this->session->flashdata('gagal'))
 		</script>';
 }
 ?>
-<script type="text/javascript">
-function show_image(id)
-{
-    var image=$('#showimage'+id).data('image');
-    $("#image").attr('src','<?php echo base_url('uploads/'); ?>'+image);
-}
-</script>
-<script>
-function hapus(url)
-{
-    $('#delete').attr('href', url);
-	$('#modalHapus').modal();
-}
-</script>
 <!-- JAVASCRIPT -->
 </body>
 </html>

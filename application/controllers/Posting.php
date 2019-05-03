@@ -59,6 +59,62 @@ class Posting extends CI_Controller {
         }
     }
 
+    public function edit($id)
+    {
+        $post           = $this->Posting_model->detailPost($id)->row_array();
+        $data = array(
+            'post'      => $post,
+        );
+        $this->load->view('Admin/Posting/edit', $data);
+    }
+
+    public function p_edit()
+    {
+        // VALIDASI
+        $this->form_validation->set_rules('lokasi', 'Lokasi', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('latitude', 'Latitude', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('longitude', 'Longitude', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('caption', 'Caption', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('gambar', 'Gambar', 'trim|xss_clean');
+
+        // PESAN VALIDASI
+        $this->form_validation->set_message('required', 'Maaf! <b>%s</b> Tidak Boleh Kosong');
+
+        $id = $this->input->post('id');
+
+        $config = array(
+            'upload_path'           => './uploads/',
+            'allowed_types'         => 'jpg|png|jpeg',
+            'max_size'              => '2048',
+            'file_name'             => "POST_".date('Ymd')."_".date('His')."_".md5(date('Y-m-d H:i:s').time())."_"."admin",
+            'remove_space'          => TRUE,
+        );
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if($this->form_validation->run() == FALSE)
+        {
+            $this->load->view('Admin/Posting/tambah');
+        }
+        else
+        {
+            if($this->upload->do_upload('gambar'))
+            {
+                $path = FCPATH."./uploads/".$this->input->post('default');
+                unlink($path);
+                $this->posting->updatePost($id, $this->upload->data('file_name'));
+                $this->session->set_flashdata('sukses', 'Berhasil Mengubah Posting');
+                redirect(base_url('posting'));
+            }
+            else
+            {
+                $this->Posting_model->updatePost($id, $this->input->post('default'));
+                $this->session->set_flashdata('sukses', 'Berhasil Mengubah Posting');
+                redirect(base_url('posting'));
+            }            
+        }
+    }
+
     public function hapus($id)
     {
         $data = $this->Posting_model->detailPost($id)->row_array();
@@ -68,6 +124,15 @@ class Posting extends CI_Controller {
         $this->Posting_model->deletePost($id, $gambar);
         $this->session->set_flashdata('sukses', 'Berhasil Menghapus Posting');
         redirect(base_url('posting'));
+    }
+
+    public function detail($id)
+    {
+        $post           = $this->Posting_model->detailPost($id)->row_array();
+        $data = array(
+            'post'      => $post,
+        );
+        $this->load->view('Admin/Posting/detail', $data);
     }
 
     public function validasi_gambar()
