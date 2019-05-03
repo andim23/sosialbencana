@@ -27,6 +27,8 @@
 <div id="wrapper">
 	<div class="main-content">
 		<!-- ROW -->
+		<button onclick="getLocation()">Try It</button>
+		<p id="demo"></p>
 		<div class="row small-spacing">
 			<!-- STATISTIK ATAS -->
 			<div class="col-lg-4 col-md-6 col-xs-12">
@@ -57,37 +59,6 @@
 				</div>
 			</div>
 			<!-- STATISTIK ATAS -->
-
-			<!-- STATISTIK PERSENTASE -->
-			<div class="col-lg-6 col-md-6 col-xs-12">
-				<div class="box-content">
-					<h4 class="box-title">User Aktif (Persen / %)</h4>
-					<div class="text-center">
-						<?php
-						$persenAktif = ($aktif / $user)*100;
-						?>
-						<div class="knob-wrap">
-							<input class="knob" data-width="150" data-height="150" data-bgColor="#ebeff2" data-fgColor="#304ffe" data-readOnly=true data-thickness=".4" value="<?php echo round($persenAktif, 2); ?>"  />
-						</div>
-						<!-- .knob-wrap -->
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-6 col-xs-12">
-				<div class="box-content">
-					<h4 class="box-title">User Tidak Aktif (Persen / %)</h4>
-					<div class="text-center">
-						<?php
-						$persenTidakAktif = ($tidakAktif / $user)*100;
-						?>
-						<div class="knob-wrap">
-							<input class="knob" data-width="150" data-height="150" data-bgColor="#ebeff2" data-fgColor="#304ffe" data-readOnly=true data-thickness=".4" value="<?php echo round($persenTidakAktif, 2); ?>"  />
-						</div>
-						<!-- .knob-wrap -->
-					</div>
-				</div>
-			</div>
-			<!-- STATISTIK PERSENTASE -->
 
 			<!-- ACTIVITY -->
 			<div class="col-md-6 col-xs-12">
@@ -143,6 +114,39 @@
 
 <!-- JAVASCRIPT -->
 <?php $this->load->view('Admin/include/js'); ?>
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+
+function showError(error) {
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      x.innerHTML = "User denied the request for Geolocation."
+      break;
+    case error.POSITION_UNAVAILABLE:
+      x.innerHTML = "Location information is unavailable."
+      break;
+    case error.TIMEOUT:
+      x.innerHTML = "The request to get user location timed out."
+      break;
+    case error.UNKNOWN_ERROR:
+      x.innerHTML = "An unknown error occurred."
+      break;
+  }
+}
+</script>
 <!-- JAVASCRIPT -->
 </body>
 </html>

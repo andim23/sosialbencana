@@ -14,7 +14,7 @@
 			</ul>
 		</li>
 		<li class="">
-			<a class="waves-effect" href="<?php echo base_url('Admin/post'); ?>"><i class="menu-icon mdi mdi-airballoon"></i><span>Posting</span></a>
+			<a class="waves-effect" href="<?php echo base_url('posting'); ?>"><i class="menu-icon mdi mdi-airballoon"></i><span>Posting</span></a>
 		</li>
 	</ul>
 </div>

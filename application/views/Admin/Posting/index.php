@@ -26,90 +26,51 @@
 <div id="wrapper">
 	<div class="main-content">
 		<div class="row small-spacing">
-			<div class="col-lg-6 col-md-6 col-sm-12">
-				<div class="box-content bg-success text-white">
-					<div class="statistics-box with-icon">
-						<i class="ico small fa fa-user"></i>
-						<p class="text text-white">USER AKTIF (%)</p>
-						<h2 class="counter"><?php echo $useraktif/$jumlahuser*100; ?></h2>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-6 col-sm-12">
-				<div class="box-content bg-danger text-white">
-					<div class="statistics-box with-icon">
-						<i class="ico small fa fa-user"></i>
-						<p class="text text-white">USER TIDAK AKTIF (%)</p>
-						<h2 class="counter"><?php echo $usertidakaktif/$jumlahuser*100; ?></h2>
-					</div>
-				</div>
-			</div>
             <div class="col-lg-12">
 				<!-- BOX CONTENT -->
 				<div class="box-content">
-					<h4 class="box-title">Data User</h4>
+					<h4 class="box-title">Data Posting</h4>
 					<div class="dropdown js__drop_down">
-                        <a href="<?php echo base_url('user/tambah'); ?>" class="btn btn-xs btn-primary btn-icon btn-icon-left waves-effect waves-light"><i class="ico fa fa-plus"></i> Tambah Data</a>
+                        <a href="<?php echo base_url('posting/tambah'); ?>" class="btn btn-xs btn-primary btn-icon btn-icon-left waves-effect waves-light"><i class="ico fa fa-plus"></i> Tambah Data</a>
 					</div>
 					<table id="example" class="table table-striped table-bordered display" style="width:100%">
 						<thead>
 							<tr>
 								<th>#</th>
-								<th>Kode Relawan/User</th>
-								<th>Email</th>
-								<th>Level</th>
-								<th>Status</th>
-								<th>Tanggal Daftar</th>
+								<th>Lokasi</th>
+								<th>Latitude</th>
+								<th>Longitude</th>
+								<th>Caption</th>
+								<th>Tanggal</th>
 								<th>Aksi</th>
 							</tr>
 						</thead>
 						<tfoot>
 							<tr>
 								<th>#</th>
-								<th>Kode Relawan/User</th>
-								<th>Email</th>
-								<th>Level</th>
-								<th>Status</th>
-								<th>Tanggal Daftar</th>
+								<th>Lokasi</th>
+								<th>Latitude</th>
+								<th>Longitude</th>
+								<th>Caption</th>
+								<th>Tanggal</th>
 								<th>Aksi</th>
 							</tr>
 						</tfoot>
 						<tbody>
 							<?php
 							$no = 1;
-							foreach($user as $user) {
+							foreach($post as $post) {
 							?>
 							<tr>
 								<td><?php echo $no++; ?></td>
-								<td><?php echo $user['user_kode']; ?></td>
-								<td><?php echo $user['email']; ?></td>
+                                <td><?php echo $post['lokasi']; ?></td>
+                                <td><?php echo $post['lttd_loc']; ?></td>
+                                <td><?php echo $post['lgttd_loc']; ?></td>
+                                <td><?php echo $post['caption']; ?></td>
+                                <td><?php echo $post['tanggal']; ?></td>
 								<td>
-									<?php
-									foreach($level as $lev)
-									{
-										echo $lev['kode_level'] == $user['id_level'] ? $lev['level'] : '';
-									}
-									?>
-								</td>
-								<td>
-									<?php
-									foreach($status as $s)
-									{
-										echo $s['kode_status'] == $user['id_status'] ? $s['nama_status'] : '';
-									}
-									?>
-								</td>
-								<td><?php echo $user['tanggal']; ?></td>
-								<td>
-									<div class="btn-group margin-top-10">
-										<button type="button" class="btn btn-xs btn-block btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi <span class="caret"></span></button> 
-										<ul class="dropdown-menu dropdown-menu-right">
-											<li><a href="<?php echo base_url('user/detail/').$user['user_kode']; ?>">Detail Data</a></li>
-											<li><a href="<?php echo base_url('user/edit/').$user['user_kode']; ?>">Ubah Data</a></li>
-											<li role="separator" class="divider"></li>
-											<li><a href="javascript:void(0);" class="item-hapus" onClick="return hapus('<?php echo base_url('user/hapus/').$user['user_kode']; ?>');">Hapus Data</a></li>
-										</ul>
-									</div>
+                                    <a href="#" onClick="show_image(<?php echo $post['id_post']; ?>)" data-toggle="modal" data-target="#imageModal" data-image="<?php echo $post['nama_img']; ?>" id="showimage<?php $post['id_post']; ?>" class="btn btn-success btn-circle waves-effect waves-light" title="Show Image"><i class="ico fa fa-image"></i></a>
+                                    <a href="#" onClick="return hapus('<?php echo base_url('posting/hapus/').$post['id_post']; ?>');" class="btn btn-danger btn-circle waves-effect waves-light" title="Show Image"><i class="ico fa fa-times"></i></a>
                                 </td>
                             </tr>
 							<?php } ?>
@@ -128,14 +89,31 @@
 	<!-- /.main-content -->
 </div><!--/#wrapper -->
 
-<!-- MODAL -->		
-<!--MODAL HAPUS-->
+<!-- MODAL -->
+<!-- MODAL IMAGE -->
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="defaultModalLabel">Show Image</h4>
+            </div>
+            <div class="modal-body">
+                <img src="" name="image" class="img-responsive postimg" id="image">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL IMAGE -->
+<!-- MODAL HAPUS -->
 <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">Hapus User</h4>
+				<h4 class="modal-title" id="myModalLabel">Hapus Posting</h4>
 			</div>
 			<div class="modal-body">
 				<p>Apakah Anda Yakin Ingin Menghapus Data?</p>
@@ -168,6 +146,13 @@ if($this->session->flashdata('gagal'))
 		</script>';
 }
 ?>
+<script type="text/javascript">
+function show_image(id)
+{
+    var image=$('#showimage'+id).data('image');
+    $("#image").attr('src','<?php echo base_url('uploads/'); ?>'+image);
+}
+</script>
 <script>
 function hapus(url)
 {

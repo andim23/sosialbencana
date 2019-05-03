@@ -13,13 +13,19 @@ class User extends CI_Controller {
     
     public function index()
     {
-        $user       = $this->User_model->getUser()->result_array();
-        $level      = $this->Level_model->getLevel()->result_array();
-        $status     = $this->Status_model->getStatus()->result_array();
+        $user           = $this->User_model->getUser()->result_array();
+        $level          = $this->Level_model->getLevel()->result_array();
+        $status         = $this->Status_model->getStatus()->result_array();
+        $jumlahuser     = $this->User_model->getUser()->num_rows();
+        $useraktif      = $this->User_model->userAktif()->num_rows();
+        $usertidakaktif = $this->User_model->userTidakAktif()->num_rows();
         $data = array(
-            'user'      => $user,
-            'level'     => $level,
-            'status'    => $status,
+            'user'              => $user,
+            'level'             => $level,
+            'status'            => $status,
+            'jumlahuser'        => $jumlahuser,
+            'useraktif'         => $useraktif,
+            'usertidakaktif'    => $usertidakaktif,
         );
         $this->load->view('Admin/User/index', $data);
     }

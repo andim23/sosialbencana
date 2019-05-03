@@ -82,4 +82,16 @@ class User_model extends CI_Model {
         $this->db->where('user_kode', $where);
         return $this->db->get('user');
     }
+
+    public function userAktif()
+    {
+        $this->db->where('id_status', 1);
+        return $this->db->get('user');
+    }
+
+    public function userTidakAktif()
+    {
+        $this->db->where('id_status', 2);
+        return $this->db->get('user');
+    }
 }
