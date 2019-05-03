@@ -51,7 +51,7 @@ class Auth extends CI_Controller {
                         if($data['id_level'] == '1')
                         {
                             $session = array(
-                                'username' => $data['username'],
+                                'user_kode' => $data['user_kode'],
                                 'email' => $data['email'],
                                 'level' => 'Admin',
                             );
@@ -61,7 +61,7 @@ class Auth extends CI_Controller {
                         if($data['id_level'] == '2')
                         {
                             $session = array(
-                                'username' => $data['username'],
+                                'user_kode' => $data['user_kode'],
                                 'email' => $data['email'],
                                 'level' => 'Relawan',
                             );
@@ -97,7 +97,7 @@ class Auth extends CI_Controller {
     public function prosesregister()
     {
         // VALIDASI
-        $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean|is_unique[user.username]');
+        $this->form_validation->set_rules('user_kode', 'Username', 'trim|required|xss_clean|is_unique[user.username]');
         $this->form_validation->set_rules('email', 'Email Address', 'trim|required|xss_clean|valid_email|valid_emails|is_unique[user.email]');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|min_length[8]');
         $this->form_validation->set_rules('konfirmasi', 'Konfirmasi Password', 'trim|required|xss_clean|matches[password]');

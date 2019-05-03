@@ -40,7 +40,7 @@ class Posting extends CI_Controller {
             'upload_path'           => './uploads/',
             'allowed_types'         => 'jpg|png|jpeg',
             'max_size'              => '2048',
-            'file_name'             => "POST_".date('Ymd')."_".date('His')."_".md5(date('Y-m-d H:i:s').time())."_"."admin",
+            'file_name'             => "POST_".date('Ymd')."_".date('His')."_".md5(date('Y-m-d H:i:s').time())."_".$this->session->userdata('user_kode'),
             'remove_space'          => TRUE,
         );
         $this->load->library('upload', $config);
@@ -86,7 +86,7 @@ class Posting extends CI_Controller {
             'upload_path'           => './uploads/',
             'allowed_types'         => 'jpg|png|jpeg',
             'max_size'              => '2048',
-            'file_name'             => "POST_".date('Ymd')."_".date('His')."_".md5(date('Y-m-d H:i:s').time())."_"."admin",
+            'file_name'             => "POST_".date('Ymd')."_".date('His')."_".md5(date('Y-m-d H:i:s').time())."_".$this->session->userdata('user_kode'),
             'remove_space'          => TRUE,
         );
         $this->load->library('upload', $config);
@@ -102,7 +102,7 @@ class Posting extends CI_Controller {
             {
                 $path = FCPATH."./uploads/".$this->input->post('default');
                 unlink($path);
-                $this->posting->updatePost($id, $this->upload->data('file_name'));
+                $this->Posting_model->updatePost($id, $this->upload->data('file_name'));
                 $this->session->set_flashdata('sukses', 'Berhasil Mengubah Posting');
                 redirect(base_url('posting'));
             }

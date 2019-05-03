@@ -28,7 +28,7 @@ class Posting_model extends CI_Model {
             'caption'       => $this->input->post('caption'),
             'tanggal'       => date('Y-m-d'),
             'waktu'         => date('H:i:s'),
-            'user_kode'     => 'admin',
+            'user_kode'     => $this->session->userdata('user_kode'),
         );
         return $this->db->insert('post', $data);
     }
@@ -44,7 +44,7 @@ class Posting_model extends CI_Model {
             'caption'       => $this->input->post('caption'),
             'tanggal'       => date('Y-m-d'),
             'waktu'         => date('H:i:s'),
-            'user_kode'     => 'admin',
+            'user_kode'     => $this->session->userdata('user_kode'),
         );
         $this->db->where('id_post', $where);
         return $this->db->update('post', $data);

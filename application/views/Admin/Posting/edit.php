@@ -28,7 +28,7 @@
 				<div class="col-12">
 					<div class="box-content">
 					    <?php echo form_open('posting/p_edit', array('enctype' => 'multipart/form-data','id'=>'form_validation')); ?>
-                        <input type="text" name="id" value="<?php echo $post['id_post']; ?>">
+                        <input type="hidden" name="id" value="<?php echo $post['id_post']; ?>">
                         <div class="form-group">
                             <label for="inputNama" class="control-label">Lokasi</label>
                             <input type="text" class="form-control" id="lokasi" name="lokasi" value="<?php echo set_value('lokasi', $post['lokasi']); ?>">
@@ -61,7 +61,7 @@
                         <div class="form-group">
                             <label for="inputNama" class="control-label">Gambar</label>
                             <input type="file" class="form-control" id="gambar" name="gambar" placeholder="Pilih Gambar">
-                            <input type="text" name="default" value="<?php echo set_value('default', $post['nama_img']); ?>">
+                            <input type="hidden" name="default" value="<?php echo set_value('default', $post['nama_img']); ?>">
                             <?php echo form_error('gambar', '<p class="text-danger">', '</p>'); ?>
                         </div>
                         <div class="form-group">
