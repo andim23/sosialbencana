@@ -3,18 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin_model extends CI_Model {
 
-    public function __construct(){
-        $this->load->database();
-    }
-
-    public function userPosting($where)
+    public function activityUser()
     {
-        $this->db->where('username', $where);
+        $this->db->select('lokasi, caption, tanggal, waktu, user_kode');
+        $this->db->order_by('id_post', 'DESC');
+        $this->db->limit(5,0);
         return $this->db->get('post');
-    }
-
-    public function insert($table,$data)
-    {
-        return $this->db->insert($table, $data);
     }
 }

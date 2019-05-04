@@ -29,7 +29,7 @@
 		<!-- ROW -->
 		<div class="row small-spacing">
 			<!-- STATISTIK ATAS -->
-			<div class="col-lg-4 col-md-6 col-xs-12">
+			<div class="col-lg-6 col-md-6 col-xs-12">
 				<div class="box-content bg-success text-white">
 					<div class="statistics-box with-icon">
 						<i class="ico small fa fa-user"></i>
@@ -38,16 +38,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-4 col-md-6 col-xs-12">
-				<div class="box-content bg-info text-white">
-					<div class="statistics-box with-icon">
-						<i class="ico small fa fa-heart"></i>
-						<p class="text text-white">REACTION</p>
-						<h2 class="counter"><?php echo $react; ?></h2>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6 col-xs-12">
+			<div class="col-lg-6 col-md-6 col-xs-12">
 				<div class="box-content bg-danger text-white">
 					<div class="statistics-box with-icon">
 						<i class="ico small fa fa-line-chart"></i>
@@ -66,18 +57,28 @@
 					<div class="card-content">
 						<!-- ACTIVITY LIST -->
 						<div class="activity-list">
+							<?php
+							foreach($activity as $a):
+							?>
 							<div class="activity-item">
-								<div class="bar bg-primary">
-									<div class="dot bg-primary"></div>
+								<?php
+								$arr = array("primary", "success", "danger", "warning", 'info', 'violet');
+								$random = array_rand($arr, 2);
+								?>
+								<div class="bar bg-<?php echo $arr[$random[0]]; ?>">
+									<div class="dot bg-<?php echo $arr[$random[0]]; ?>"></div>
 								</div>
 								<div class="content">
-									<div class="date">10 min</div>
+									<div class="date"><?php echo $a['tanggal']." ".$a['waktu']; ?></div>
 									<!-- /.date -->
 									<div class="text">
-										Harry has finished "Amaza HTML" task
+										Kejadian <b><?php echo $a['caption']; ?></b> di <?php echo $a['lokasi']; ?> oleh <b><?php echo $a['user_kode']; ?></b>
 									</div>
 								</div>
 							</div>
+							<?php
+							endforeach;
+							?>
 						</div>
 						<!-- ACTIVITY LIST -->
 						<a href="#" class="activity-link">View all activity <i class="fa fa-angle-down"></i></a>
