@@ -22,3 +22,6 @@
 <script src="<?php echo base_url(); ?>asset/admin/plugin/validator/validator.min.js"></script>
 <!-- Main JS -->
 <script src="<?php echo base_url(); ?>asset/admin/scripts/main.min.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDzzJaFsDRXfieIdatYMb-PHl6Z7-UUC4"></script>
+
+<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
