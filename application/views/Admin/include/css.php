@@ -19,4 +19,8 @@
 <link rel="stylesheet" href="<?php echo base_url(); ?>asset/admin/plugin/datatables/media/css/dataTables.bootstrap.min.css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>asset/admin/plugin/datatables/extensions/Responsive/css/responsive.bootstrap.min.css">
 
-<link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
+<!-- <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css"> -->
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"/>
+<!-- <link rel="stylesheet" href="<?php echo base_url(); ?>asset/admin/plugin/leaflet/leaflet.css"> -->
+<!-- <link rel="stylesheet" href="<?php echo base_url(); ?>asset/admin/plugin/leaflet/leaflet.js"> -->

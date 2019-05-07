@@ -89,7 +89,7 @@
 									<div id="map"></div>
 								</div>
                                 <div class="mapContainer">
-									<div id="map2" class="map"></div>
+									<div id="map2" class="map2"></div>
 								</div>
                                 <div class="clear-fix"><br></div>
 							</div>
@@ -136,23 +136,26 @@
 			marker.setMap(map);
 		}
 		google.maps.event.addDomListener(window, 'load', initialize);
+// leaflett
+    var map = L.map('map2').setView([<?php echo $post['lttd_loc']; ?>, <?php echo $post['lgttd_loc']; ?>], 12);
 
-	</script>
-
-<script type="text/javascript">
-      var map = new ol.Map({
-        target: 'map2',
-        layers: [
-          new ol.layer.Tile({
-            source: new ol.source.OSM()
-          })
-        ],
-        view: new ol.View({
-          center: ol.proj.fromLonLat([<?php echo $post['lgttd_loc']; ?>, <?php echo $post['lttd_loc']; ?>]),
-          zoom: 10
-        })
-      });
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    
+    // ini adalah koordinat marker 
+    L.marker([<?php echo $post['lttd_loc']; ?>, <?php echo $post['lgttd_loc']; ?>]).addTo(map)
+    .bindPopup("<b>Selamat Datang!</b> Posisi gambar disini.").openPopup();
+    
+    var popup = L.popup();
+    function onMapClick(e) {
+        popup
+        .setLatLng(e.latlng);
+    }
+    map.on('click', onMapClick);
+    
     </script>
+
 	<!-- JAVASCRIPT -->
 </body>
 
