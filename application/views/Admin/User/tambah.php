@@ -34,11 +34,11 @@
                     <h4 class="box-title">Form User</h4>
                     <!-- CARD -->
 					<div class="card-content">
-						<?php echo form_open('admin/pt_user', array('autocomplete' => 'off')); ?>
+						<?php echo form_open('user/p_tambah', array('autocomplete' => 'off')); ?>
 							<div class="form-group">
-								<label>Username</label>
-								<input type="text" class="form-control" name="username" id="username" placeholder="Masukkan Username" value="<?php echo set_value('username'); ?>">
-								<?php echo form_error('username', '<p class="text-danger">', '</p>'); ?>
+								<label>Kode User/Relawan</label>
+								<input type="text" class="form-control" name="user_kode" id="user_kode" placeholder="Masukkan Kode User/Relawan" value="<?php echo set_value('user_kode'); ?>">
+								<?php echo form_error('user_kode', '<p class="text-danger">', '</p>'); ?>
 							</div>
 							<div class="form-group">
 								<label>Email Address</label>
@@ -93,7 +93,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="<?php echo base_url('admin/user'); ?>" class="btn btn-danger btn-sm"><i class="fa fa-rotate-left"></i> KEMBALI</a>
+                            <a href="<?php echo base_url('user'); ?>" class="btn btn-danger btn-sm"><i class="fa fa-rotate-left"></i> KEMBALI</a>
 							<button type="submit" class="btn btn-primary btn-sm waves-effect waves-light">PROSES</button>
 						<?php echo form_close(); ?>
 					</div>

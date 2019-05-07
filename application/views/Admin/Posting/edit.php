@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title><?php echo SITE_NAME . ": " . ucfirst($this->uri->segment(1)); ?></title>
+	<?php $this->load->view('Admin/include/css'); ?>
+</head>
+
+<body>
+    <div class="main-menu">
+        <header class="header">
+            <?php $this->load->view('Admin/include/header'); ?>
+        </header>
+        <div class="content">
+            <!-- SIDEBAR -->
+            <?php $this->load->view('Admin/include/sidebar'); ?>
+            <!-- SIDEBAR -->
+        </div>
+    </div>
+
+	<div class="fixed-navbar">
+	    <?php $this->load->view('Admin/include/navbar'); ?>
+    </div>
+
+	<div id="wrapper">
+		<div class="main-content">
+			<div class="row small-spacing">
+				<div class="col-12">
+					<div class="box-content">
+					    <?php echo form_open('posting/p_edit', array('enctype' => 'multipart/form-data','id'=>'form_validation')); ?>
+                        <input type="hidden" name="id" value="<?php echo $post['id_post']; ?>">
+                        <div class="form-group">
+                            <label for="inputNama" class="control-label">Lokasi</label>
+                            <input type="text" class="form-control" id="lokasi" name="lokasi" value="<?php echo set_value('lokasi', $post['lokasi']); ?>">
+                            <?php echo form_error('lokasi', '<p class="text-danger">', '</p>'); ?>
+                        </div>
+                        <button type="button" onClick="getLocation()" class="btn btn-primary" >Dapatkan Lokasi Sekarang</button>
+                        <p id="result"></p>
+                        <div class="row small-spacing">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Latitude</label>
+                                    <input type="text" class="form-control" id="latitude" name="latitude" value="<?php echo set_value('latitude', $post['lttd_loc']); ?>" readonly>
+                                    <?php echo form_error('latitude', '<p class="text-danger">', '</p>'); ?>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Longitude</label>
+                                    <input type="text" class="form-control" id="longitude" name="longitude" value="<?php echo set_value('longitude', $post['lgttd_loc']); ?>" readonly>
+                                    <?php echo form_error('longitude', '<p class="text-danger">', '</p>'); ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputNama" class="control-label">Caption</label>
+                            <textarea type="text" class="form-control" id="caption" name="caption"><?php echo $post['caption']; ?></textarea>
+                            <?php echo form_error('caption', '<p class="text-danger">', '</p>'); ?>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inputNama" class="control-label">Gambar</label>
+                            <input type="file" class="form-control" id="gambar" name="gambar" placeholder="Pilih Gambar">
+                            <input type="hidden" name="default" value="<?php echo set_value('default', $post['nama_img']); ?>">
+                            <?php echo form_error('gambar', '<p class="text-danger">', '</p>'); ?>
+                        </div>
+                        <div class="form-group">
+                            <a href="<?php echo base_url('posting'); ?>" class="btn btn-danger"><i class="fa fa-rotate-left"></i> KEMBALI</a>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                        </div>
+                        <?php echo form_close(); ?>
+					</div>
+				</div>
+			</div>
+
+			<footer class="footer">
+                <?php $this->load->view('Admin/include/footer'); ?>
+			</footer>
+		</div>
+	</div>
+
+
+<!-- JAVASCRIPT -->
+<?php $this->load->view('Admin/include/js'); ?>
+<script>
+var x = document.getElementById("result");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    alert("Lokasi Tidak Ditemukan");
+  }
+}
+
+function showPosition(position) {
+    $("#latitude").val(position.coords.latitude);
+    $("#longitude").val(position.coords.longitude);
+}
+</script>
+<!-- JAVASCRIPT -->
+</body>
+
+</html>

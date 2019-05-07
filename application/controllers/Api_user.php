@@ -6,15 +6,15 @@ class Api_user extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-        $this->load->model('Api_model');
+        $this->load->model('Home_model');
     }
 
-    public function login_api()
+    public function post()
     {
-        $data1 = $this->Api_model->getuser()->result();
-        if($data1)
+        $post = $this->Home_model->dataPost()->result();
+        if($post)
         {
-            echo json_encode(array('result' => $data1), TRUE);    
+            echo json_encode(array('result' => $post), TRUE);    
         }
         else
         {
@@ -23,20 +23,5 @@ class Api_user extends CI_Controller {
                 'message' => 'Data Kosong'
             ));
         }
-    }
-
-    public function posting_api()
-    {
-        $data = array(
-            'nama_img'=>$this->input->post(''),
-            'tipe_img'=>$this->input->post(''),
-            'size_img'=>$this->input->post(''),
-            'slug_post'=>$this->input->post(''),
-            'lttd_img'=>$this->input->post(''),
-            'lgttd_img'=>$this->input->post(''),
-            'lokasi'=>$this->input->post(''),
-            'lttd_log'=>$this->input->post(''),
-            'lgttd_log'=>$this->input->post('')
-        );
     }
 }

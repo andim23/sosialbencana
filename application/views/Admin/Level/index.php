@@ -60,12 +60,7 @@ if($this->session->flashdata('gagal'))
 					</h4>
 					<!-- /.box-title -->
 					<div class="card-content js__card_content">
-						<?php echo form_open('admin/pt_leveluser', array('autocomplete' => 'off')); ?>
-							<div class="form-group">
-								<label>Kode</label>
-								<input type="text" class="form-control" name="kode" value="<?php echo set_value('kode', $jumlahlevel); ?>">
-								<?php echo form_error('kode', '<p class="text-danger">', '</p>'); ?>
-							</div>
+						<?php echo form_open('level/p_tambah', array('autocomplete' => 'off')); ?>
 							<div class="form-group">
 								<label>Nama Level</label>
 								<input type="text" class="form-control" name="level" placeholder="Masukkan Nama Level" value="<?php echo set_value('level'); ?>">
@@ -91,12 +86,8 @@ if($this->session->flashdata('gagal'))
 					</h4>
 					<!-- /.box-title -->
 					<div class="card-content js__card_content">
-						<?php echo form_open('admin/pu_leveluser', array('autocomplete' => 'off')); ?>
-							<div class="form-group">
-								<label>Kode</label>
-								<input type="text" class="form-control" name="kode" id="kode" placeholder="Masukkan Kode Level" value="<?php echo set_value('kode'); ?>" readonly>
-								<?php echo form_error('kode', '<p class="text-danger">', '</p>'); ?>
-							</div>
+						<?php echo form_open('level/p_edit', array('autocomplete' => 'off')); ?>
+                            <input type="hidden" class="form-control" name="kode_level" id="kode_level" placeholder="Masukkan Kode Level" value="<?php echo set_value('kode_level'); ?>" readonly>
 							<div class="form-group">
 								<label>Nama Level</label>
 								<input type="text" class="form-control" name="level" id="level" placeholder="Masukkan Nama Level" value="<?php echo set_value('level'); ?>">
@@ -145,9 +136,7 @@ if($this->session->flashdata('gagal'))
 									<div class="btn-group margin-top-10">
 										<button type="button" class="btn btn-xs btn-block btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi <span class="caret"></span></button> 
 										<ul class="dropdown-menu dropdown-menu-right">
-											<li><a href="<?php echo base_url('admin/user/edit/1').$level['kode_level']; ?>">Ubah Data</a></li>
-											<li role="separator" class="divider"></li>
-											<li><a href="javascript:void(0);" class="item-hapus" onClick="return hapus('<?php echo base_url('admin/hapusleveluser/').$level['kode_level']; ?>');">Hapus Data</a></li>
+											<li><a href="javascript:void(0);" class="item-hapus" onClick="return hapus('<?php echo base_url('level/hapus/').$level['kode_level']; ?>');">Hapus Data</a></li>
 										</ul>
 									</div>
                                 </td>
@@ -206,7 +195,7 @@ for(var i=1; i<table.rows.length; i++)
 {
     table.rows[i].onclick = function()
     {
-        document.getElementById("kode").value = this.cells[1].innerHTML;
+        document.getElementById("kode_level").value = this.cells[1].innerHTML;
         document.getElementById("level").value = this.cells[2].innerHTML;
     };
 }

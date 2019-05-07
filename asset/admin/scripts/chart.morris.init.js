@@ -149,7 +149,7 @@
 					data: MorrisChart.lines.data,
 					xkey: 'x',
 					ykeys: ['y', 'z'],
-					labels: ['Upload', 'Download'],
+					labels: ['Upload'],
 					lineColors: [
 						'#fcb03b',
 						'#ea65a2'
