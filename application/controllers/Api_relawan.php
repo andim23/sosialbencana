@@ -57,10 +57,11 @@ class Api_relawan extends CI_Controller {
         {
             $imagedata = $this->input->post('image_data');
             $imagename = "POST_".date('Ymd')."_".date('His')."_".md5(date('Y-m-d H:i:s').time())."_".$this->input->post('user_kode');
-            $imagepath = "uploads/$imagename.jpg";
+            $imagepath1 = "$imagename.jpg";
+            $imagepath2 = "uploads/$imagepath1";
             
-            file_put_contents($imagepath, base64_decode($imagedata));
-            if($this->Admin_model->insert($imagepath))
+            file_put_contents($imagepath2, base64_decode($imagedata));
+            if($this->Apirelawan->createPost($imagepath1, $imagepath2))
             {
                 echo "Berhasil Menambahkan Data";
             }
@@ -72,6 +73,25 @@ class Api_relawan extends CI_Controller {
         else
         {
             echo "Gagal Menambahkan Data";
+        }
+    }
+
+    public function register()
+    {
+        if($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+            if($this->Apirelawan->registerRelawan())
+            {
+                echo "Berhasil Registasi. Mohon Menunggu";
+            }
+            else
+            {
+                echo "Gagal Registrasi";
+            }
+        }
+        else
+        {
+            echo "Gagal";
         }
     }
 }

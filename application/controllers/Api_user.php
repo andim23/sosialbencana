@@ -6,12 +6,12 @@ class Api_user extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-        $this->load->model('Home_model');
+        $this->load->model('ApiUser_model', 'apiuser');
     }
 
     public function post()
     {
-        $post = $this->Home_model->dataPost()->result();
+        $post = $this->apiuser->getPost()->result();
         if($post)
         {
             echo json_encode(array('result' => $post), TRUE);    
