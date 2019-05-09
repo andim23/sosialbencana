@@ -13,7 +13,7 @@ class Home extends CI_Controller {
 	{
 		$data = array('title' => 'Sosial Bencana',
 									// '' => ,
-									'isi' => 'home/index'
+									'isi' => 'Home/index'
 								);
 		$this->load->view('layout/file',$data,FALSE);
 	}
@@ -22,26 +22,26 @@ class Home extends CI_Controller {
 	{
 		$data = array('title' => 'Sosial Bencana',
 									// '' => ,
-									'isi' => 'home/contact'
+									'isi' => 'Home/contact'
 								);
 		$this->load->view('layout/file',$data,FALSE);
 	}
 
 	public function login()
 	{
-		$this->load->view('home/login');
+		$this->load->view('Home/login');
 	}
 
 	public function register()
 	{
-		$this->load->view('home/register');
+		$this->load->view('Home/register');
 	}
 
 	public function konfirmasi()
 	{
 		$data = array('title' => 'Sosial Bencana',
 									// '' => ,
-									'isi' => 'home/konfirmasi'
+									'isi' => 'Home/konfirmasi'
 								);
 		$this->load->view('layout/file',$data,FALSE);
 	}

@@ -85,9 +85,6 @@
 								</table>
 								<!-- TABEL -->
 
-								<div class="mapContainer">
-									<div id="map"></div>
-								</div>
                                 <div class="mapContainer">
 									<div id="map2" class="map2"></div>
 								</div>
@@ -117,26 +114,7 @@
 	<?php $this->load->view('Admin/include/js'); ?>
 
 	<script>
-		var myCenter = new google.maps.LatLng( <?php echo $post['lttd_loc']; ?> , <?php echo $post['lgttd_loc']; ?> );
-
-		function initialize() {
-			var mapProp = {
-				center: myCenter,
-				zoom: 10,
-				mapTypeId: google.maps.MapTypeId.ROADMAP
-			};
-
-			var map = new google.maps.Map(document.getElementById("map"), mapProp);
-
-			var marker = new google.maps.Marker({
-				position: myCenter,
-				animation: google.maps.Animation.BOUNCE
-			});
-
-			marker.setMap(map);
-		}
-		google.maps.event.addDomListener(window, 'load', initialize);
-// leaflett
+	// leaflett
     var map = L.map('map2').setView([<?php echo $post['lttd_loc']; ?>, <?php echo $post['lgttd_loc']; ?>], 12);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
