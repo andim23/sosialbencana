@@ -1,19 +1,3 @@
-<?php
-if($this->session->flashdata('sukses'))
-{
-	echo '<script src="'.base_url('asset/home/js/sweetalert2.all.min.js').'"></script>';
-	echo '<script>
-			swal("'.$this->session->flashdata('sukses').'", "", "success");
-		</script>';
-}
-if($this->session->flashdata('gagal'))
-{
-	echo '<script src="'.base_url('asset/home/js/sweetalert2.all.min.js').'"></script>';
-	echo '<script>
-			swal("'.$this->session->flashdata('gagal').'", "", "error");
-		</script>';
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,8 +34,8 @@ if($this->session->flashdata('gagal'))
                         <?php echo form_open('auth/proseslogin'); ?>
                             <div class="form-group">
                                 <!-- <label>Email address</label> -->
-                                <input type="email" name="email" class="form-control <?php echo form_error('email') ? 'is-invalid' : '' ?>" placeholder="Email Address" value="<?php echo set_value('email'); ?>">
-                                <?php echo form_error('email', '<p class="text-white">', '</p>'); ?>
+                                <input type="text" name="user_kode" class="form-control <?php echo form_error('user_kode') ? 'is-invalid' : '' ?>" placeholder="Kode Relawan/User" value="<?php echo set_value('user_kode'); ?>">
+                                <?php echo form_error('user_kode', '<p class="text-white">', '</p>'); ?>
                             </div>
                             <div class="form-group">
                                 <!-- <label>Password</label> -->
@@ -62,7 +46,7 @@ if($this->session->flashdata('gagal'))
                         <?php echo form_close(); ?>
                     </div>
                     <div class="auth-footer">
-                        <p><a href="<?php echo base_url('register'); ?>" class="mr-auto">Create Account</a> <a href="" class="ml-auto">Lupa Password</a> </p>
+                        <p><a href="" class="ml-auto">Lupa Password</a> </p>
                     </div>
                 </div>
             </div>
@@ -73,6 +57,20 @@ if($this->session->flashdata('gagal'))
 <script src="<?php echo base_url('asset/home/js/jquery.min.js'); ?>"></script>
 <script src="<?php echo base_url('asset/home/js/bootstrap.min.js'); ?>"></script>
 <script src="<?php echo base_url('asset/home/js/sweetalert2.all.min.js'); ?>"></script>
+<?php
+if($this->session->flashdata('sukses'))
+{
+	echo '<script>
+			swal("'.$this->session->flashdata('sukses').'", "", "success");
+		</script>';
+}
+if($this->session->flashdata('gagal'))
+{
+	echo '<script>
+			swal("'.$this->session->flashdata('gagal').'", "", "error");
+		</script>';
+}
+?>
 <!-- //JAVASCRIPT -->
 </body>
 </html>

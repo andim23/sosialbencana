@@ -33,51 +33,53 @@
 					<div class="dropdown js__drop_down">
                         <a href="<?php echo base_url('posting/tambah'); ?>" class="btn btn-xs btn-primary btn-icon btn-icon-left waves-effect waves-light"><i class="ico fa fa-plus"></i> Tambah Data</a>
 					</div>
-					<table id="example" class="table table-striped table-bordered display" style="width:100%">
-						<thead>
-							<tr>
-								<th>#</th>
-								<th width="25%">Lokasi</th>
-								<th>Latitude</th>
-								<th>Longitude</th>
-								<th width="10%">Caption</th>
-								<th>Tanggal</th>
-								<th>Aksi</th>
-							</tr>
-						</thead>
-						<tfoot>
-							<tr>
-								<th>#</th>
-								<th width="25%">Lokasi</th>
-								<th>Latitude</th>
-								<th>Longitude</th>
-								<th width="10%">Caption</th>
-								<th>Tanggal</th>
-								<th>Aksi</th>
-							</tr>
-						</tfoot>
-						<tbody>
-							<?php
-							$no = 1;
-							foreach($post as $post) {
-							?>
-							<tr>
-								<td><?php echo $no++; ?></td>
-                                <td style="word-wrap: break-word;"><?php echo $post['lokasi']; ?></td>
-                                <td><?php echo $post['lttd_loc']; ?></td>
-                                <td><?php echo $post['lgttd_loc']; ?></td>
-                                <td><?php echo $post['caption']; ?></td>
-                                <td><?php echo $post['tanggal']; ?></td>
-								<td>
-                                    <a href="#" onClick="show_image(<?php echo $post['id_post']; ?>)" data-toggle="modal" data-target="#imageModal" data-image="<?php echo $post['nama_img']; ?>" id="showimage<?php $post['id_post']; ?>" class="btn btn-success btn-circle waves-effect waves-light" title="Show Image"><i class="ico fa fa-image"></i></a>
-                                    <a href="<?php echo base_url('posting/detail/').$post['id_post']; ?>" class="btn btn-primary btn-circle waves-effect waves-light" title="Show Post"><i class="ico fa fa-info"></i></a>
-                                    <a href="<?php echo base_url('posting/edit/').$post['id_post']; ?>" class="btn btn-primary btn-circle waves-effect waves-light" title="Show Post"><i class="ico fa fa-edit"></i></a>
-                                    <a href="#" onClick="return hapus('<?php echo base_url('posting/hapus/').$post['id_post']; ?>');" class="btn btn-danger btn-circle waves-effect waves-light" title="Show Image"><i class="ico fa fa-times"></i></a>
-                                </td>
-                            </tr>
-							<?php } ?>
-                        </tbody>
-					</table>
+					<div class="table-responsive">
+						<table id="example" class="table table-striped table-bordered display" style="width:100%">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th width="25%">Lokasi</th>
+									<th>Latitude</th>
+									<th>Longitude</th>
+									<th width="10%">Caption</th>
+									<th>Tanggal</th>
+									<th>Aksi</th>
+								</tr>
+							</thead>
+							<tfoot>
+								<tr>
+									<th>#</th>
+									<th width="25%">Lokasi</th>
+									<th>Latitude</th>
+									<th>Longitude</th>
+									<th width="10%">Caption</th>
+									<th>Tanggal</th>
+									<th>Aksi</th>
+								</tr>
+							</tfoot>
+							<tbody>
+								<?php
+								$no = 1;
+								foreach($post as $post) {
+								?>
+								<tr>
+									<td><?php echo $no++; ?></td>
+									<td style="word-wrap: break-word;"><?php echo $post['lokasi']; ?></td>
+									<td><?php echo $post['lttd_loc']; ?></td>
+									<td><?php echo $post['lgttd_loc']; ?></td>
+									<td><?php echo $post['caption']; ?></td>
+									<td><?php echo $post['tanggal']; ?></td>
+									<td>
+										<a href="#" onClick="show_image(<?php echo $post['id_post']; ?>)" data-toggle="modal" data-target="#imageModal" data-image="<?php echo $post['nama_img']; ?>" id="showimage<?php $post['id_post']; ?>" class="btn btn-success btn-circle waves-effect waves-light" title="Show Image"><i class="ico fa fa-image"></i></a>
+										<a href="<?php echo base_url('posting/detail/').$post['id_post']; ?>" class="btn btn-primary btn-circle waves-effect waves-light" title="Show Post"><i class="ico fa fa-info"></i></a>
+										<a href="<?php echo base_url('posting/edit/').$post['id_post']; ?>" class="btn btn-primary btn-circle waves-effect waves-light" title="Show Post"><i class="ico fa fa-edit"></i></a>
+										<a href="#" onClick="return hapus('<?php echo base_url('posting/hapus/').$post['id_post']; ?>');" class="btn btn-danger btn-circle waves-effect waves-light" title="Show Image"><i class="ico fa fa-times"></i></a>
+									</td>
+								</tr>
+								<?php } ?>
+							</tbody>
+						</table>
+					</div>
 				</div>
 				<!-- BOX CONTENT -->
 			</div>

@@ -3,11 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Auth_model extends CI_Model {
 
-    public function cekUser($email)
+    public function cekUser($userkode)
     {
         $this->db->select('*');
         $this->db->from('user');
-        $this->db->where('email', $email);
+        $this->db->where('user_kode', $userkode);
         return $this->db->get();
     }
 

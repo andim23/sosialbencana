@@ -11,17 +11,15 @@ class Auth extends CI_Controller {
     
     public function proseslogin()
     {
-        $email = $this->input->post('email');
+        $userkode = $this->input->post('user_kode');
         $password = $this->input->post('password');
         
         // VALIDASI
-        $this->form_validation->set_rules('email', 'Email Address', 'trim|required|xss_clean|valid_email|valid_emails');
+        $this->form_validation->set_rules('user_kode', 'Kode Relawan/User', 'trim|required|xss_clean');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
 
         // PESAN VALIDASI
         $this->form_validation->set_message('required', 'Maaf! <b>%s</b> Tidak Boleh Kosong!');
-        $this->form_validation->set_message('valid_email', 'Maaf! <b>%s</b> Tidak Valid');
-        $this->form_validation->set_message('valid_emails', 'Maaf! <b>%s</b> Tidak Valid');
 
         if($this->form_validation->run() == FALSE)
         {
@@ -29,7 +27,7 @@ class Auth extends CI_Controller {
         }
         else
         {
-            $cek = $this->Auth_model->cekUser($email);
+            $cek = $this->Auth_model->cekUser($userkode);
             if($cek->num_rows() > 0)
             {
                 $data = $cek->row_array();
