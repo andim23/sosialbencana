@@ -11,10 +11,13 @@ class Api_user extends CI_Controller {
 
     public function post()
     {
-        $post = $this->apiuser->getPost()->result();
-        if($post)
+        $post = $this->apiuser->getPost();
+        if($post->num_rows() > 0)
         {
-            echo json_encode(array('result' => $post), TRUE);    
+            echo json_encode(array(
+                'result'        => $post->result(),
+            ), TRUE);
+            $this->output->set_status_header(200);
         }
         else
         {
@@ -22,6 +25,7 @@ class Api_user extends CI_Controller {
                 'result' => 'Error',
                 'message' => 'Data Kosong'
             ));
+            $this->output->set_status_header(422);
         }
     }
 }

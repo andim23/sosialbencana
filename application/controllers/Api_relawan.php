@@ -11,10 +11,13 @@ class Api_relawan extends CI_Controller {
 
     public function post()
     {
-        $post = $this->Apirelawan->getPost()->result();
-        if($post)
+        $post = $this->Apirelawan->getPost();
+        if($post->num_rows() > 0)
         {
-            echo json_encode(array('result' => $post), TRUE);    
+            echo json_encode(array(
+                'result'        => $post->result(),
+            ), TRUE);
+            $this->output->set_status_header(200);
         }
         else
         {
@@ -22,32 +25,38 @@ class Api_relawan extends CI_Controller {
                 'result' => 'Error',
                 'message' => 'Data Kosong'
             ));
+            $this->output->set_status_header(422);
         }
     }
 
-    public function postrelawan($kode)
+    public function postrelawan($kode = NULL)
     {
         $post           = $this->Apirelawan->getPostRelawan($kode)->result();
-        if($this->Apirelawan->getPostRelawan($kode)->num_rows() > 0)
+        if($kode == NULL)
         {
-            if($post)
+            echo json_encode(array(
+                'result' => 'Error',
+                'message' => 'Kode Tidak Ditemukan'
+            ));
+            $this->output->set_status_header(422);
+        }
+        else
+        {
+            if($this->Apirelawan->getPostRelawan($kode)->num_rows() > 0)
             {
-                echo json_encode(array('result' => $post), TRUE);    
+                echo json_encode(array(
+                    'result' => $post
+                ), TRUE);
+                $this->output->set_status_header(200);
             }
             else
             {
                 echo json_encode(array(
                     'result' => 'Error',
-                    'message' => 'Data Kosong'
+                    'message' => 'Data Tidak Ada'
                 ));
+                $this->output->set_status_header(422);
             }
-        }
-        else
-        {
-            echo json_encode(array(
-                'result' => 'Error',
-                'message' => 'Data Tidak Ada'
-            ));
         }
     }
 
@@ -64,15 +73,18 @@ class Api_relawan extends CI_Controller {
             if($this->Apirelawan->createPost($imagepath1, $imagepath2))
             {
                 echo "Berhasil Menambahkan Data";
+                $this->output->set_status_header(200);
             }
             else
             {
                 echo "Gagal Menambahkan Data";
+                $this->output->set_status_header(422);
             }
         }
         else
         {
             echo "Gagal Menambahkan Data";
+            $this->output->set_status_header(422);
         }
     }
 
@@ -83,15 +95,49 @@ class Api_relawan extends CI_Controller {
             if($this->Apirelawan->registerRelawan())
             {
                 echo "Berhasil Registasi. Mohon Menunggu";
+                $this->output->set_status_header(200);
             }
             else
             {
                 echo "Gagal Registrasi";
+                $this->output->set_status_header(422);
             }
         }
         else
         {
             echo "Gagal";
+            $this->output->set_status_header(422);
+        }
+    }
+
+    public function detail($kode = NULL)
+    {
+        $profil     = $this->Apirelawan->detailRelawan($kode);
+        if($kode == NULL)
+        {
+            echo json_ecnode(array(
+                'status'        => false,
+                'message'       => 'Data Tidak Ditemukan'
+            ));
+            $this->output->set_status_header(422);
+        }
+        else
+        {
+            if($profil->num_rows() > 0)
+            {
+                echo json_encode(array(
+                    'result'        => $profil->result(),
+                ), TRUE);
+                $this->output->set_status_header(200);
+            }
+            else
+            {
+                echo json_ecnode(array(
+                    'status'        => false,
+                    'message'       => 'Data Tidak Ada'
+                ));
+                $this->output->set_status_header(422);
+            }
         }
     }
 }
