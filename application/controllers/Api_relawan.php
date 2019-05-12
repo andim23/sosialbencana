@@ -28,14 +28,7 @@ class Api_relawan extends CI_Controller {
     public function postrelawan($kode)
     {
         $post           = $this->Apirelawan->getPostRelawan($kode)->result();
-        if($kode == NULL)
-        {
-            echo json_encode(array(
-                'result' => 'Error',
-                'message' => 'Id Tidak Ditemukan'
-            ));
-        }
-        else
+        if($this->Apirelawan->getPostRelawan($kode)->num_rows() > 0)
         {
             if($post)
             {
@@ -48,6 +41,13 @@ class Api_relawan extends CI_Controller {
                     'message' => 'Data Kosong'
                 ));
             }
+        }
+        else
+        {
+            echo json_encode(array(
+                'result' => 'Error',
+                'message' => 'Data Tidak Ada'
+            ));
         }
     }
 

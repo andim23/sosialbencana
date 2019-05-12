@@ -83,6 +83,57 @@ class User extends CI_Controller {
         }
     }
 
+    public function daftar($kode)
+    {
+        $user       = $this->User_model->detailUser($kode)->row_array();
+        $level      = $this->Level_model->getLevel()->result_array();
+        $status     = $this->Status_model->getStatus()->result_array();
+        $data = array(
+            'user'          => $user,
+            'level'         => $level,
+            'status'        => $status,
+        );
+        $this->load->view('Admin/User/daftar', $data);
+    }
+
+    public function p_daftar()
+    {
+        // VALIDASI
+        $this->form_validation->set_rules('email', 'Email Address', 'trim|required|xss_clean|valid_email|valid_emails');
+        $this->form_validation->set_rules('level', 'Level', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('status', 'Status', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|min_length[6]');
+        $this->form_validation->set_rules('konfirmasi', 'Konfirmasi Password', 'trim|required|xss_clean|matches[password]');
+
+        // PESAN VALIDASI
+        $this->form_validation->set_message('required', 'Maaf! <b>%s</b> Tidak Boleh Kosong!');
+        $this->form_validation->set_message('valid_email', 'Maaf! <b>%s</b> Tidak Valid');
+        $this->form_validation->set_message('valid_emails', 'Maaf! <b>%s</b> Tidak Valid');
+        $this->form_validation->set_message('matches', 'Maaf! <b>%s</b> Tidak Sama.');
+        $this->form_validation->set_message('min_length', 'Maaf! <b>%s</b> Minimal <b>%s</b> Karakter.');
+
+        $kode = $this->input->post('user_kode');
+
+        if($this->form_validation->run() == FALSE)
+        {
+            $user       = $this->User_model->detailUser($kode)->row_array();
+            $level      = $this->Level_model->getLevel()->result_array();
+            $status     = $this->Status_model->getStatus()->result_array();
+            $data = array(
+                'user'          => $user,
+                'level'         => $level,
+                'status'        => $status,
+            );
+            $this->load->view('Admin/User/daftar', $data);
+        }
+        else
+        {
+            $this->User_model->createUserRelawan();
+            $this->session->set_flashdata('sukses', 'Berhasil Melakukan Registrasi!');
+            redirect(base_url('user'));
+        }
+    }
+
     public function edit($kode)
     {
         $user       = $this->User_model->detailUser($kode)->row_array();
@@ -142,5 +193,18 @@ class User extends CI_Controller {
         $this->User_model->deleteUser($kode);
         $this->session->set_flashdata('sukses', 'Berhasil Menghapus Data');
         redirect(base_url('user'));
+    }
+
+    public function relawan()
+    {
+        $relawan            = $this->User_model->newRelawan()->result_array();
+        $level              = $this->Level_model->getLevel()->result_array();
+        $status             = $this->Status_model->getStatus()->result_array();
+        $data = array(
+            'relawan'       => $relawan,
+            'level'         => $level,
+            'status'        => $status,
+        );
+        $this->load->view('Admin/User/relawan', $data);
     }
 }
