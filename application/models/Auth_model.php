@@ -5,7 +5,7 @@ class Auth_model extends CI_Model {
 
     public function cekUser($userkode)
     {
-        $this->db->select('*');
+        $this->db->select('user_kode,nama,email,password,id_status,id_level');
         $this->db->from('user');
         $this->db->where('user_kode', $userkode);
         return $this->db->get();

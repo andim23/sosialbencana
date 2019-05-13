@@ -35,12 +35,10 @@ class Api_auth extends CI_Controller {
                      */
                     if($data['id_level'] == '1')
                     {
-                        $session = array(
-                            'username' => $data['username'],
-                            'email' => $data['email'],
-                            'level' => 'Admin',
-                        );
-                        echo json_encode($data);
+                        echo json_encode(array(
+                            'result' => 'Developer',
+                            'message' => 'Maaf! Akun anda berlevel DEVELOPER'
+                        ));
                     }
                     if($data['id_level'] == '2')
                     {
