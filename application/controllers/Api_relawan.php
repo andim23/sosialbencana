@@ -92,21 +92,36 @@ class Api_relawan extends CI_Controller {
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         {
-            if($this->Apirelawan->registerRelawan())
+            $email=$this->input->post('email');
+            $cek = $this->Apirelawan->getEmailRelawan($email);
+
+            if($cek->num_rows() == 0)
             {
-                echo "Berhasil Registasi. Mohon Menunggu";
-                $this->output->set_status_header(200);
+                if($this->Apirelawan->registerRelawan())
+                {
+                    echo "Berhasil Registasi. Mohon Menunggu";
+                    $this->output->set_status_header(200);
+                }
+                else
+                {
+                    echo "Gagal Registrasi";
+                    $this->output->set_status_header(422);
+                }
             }
             else
             {
-                echo "Gagal Registrasi";
-                $this->output->set_status_header(422);
+                echo json_encode(array(
+                    'result' => 'Gagal Register',
+                    'message' => 'Maaf! Email Anda Telah Digunakan.'
+                ));
             }
         }
         else
         {
-            echo "Gagal";
-            $this->output->set_status_header(422);
+            echo json_encode(array(
+                'result' => 'Gagal Register',
+                'message' => 'Maaf! Registrasi Gagal Dilakukan.'
+            ));
         }
     }
 
