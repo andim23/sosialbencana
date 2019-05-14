@@ -115,7 +115,7 @@ class Api_relawan extends CI_Controller {
         $profil     = $this->Apirelawan->detailRelawan($kode);
         if($kode == NULL)
         {
-            echo json_ecnode(array(
+            echo json_encode(array(
                 'status'        => false,
                 'message'       => 'Data Tidak Ditemukan'
             ));
@@ -125,14 +125,11 @@ class Api_relawan extends CI_Controller {
         {
             if($profil->num_rows() > 0)
             {
-                echo json_encode(array(
-                    'result'        => $profil->result(),
-                ), TRUE);
-                $this->output->set_status_header(200);
+                echo json_encode($profil->row());
             }
             else
             {
-                echo json_ecnode(array(
+                echo json_encode(array(
                     'status'        => false,
                     'message'       => 'Data Tidak Ada'
                 ));
