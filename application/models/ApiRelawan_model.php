@@ -10,6 +10,14 @@ class ApiRelawan_model extends CI_Model {
         return $data['slug_post']+1;
     }
 
+    public function getEmailRelawan($email)
+    {
+        $this->db->select('email');
+        $this->db->from('user');
+        $this->db->where('email', $email);
+        return $this->db->get();
+    }
+
     public function registerRelawan()
     {
         $data = array(
