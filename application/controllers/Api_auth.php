@@ -77,7 +77,7 @@ class Api_auth extends CI_Controller {
         {
             echo json_encode(array(
                 'result' => 'Error',
-                'message' => 'Maaf! Akun Tidak Ditemukan'
+                'message' => 'Maaf akun tidak ditemukan'
             ));
         }
     }
