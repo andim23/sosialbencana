@@ -16,6 +16,13 @@ class ApiUser_model extends CI_Model {
         return $this->db->get('post');
     }
 
+    public function getPostdetail($where)
+    {
+        $this->db->select('*');
+        $this->db->where('slug_post', $where);
+        return $this->db->get('post');
+    }
+
     private function autoIncrement()
     {
         $this->db->select_max('slug_post');
