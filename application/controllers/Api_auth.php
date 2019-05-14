@@ -11,10 +11,10 @@ class Api_auth extends CI_Controller {
     
     public function proseslogin()
     {
-        $email = $this->input->post('email');
+        $kode = $this->input->post('kode');
         $password = $this->input->post('password');
         
-        $cek = $this->Auth_model->cekUser($email);
+        $cek = $this->Auth_model->cekUser($kode);
         if($cek->num_rows() > 0)
         {
             $data = $cek->row_array();
