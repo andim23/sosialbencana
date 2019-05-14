@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2019 at 02:11 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.4
+-- Generation Time: May 14, 2019 at 04:35 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -59,6 +59,29 @@ INSERT INTO `level` (`id_level`, `kode_level`, `level`, `tanggal`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `list_api`
+--
+
+CREATE TABLE `list_api` (
+  `id` int(11) NOT NULL,
+  `fungsi` varchar(50) NOT NULL,
+  `api` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `list_api`
+--
+
+INSERT INTO `list_api` (`id`, `fungsi`, `api`) VALUES
+(1, 'getAllPost', 'https://dinusheroes.com/sosialbencana/Api_relawan/post'),
+(2, 'Login', 'https://dinusheroes.com/sosialbencana/Api_auth/proseslogin'),
+(3, 'detail post', 'https://dinusheroes.com/sosialbencana/Api_user/getPostdetail/$slug'),
+(4, 'register validasi email', 'https://dinusheroes.com/sosialbencana/Api_relawan/register'),
+(5, 'posting', 'https://dinusheroes.com/sosialbencana/Api_admin/posting');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `post`
 --
 
@@ -82,7 +105,8 @@ CREATE TABLE `post` (
 
 INSERT INTO `post` (`id_post`, `nama_img`, `api_img`, `slug_post`, `lokasi`, `lttd_loc`, `lgttd_loc`, `caption`, `tanggal`, `waktu`, `user_kode`) VALUES
 (40, 'POST_20190504_190055_8ad9b064ffb65c596a01ba4b60dd35a0_106280320191553779847.jpeg', 'http://localhost/sosialbencana/uploads/POST_20190504_190055_8ad9b064ffb65c596a01ba4b60dd35a0_106280320191553779847.jpeg', '1', 'Jl. Imam Bonjol No.207, Pendrikan Kidul, Semarang Tengah, Kota Semarang, Jawa Tengah 50131', '-7.0451649000000005', '110.4718413', 'Udinus Kebakaran', '2019-05-04', '19:00:55', '106280320191553779847'),
-(41, 'POST_20190504_190117_ef991a1a549d3930b94c691fc238efe0_106280320191553779847.jpg', 'http://localhost/sosialbencana/uploads/POST_20190504_190117_ef991a1a549d3930b94c691fc238efe0_106280320191553779847.jpg', '2', 'Jl. Taman Sompok, Lamper Lor, Semarang Sel., Kota Semarang, Jawa Tengah 50249', '-7.0451649000000005', '110.4718413', 'Java Mall Ambruk', '2019-05-04', '19:01:17', '106280320191553779847');
+(41, 'POST_20190504_190117_ef991a1a549d3930b94c691fc238efe0_106280320191553779847.jpg', 'http://localhost/sosialbencana/uploads/POST_20190504_190117_ef991a1a549d3930b94c691fc238efe0_106280320191553779847.jpg', '2', 'Jl. Taman Sompok, Lamper Lor, Semarang Sel., Kota Semarang, Jawa Tengah 50249', '-6.9981921', '110.4798464', 'Java Mall Ambruk', '2019-05-07', '21:25:32', ''),
+(42, 'POST_20190508_070014_b41cfc3f7f5406ea84a7d0b4a63cd016_Admin.jpg', 'http://localhost/sosialbencana/uploads/POST_20190508_070014_b41cfc3f7f5406ea84a7d0b4a63cd016_Admin.jpg', '3', 'Udinus', '-7.801241600000001', '110.3724544', 'Kuliah', '2019-05-08', '07:00:44', '');
 
 -- --------------------------------------------------------
 
@@ -170,6 +194,12 @@ ALTER TABLE `level`
   ADD UNIQUE KEY `kode_level` (`kode_level`,`level`);
 
 --
+-- Indexes for table `list_api`
+--
+ALTER TABLE `list_api`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `post`
 --
 ALTER TABLE `post`
@@ -213,10 +243,16 @@ ALTER TABLE `level`
   MODIFY `id_level` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `list_api`
+--
+ALTER TABLE `list_api`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `reaction`

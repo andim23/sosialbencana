@@ -23,6 +23,14 @@ class Admin extends CI_Controller {
         $this->load->view('Admin/index', $data);
     }
 
+    public function listAPI()
+    {
+        $data=array(
+            'api'=>$this->Admin_model->get('list_api')
+        );
+        $this->load->view('Admin/listapi',$data);
+    }
+
     public function test()
     {
         $this->db->select_max('slug_post');

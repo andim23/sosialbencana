@@ -10,4 +10,11 @@ class Admin_model extends CI_Model {
         $this->db->limit(5,0);
         return $this->db->get('post');
     }
+
+    public function get($table)
+    {
+        $this->db->select('*');
+        $this->db->from($table);
+        return $this->db->get()->result_array();
+    }
 }
