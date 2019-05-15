@@ -59,7 +59,7 @@ p {
 }
 /*-- header styling starts here --*/
 .agileits_main{
-	background:url(../images/1.jpg) no-repeat center;
+	/* background:url(../images/1.jpg) no-repeat center; */
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
@@ -443,7 +443,7 @@ span.menu {
 	padding:0;
 	background-size: cover !important;
 }
-.img1 {
+/* .img1 {
 	background: url(../images/4.jpg) center;
 }
  .img2 {
@@ -460,7 +460,7 @@ span.menu {
 }
 .img6 {
 	background: url(../images/7.jpg) center;
-}
+} */
 .img_text_w3ls {
     padding: 9.15em 0;
 	transition: 0.5s all;

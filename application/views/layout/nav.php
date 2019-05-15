@@ -33,21 +33,21 @@
 			<div class="callbacks_container">
 			   <ul class="rslides callbacks callbacks1" id="slider4">
 					<li>
-						<div class="banner_text_w3layouts">
+						<div style="background: url(<?php echo base_url('asset/front/images/1.jpg')?>) no-repeat center;" class="banner_text_w3layouts<?php //if($i==1){ echo 'active'; } ?>" >
 							<h3>Maur egetire sit tmae.</h3>
 							<span> </span>
 							<p>Casp Eestibulum </p>
 						</div>
 					</li>
 					 <li>
-						<div class="banner_text_w3layouts">
+						<div style="background: url(<?php echo base_url('asset/front/images/1.jpg')?>) no-repeat center;" class="banner_text_w3layouts<?php //if($i==1){ echo 'active'; } ?>" >
 							<h3>Eget Integer sit amet.</h3>
 							<span> </span>
 							<p>Rlua vestibulum </p>
 						</div>
 					</li>
 					 <li>
-						<div class="banner_text_w3layouts">
+						<div style="background: url(<?php echo base_url('asset/front/images/1.jpg')?>) no-repeat center;" class="banner_text_w3layouts<?php //if($i==1){ echo 'active'; } ?>" >
 							<h3>Amet sitamet tus libe.</h3>
 							<span> </span>
 							<p>Cras vestibulum </p>
