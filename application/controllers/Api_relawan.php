@@ -152,4 +152,105 @@ class Api_relawan extends CI_Controller {
             }
         }
     }
+
+    public function delete_posting($slug)
+    {
+        if($_SERVER['REQUEST_METHOD'] == 'GET')
+        {
+            if($slug == NULL)
+            {
+                echo json_encode(array(
+                    'status'        => false,
+                    'message'       => 'Data Tidak Ditemukan'
+                ));
+                $this->output->set_status_header(422);
+            }
+            else
+            {
+                $where=array('slug_post'=>$slug);
+                $file=$this->Apirelawan->getwhererow('nama_img','post',$where);
+                $linkfolder='./uploads/'.$file->nama_img;
+
+                if(isset($linkfolder))
+                {
+                    unlink($linkfolder);
+                    if($this->Apirelawan->deletePost($where))
+                    {
+                        echo json_encode(array(
+                            'status'        => TRUE,
+                            'message'       => 'Data Berhasil Dihapus'
+                        ));
+                        $this->output->set_status_header(422);
+                    }
+                    else
+                    {
+                        echo json_encode(array(
+                            'status'        => FALSE,
+                            'message'       => 'Data Gagal Dihapus'
+                        ));
+                        $this->output->set_status_header(422);
+                    }
+                }
+                else
+                {
+                    echo json_encode(array(
+                        'status'        => false,
+                        'message'       => 'Link Data Salah'
+                    ));
+                    $this->output->set_status_header(422);
+                }
+            }
+        }
+        else
+        {
+            echo json_encode(array(
+                'status'        => false,
+                'message'       => 'REQUEST DENIED'
+            ));
+            $this->output->set_status_header(422);
+        }
+    }
+
+    public function update_datadiri()
+    {
+        if($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+            $where=array(
+                'user_kode'=>$this->input->post('userkode')
+            );
+
+            $data = array(
+                'nama' => $this->input->post('nama'),
+                'email' => $this->input->post('email'),
+                'tgl_lahir' => $this->input->post('tgl_lahir'),
+                'j_kel' => $this->input->post('j_kel'),
+                'phone' => $this->input->post('phone')
+            );
+            
+            if($this->Apirelawan->update('user',$where, $data))
+            {
+                echo json_encode(array(
+                    'status'        => TRUE,
+                    'message'       => 'Data berhasil diupdate'
+                ));
+                $this->output->set_status_header(422);
+            }
+            else
+            {
+                echo json_encode(array(
+                    'status'        => FALSE,
+                    'message'       => 'Data gagal diupdate'
+                ));
+                $this->output->set_status_header(422);
+            }
+        }
+        else
+        {
+            echo json_encode(array(
+                'status'        => FALSE,
+                'message'       => 'REQUEST DENIED'
+            ));
+            $this->output->set_status_header(422);
+        }
+    }
 }

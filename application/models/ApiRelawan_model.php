@@ -80,9 +80,25 @@ class ApiRelawan_model extends CI_Model {
         return $this->db->insert('post', $data);
     }
 
-    public function deletePost($where = NULL)
+    public function deletePost($where)
     {
-        $this->db->where('user_kode', $where);
-        return $this->db->delete('user');
+        $this->db->where($where);
+        $res=$this->db->delete('post');
+        return $res;
+    }
+
+    public function getwhererow($row,$table,$where)
+    {
+        $this->db->select($row);
+        $this->db->from($table);
+        $this->db->where($where); 
+        $query = $this->db->get();
+        return $query->row();
+    }
+
+    public function Update($table, $where, $isi)
+    {
+        $this->db->where($where);
+        return $this->db->update($table, $isi);
     }
 }
