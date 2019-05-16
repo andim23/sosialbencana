@@ -43,7 +43,7 @@ class Api_auth extends CI_Controller {
                     if($data['id_level'] == '2')
                     {
                         $session = array(
-                            'username' => $data['username'],
+                            'user_kode' => $data['user_kode'],
                             'email' => $data['email'],
                             'level' => 'Relawan',
                         );
