@@ -180,7 +180,7 @@ class Api_relawan extends CI_Controller {
                             'status'        => TRUE,
                             'message'       => 'Data Berhasil Dihapus'
                         ));
-                        $this->output->set_status_header(422);
+                        $this->output->set_status_header(200);
                     }
                     else
                     {
@@ -233,7 +233,7 @@ class Api_relawan extends CI_Controller {
                     'status'        => TRUE,
                     'message'       => 'Data berhasil diupdate'
                 ));
-                $this->output->set_status_header(422);
+                $this->output->set_status_header(200);
             }
             else
             {

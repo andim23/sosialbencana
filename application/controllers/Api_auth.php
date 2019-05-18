@@ -42,12 +42,7 @@ class Api_auth extends CI_Controller {
                     }
                     if($data['id_level'] == '2')
                     {
-                        $session = array(
-                            'user_kode' => $data['user_kode'],
-                            'email' => $data['email'],
-                            'level' => 'Relawan',
-                        );
-                        echo json_encode($data);
+                        echo "Success";
                     }
                 }
                 if($data['id_status'] == '2')
