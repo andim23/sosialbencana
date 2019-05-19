@@ -2,15 +2,17 @@
 <div class="home_ w3layouts">
  <div class="home_grids_w3">
  <?php foreach($posting as $post){ ?>
-  <div class="home_main">
-	   <div style="background: url(<?php echo base_url('uploads/').$post['nama_img']; ?>) center;" class="col-md-6 col-sm-6 col-xs-6 img1 img-grid">
-		   <div class="img_text_w3ls text-center">
-				<h4> <?php echo $post['caption']; ?> </h4>
-				<span> </span>
-				<p> <?php echo $post['tanggal']; ?> </p>
+ 	<a href="<?php echo base_url('posting/detail/').$post['slug_post']; ?>">
+		<div class="home_main">
+			<div style="background: url(<?php echo base_url('uploads/').$post['nama_img']; ?>) center;" class="col-md-6 col-sm-6 col-xs-6 img1 img-grid">
+				<div class="img_text_w3ls text-center">
+					<h4> <?php echo $post['caption']; ?> </h4>
+					<span> </span>
+					<p> <?php echo $post['tanggal']; ?> </p>
+				</div>
 			</div>
 		</div>
-	</div>
+	</a>
  <?php } ?>
 </div>
 </div>
