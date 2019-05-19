@@ -15,6 +15,7 @@
 <script src="<?php echo base_url(); ?>asset/admin/scripts/datatables.demo.min.js"></script>
 <!-- Main JS -->
 <script src="<?php echo base_url(); ?>asset/admin/scripts/main.min.js"></script>
-
+<script src="<?php echo base_url(); ?>asset/admin/plugin/chart/morris/morris.min.js"></script>
+<script src="<?php echo base_url(); ?>asset/admin/plugin/chart/morris/raphael-min.js"></script>
  <!-- Make sure you put this AFTER Leaflet's CSS -->
  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
