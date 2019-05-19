@@ -11,10 +11,12 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		$data = array('title' => 'Sosial Bencana',
-									// '' => ,
-									'isi' => 'Home/index'
-								);
+		$post=$this->Home_model->getPost();
+		$data = array(
+			'title' => 'Sosial Bencana',
+			'isi' => 'Home/index',
+			'posting'=>$post
+		);
 		$this->load->view('layout/file',$data,FALSE);
 	}
 

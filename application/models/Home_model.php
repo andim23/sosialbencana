@@ -12,4 +12,14 @@ class Home_model extends CI_Model {
     {
         return $this->db->get('post');
     }
+
+    public function getPost()
+    {
+        $this->db->select('*');
+        $this->db->from('post');
+        $this->db->order_by('id_post', 'DESC');
+        $this->db->limit(6);
+        $res = $this->db->get();        
+        return $res->result_array();
+    }
 }
