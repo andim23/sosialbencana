@@ -135,7 +135,7 @@
                  ], 
                  xkey: 'tanggal',
                  ykeys: ['jumlah'],
-                 labels: ['Jumlah Pengunjung'],
+                 labels: ['Jumlah posting'],
                  parseTime:false,
                  gridLineColor: '#eef0f2',
                  lineColors: ['#78b83e'],

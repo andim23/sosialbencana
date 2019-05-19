@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2019 at 06:00 PM
+-- Generation Time: May 19, 2019 at 05:15 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.14
 
@@ -101,6 +101,15 @@ CREATE TABLE `post` (
   `user_kode` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `post`
+--
+
+INSERT INTO `post` (`id_post`, `nama_img`, `api_img`, `slug_post`, `lokasi`, `lttd_loc`, `lgttd_loc`, `caption`, `tanggal`, `waktu`, `user_kode`) VALUES
+(1, 'POST_20190519_192728_ce5d8ba7c23c69a395ccaa5d85a89e1d_106280320191553779847.jpg', 'https://localhost/sosialbencana/uploads/POST_20190519_192728_ce5d8ba7c23c69a395ccaa5d85a89e1d_106280320191553779847.jpg', '1', 'semarang', '-6.9932067', '110.48116859999999', 'Caption Postingan', '2019-05-19', '19:27:28', '106280320191553779847'),
+(2, 'POST_20190519_194229_11cf0b3c5eebe426eb6a22aaaf35d4af_106280320191553779847.jpg', 'https://localhost/sosialbencana/uploads/POST_20190519_194229_11cf0b3c5eebe426eb6a22aaaf35d4af_106280320191553779847.jpg', '2', 'Udinus', '-6.9981921', '110.4798464', 'Caption Postingan', '2019-05-19', '19:42:29', '106280320191553779847'),
+(3, 'POST_20190519_200012_a720ccaaba73edef7448900827c1726c_106280320191553779847.jpg', 'https://localhost/sosialbencana/uploads/POST_20190519_200012_a720ccaaba73edef7448900827c1726c_106280320191553779847.jpg', '3', 'Coba lokasi', '-6.993237', '110.4811206', 'Caption Postingan', '2019-05-19', '20:00:12', '106280320191553779847');
+
 -- --------------------------------------------------------
 
 --
@@ -149,7 +158,7 @@ CREATE TABLE `user` (
   `id_status` int(11) DEFAULT NULL,
   `nama` varchar(255) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(100) NOT NULL,
+  `password` varchar(100) DEFAULT NULL,
   `tgl_lahir` date DEFAULT NULL,
   `j_kel` enum('Laki Laki','Perempuan','','') DEFAULT NULL,
   `phone` varchar(13) DEFAULT NULL,
@@ -164,9 +173,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `user_kode`, `id_level`, `id_status`, `nama`, `email`, `password`, `tgl_lahir`, `j_kel`, `phone`, `avatar`, `token`, `verifikasi`, `tanggal`) VALUES
-(2, '106280320191553779843', 2, 1, 'wahyu wrep', 'abdielreyhan98@gmail.com', '$2y$10$qZToRQVcpbLDaT23slaML.wbWcl2a3yIEgcVOeRmt4A07Suo.1xoe', '1998-07-17', 'Laki Laki', '111', NULL, 'T9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQmT9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQmT9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQmT9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQm', '2019-03-28 13:33:21', '2019-03-28 13:30:49'),
 (3, '106280320191553779847', 1, 1, 'Admin', 'admin@sosben.com', '$2y$10$qZToRQVcpbLDaT23slaML.wbWcl2a3yIEgcVOeRmt4A07Suo.1xoe', '2019-03-28', 'Laki Laki', '08123456789', NULL, 'T9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQmT9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQmT9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQmT9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQm', '2019-03-28 13:33:23', '2019-03-28 13:30:49'),
-(4, '106090420191554825289', 2, 2, 'Bugi Setiawan', 'bugisetiawan98@gmail.com', '$2y$10$MxeeYernnq49EKN.c1ywV..kTJa3DyEizg9LxYS/B17IktHcUTUmG', '2019-01-01', '', '12345678910', NULL, 'nCg0D58OmHxovF1Q4GsYZhtE7jTRWqrlXIJVzNufwc_bUKPi2LM9Sd-36kaBypAenCg0D58OmHxovF1Q4GsYZhtE7jTRWqrlXIJVzNufwc_bUKPi2LM9Sd-36kaBypAenCg0D58OmHxovF1Q4GsYZhtE7jTRWqrlXIJVzNufwc_bUKPi2LM9Sd-36kaBypAenCg0D58OmHxovF1Q4GsYZhtE7jTRWqrlXIJVzNufwc_bUKPi2LM9Sd-36kaBypAe', '2019-04-09 15:55:25', '2019-04-09 15:54:51');
+(5, '111201609356', 2, 2, NULL, '111201609356@mhs.dinus.ac.id', '$2y$10$gjfVtCW4YwSy2BDclaacvOkYNAduFl.eJ0EDqMaCKT4bJ7/HQ6ubG', NULL, NULL, NULL, NULL, 'w-_NYjLigbXh2ARksZdKICvetVaODpxTfuFl5oUz7c83GWJBnSrEqQ0yPHMm6194w-_NYjLigbXh2ARksZdKICvetVaODpxTfuFl5oUz7c83GWJBnSrEqQ0yPHMm6194w-_NYjLigbXh2ARksZdKICvetVaODpxTfuFl5oUz7c83GWJBnSrEqQ0yPHMm6194w-_NYjLigbXh2ARksZdKICvetVaODpxTfuFl5oUz7c83GWJBnSrEqQ0yPHMm6194', '2019-05-19 15:06:07', '2019-05-19 15:05:37');
 
 --
 -- Indexes for dumped tables
@@ -245,7 +253,7 @@ ALTER TABLE `list_api`
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `reaction`
@@ -263,7 +271,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

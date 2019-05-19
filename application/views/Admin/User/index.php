@@ -110,6 +110,14 @@
 											<li><a href="javascript:void(0);" class="item-hapus" onClick="return hapus('<?php echo base_url('user/hapus/').$user['user_kode']; ?>');">Hapus Data</a></li>
 										</ul>
 									</div>
+									<div class="btn-group margin-top-10">
+										<button type="button" class="btn btn-xs btn-block btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ubah Status <span class="caret"></span></button> 
+										<ul class="dropdown-menu dropdown-menu-right">
+											<li><a href="javascript:void(0);" class="item-hapus" onClick="return statusAktif('<?php echo base_url('user/Ubah_status/1/').$user['user_kode']; ?>');">Aktif</a></li>
+											<li><a href="javascript:void(0);" class="item-hapus" onClick="return statusNonaktif('<?php echo base_url('user/Ubah_status/2/').$user['user_kode']; ?>');">Tidak Aktif</a></li>
+											<li><a href="javascript:void(0);" class="item-hapus" onClick="return statusBanned('<?php echo base_url('user/Ubah_status/3/').$user['user_kode']; ?>');">BANNED</a></li>
+										</ul>
+									</div>
                                 </td>
                             </tr>
 							<?php } ?>
@@ -148,6 +156,26 @@
 	</div>
 </div>
 <!-- MODAL HAPUS-->
+
+<!--MODAL STATUS-->
+<div class="modal fade" id="modalStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">UBAH STATUS USER</h4>
+			</div>
+			<div class="modal-body">
+				<!-- <p>Apakah Anda Yakin Ingin Menghapus Data?</p> -->
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default btn-sm waves-effect waves-light" data-dismiss="modal">Close</button>
+				<a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect waves-light" id="status">RUBAH</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- MODAL HAPUS-->
 <!-- MODAL -->
 
 <!-- JAVASCRIPT -->
@@ -173,6 +201,27 @@ function hapus(url)
 {
     $('#delete').attr('href', url);
 	$('#modalHapus').modal();
+}
+
+function statusAktif(url)
+{
+	$('#status').attr('href', url);
+	$('.modal-body').text('UBAH STATUS AKTIF USER');
+	$('#modalStatus').modal();
+}
+
+function statusNonaktif(url)
+{
+	$('#status').attr('href', url);
+	$('.modal-body').text('UBAH STATUS NON-AKTIF USER');
+	$('#modalStatus').modal();
+}
+
+function statusBanned(url)
+{
+	$('#status').attr('href', url);
+	$('.modal-body').text('UBAH STATUS BANNED USER');
+	$('#modalStatus').modal();
 }
 </script>
 <!-- JAVASCRIPT -->

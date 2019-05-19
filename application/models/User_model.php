@@ -145,4 +145,18 @@ class User_model extends CI_Model {
         $this->db->where('id_status', 2);
         return $this->db->get('user');
     }
+
+    public function rowUser($userkode)
+    {
+        $this->db->select('user_kode,nama,email,password,id_status,id_level');
+        $this->db->from('user');
+        $this->db->where('user_kode', $userkode);
+        return $this->db->get();
+    }
+
+    public function Update($where,$data)
+    {
+        $this->db->where('user_kode', $where);
+        return $this->db->update('user', $data);
+    }
 }

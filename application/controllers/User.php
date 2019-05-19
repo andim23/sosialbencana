@@ -207,4 +207,174 @@ class User extends CI_Controller {
         );
         $this->load->view('Admin/User/relawan', $data);
     }
+
+    public function Ubah_status($status,$kode)
+    {
+        if($status=='1')
+        {
+            $password=$this->send_email_aktivasi($kode);
+            if($password!=FALSE)
+            {
+                $data=array(
+                    'password'=>password_hash($password, PASSWORD_BCRYPT),
+                    'id_status'=>'1'
+                );
+                if($this->User_model->Update($kode,$data))
+                {
+                    $this->session->set_flashdata('sukses', 'Berhasil Mengubah Data');
+                    redirect(base_url('user'));
+                }
+                else
+                {
+                    $this->session->set_flashdata('gagal', 'Gagal Mengubah Data');
+                    redirect(base_url('user'));
+                }
+            }
+            else
+            {
+                $this->session->set_flashdata('gagal', 'Gagal Mengirim Email');
+                redirect(base_url('user'));
+            }
+        }
+        elseif($status=='2')
+        {
+            $word='Di NonAktifkan';
+            $password=$this->send_email_nonaktif($kode);
+            if($password!=FALSE)
+            {
+                $data=array(
+                    'id_status'=>'2'
+                );
+                if($this->User_model->Update($kode,$data))
+                {
+                    $this->session->set_flashdata('sukses', 'Berhasil Mengubah Data');
+                    redirect(base_url('user'));
+                }
+                else
+                {
+                    $this->session->set_flashdata('gagal', 'Gagal Mengubah Data');
+                    redirect(base_url('user'));
+                }
+            }
+            else
+            {
+                $this->session->set_flashdata('gagal', 'Gagal Mengirim Email');
+                redirect(base_url('user'));
+            }
+        }
+        elseif($status=='3')
+        {
+            $word='Di BANNED';
+            $password=$this->send_email_nonaktif($kode);
+            if($password!=FALSE)
+            {
+                $data=array(
+                    'id_status'=>'3'
+                );
+                if($this->User_model->Update($kode,$data))
+                {
+                    $this->session->set_flashdata('sukses', 'Berhasil Mengubah Data');
+                    redirect(base_url('user'));
+                }
+                else
+                {
+                    $this->session->set_flashdata('gagal', 'Gagal Mengubah Data');
+                    redirect(base_url('user'));
+                }
+            }
+            else
+            {
+                $this->session->set_flashdata('gagal', 'Gagal Mengirim Email');
+                redirect(base_url('user'));
+            }
+        }
+        else
+        {
+            $this->session->set_flashdata('gagal', 'Error update status');
+            redirect(base_url('User'));
+        }
+    }
+
+    public function send_email_aktivasi($kode)
+    {
+        date_default_timezone_set("Asia/Jakarta");
+        $password = substr(number_format(time() * rand(),0,'',''),0,6);
+        $user=$this->User_model->rowUser($kode)->row_array();
+
+        $ci = get_instance();
+		$ci->load->library('email');
+
+		$config['protocol'] = "smtp";
+		$config['smtp_host'] = "ssl://smtp.gmail.com";
+		$config['smtp_port'] = "465";
+		$config['smtp_user'] = "testingemailmahasiswa@gmail.com";
+		$config['smtp_pass'] = "akusayangkamu123";
+		$config['charset'] = "utf-8";
+		$config['mailtype'] = "html";
+		$config['newline'] = "\r\n";
+				
+		$ci->email->initialize($config);
+
+		$isi = '<table>';
+		$isi .= '<tr><td><h4>Pemberitahuan Akun Sosial Bencana!</h4></td></tr>';
+		$isi .= '<tr><td><p>Halo <b>' . $user['email'] . '</b> terima kasih telah melakukan pendaftaran di Sosial Bencana. Kami beritahukan kepada Anda bahwa akun anda telah di AKTIFKAN dan dapat digunakan.</p></td></tr>';
+		$isi .= '<tr><td>Password akun anda adalah <b>'. $password .'</b></td></tr>';
+		$isi .= '<tr><td><p>Terima Kasih, Admin Sosial Bencana</p></td></tr>';
+        $isi .= '</table>';
+
+		$ci->email->from('noreply@sosialbencana.com', 'Sosial Bencana');
+		$ci->email->to($user['email']);
+		$ci->email->subject('AKTIFASI AKUN Sosial Bencana');
+        $ci->email->message($isi);
+        if($this->email->send())
+        {
+            return $password;
+        }
+        else
+        {
+            return FALSE;
+        }
+
+    }
+
+    public function send_email_nonaktif($kode)
+    {
+        date_default_timezone_set("Asia/Jakarta");
+        $user=$this->User_model->rowUser($kode)->row_array();
+
+        $ci = get_instance();
+		$ci->load->library('email');
+
+		$config['protocol'] = "smtp";
+		$config['smtp_host'] = "ssl://smtp.gmail.com";
+		$config['smtp_port'] = "465";
+		$config['smtp_user'] = "testingemailmahasiswa@gmail.com";
+		$config['smtp_pass'] = "akusayangkamu123";
+		$config['charset'] = "utf-8";
+		$config['mailtype'] = "html";
+		$config['newline'] = "\r\n";
+				
+		$ci->email->initialize($config);
+
+		$isi = '<table>';
+		$isi .= '<tr><td><h4>Pemberitahuan Akun Sosial Bencana!</h4></td></tr>';
+		$isi .= '<tr><td><p>Halo <b>' . $user['email'] . '</b> terima kasih telah melakukan pendaftaran di Sosial Bencana. Kami beritahukan kepada Anda bahwa akun anda telah Di NONAKTIFKAN / DI BANNED.</p></td></tr>';
+		$isi .= '<tr><td>HARAP MENGHUBUNGI ADMIN</b></td></tr>';
+		$isi .= '<tr><td><p>Terima Kasih, Admin Sosial Bencana</p></td></tr>';
+        $isi .= '</table>';
+
+		$ci->email->from('noreply@sosialbencana.com', 'Sosial Bencana');
+		$ci->email->to($user['email']);
+		$ci->email->subject('AKTIFASI AKUN Sosial Bencana');
+        $ci->email->message($isi);
+        if($this->email->send())
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+
+    }
 }
