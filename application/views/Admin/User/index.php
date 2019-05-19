@@ -113,9 +113,16 @@
 									<div class="btn-group margin-top-10">
 										<button type="button" class="btn btn-xs btn-block btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ubah Status <span class="caret"></span></button> 
 										<ul class="dropdown-menu dropdown-menu-right">
-											<li><a href="javascript:void(0);" class="item-hapus" onClick="return statusAktif('<?php echo base_url('user/Ubah_status/1/').$user['user_kode']; ?>');">Aktif</a></li>
-											<li><a href="javascript:void(0);" class="item-hapus" onClick="return statusNonaktif('<?php echo base_url('user/Ubah_status/2/').$user['user_kode']; ?>');">Tidak Aktif</a></li>
-											<li><a href="javascript:void(0);" class="item-hapus" onClick="return statusBanned('<?php echo base_url('user/Ubah_status/3/').$user['user_kode']; ?>');">BANNED</a></li>
+											<?php if($user['id_status']=='1'){ ?>
+												<li><a href="javascript:void(0);" class="item-hapus" onClick="return statusNonaktif('<?php echo base_url('user/Ubah_status/2/').$user['user_kode']; ?>');">Tidak Aktif</a></li>
+												<li><a href="javascript:void(0);" class="item-hapus" onClick="return statusBanned('<?php echo base_url('user/Ubah_status/3/').$user['user_kode']; ?>');">BANNED</a></li>
+											<?php }elseif($user['id_status']=='2'){?>
+												<li><a href="javascript:void(0);" class="item-hapus" onClick="return statusAktif('<?php echo base_url('user/Ubah_status/1/').$user['user_kode']; ?>');">Aktif</a></li>
+												<li><a href="javascript:void(0);" class="item-hapus" onClick="return statusBanned('<?php echo base_url('user/Ubah_status/3/').$user['user_kode']; ?>');">BANNED</a></li>
+											<?php }elseif($user['id_status']=='3'){?>
+												<li><a href="javascript:void(0);" class="item-hapus" onClick="return statusAktif('<?php echo base_url('user/Ubah_status/1/').$user['user_kode']; ?>');">Aktif</a></li>
+												<li><a href="javascript:void(0);" class="item-hapus" onClick="return statusNonaktif('<?php echo base_url('user/Ubah_status/2/').$user['user_kode']; ?>');">Tidak Aktif</a></li>
+											<?php }?>
 										</ul>
 									</div>
                                 </td>

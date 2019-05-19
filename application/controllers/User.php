@@ -365,7 +365,7 @@ class User extends CI_Controller {
 
 		$ci->email->from('noreply@sosialbencana.com', 'Sosial Bencana');
 		$ci->email->to($user['email']);
-		$ci->email->subject('AKTIFASI AKUN Sosial Bencana');
+		$ci->email->subject('PEMBERITAHUAN SOSIAL BENCANA');
         $ci->email->message($isi);
         if($this->email->send())
         {
