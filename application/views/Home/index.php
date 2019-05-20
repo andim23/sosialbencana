@@ -1,8 +1,50 @@
+<!-- banner -->
+<div class="w3_banner">
+  <!-- <div class="container"> -->
+  <div class="slider">
+    <div class="callbacks_container">
+      <ul class="rslides callbacks callbacks1" id="slider4">
+        <li>
+          <div style="background: url(<?php echo base_url('asset/front/images/1.jpg')?>) no-repeat center; background-size:cover;" class="banner_text_w3layouts<?php //if($i==1){ echo 'active'; } ?>" >
+            <h3>Maur egetire sit tmae.</h3>
+            <span> </span>
+            <p>Casp Eestibulum </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <script src="<?php echo base_url() ?>asset/front/js/responsiveslides.min.js"></script>
+    <script>
+    // You can also use "$(window).load(function() {"
+    $(function () {
+      // Slideshow 4
+      $("#slider4").responsiveSlides({
+        auto: true,
+        pager:true,
+        nav:true,
+        speed: 500,
+        namespace: "callbacks",
+        before: function () {
+          $('.events').append("<li>before event fired.</li>");
+        },
+        after: function () {
+          $('.events').append("<li>after event fired.</li>");
+        }
+      });
+
+    });
+    </script>
+  </div>
+  <!-- </div> -->
+</div>
+<!-- //banner -->
+<div class="clearfix"> </div>
+
 <!-- home -->
 <div class="home_ w3layouts">
  <div class="home_grids_w3">
  <?php foreach($posting as $post){ ?>
- 	<a href="<?php echo base_url('posting/detail/').$post['slug_post']; ?>">
+ 	<a href="<?php echo base_url('home/post_detail/').$post['slug_post']; ?>">
 		<div class="home_main">
 			<div style="background: url(<?php echo base_url('uploads/').$post['nama_img']; ?>) center;" class="col-md-6 col-sm-6 col-xs-6 img1 img-grid">
 				<div class="img_text_w3ls text-center">
@@ -188,7 +230,7 @@
 			</div>
 			<div class="clearfix"> </div>
 		</div>
-		
+
 		<!-- TEAM 2 -->
 		<div class="team-w3ls">
 			<div class="col-md-4 col-sm-4 col-xs-4 team-grid w3_agileits">

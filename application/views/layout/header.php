@@ -18,6 +18,18 @@
         window.scrollTo(0,1);
       }
     </script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"/>
+    <style>
+      #map {
+        width: 100%;
+        height: 400px;
+      }
+          #map2 {
+        width: 100%;
+        height: 400px;
+      }
+    </style>
     <!-- //custom-theme -->
     <script type="text/javascript" src="<?php echo base_url() ?>asset/front/js/jquery-1.11.1.min.js"></script>
     <!-- stylesheet -->
@@ -46,6 +58,6 @@
     <!-- //online-fonts -->
     <!-- font-awesome icons -->
     <!-- <link href="<?php //echo base_url()?>asset/home/css/font-awesome.css" rel="stylesheet"> -->
-
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
 </head>
 <body>

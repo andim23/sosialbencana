@@ -7,6 +7,8 @@ class Home extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Home_model');
+		$this->load->model('Auth_model');
+		$this->load->model('Posting_model');
 	}
 
 	public function index()
@@ -18,6 +20,18 @@ class Home extends CI_Controller {
 			'posting'=>$post
 		);
 		$this->load->view('layout/file',$data,FALSE);
+	}
+
+	public function post_detail($id)
+	{
+			$post           = $this->Posting_model->detailPost($id)->row_array();
+			$limit_post	=	$this->Home_model->lmtPost();
+			$data = array('post'      => $post,
+									'title' => 'Sosial Bencana',
+									'limit' => $limit_post,
+									'isi' => 'Posting/detail'
+			);
+			$this->load->view('layout/file', $data);
 	}
 
 	public function contact()

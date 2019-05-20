@@ -51,6 +51,29 @@
 		$().UItoTop({ easingType: 'easeOutQuart' });
 	});
 </script>
+
+<script>
+	// leaflett
+    var map = L.map('map2').setView([<?php echo $post['lttd_loc']; ?>, <?php echo $post['lgttd_loc']; ?>], 12);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    
+    // ini adalah koordinat marker 
+    L.marker([<?php echo $post['lttd_loc']; ?>, <?php echo $post['lgttd_loc']; ?>]).addTo(map)
+    .bindPopup("<b><?php echo $post['caption']; ?>.</b>").openPopup();
+    
+    var popup = L.popup();
+    function onMapClick(e) {
+        popup
+        .setLatLng(e.latlng);
+    }
+    map.on('click', onMapClick);
+    
+    </script>
+
+	<!-- JAVASCRIPT -->
 <script type="text/javascript" src="<?php echo base_url() ?>asset/front/js/bootstrap.js"></script>
 <script src="<?php echo base_url('asset/home/js/sweetalert2.all.min.js'); ?>"></script>
 </body>

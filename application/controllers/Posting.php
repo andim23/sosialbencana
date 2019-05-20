@@ -9,7 +9,7 @@ class Posting extends CI_Controller {
         $this->load->model('Posting_model');
         $this->load->model('Status_model');
     }
-    
+
     public function index()
     {
         $post           = $this->Posting_model->getPost()->result_array();
@@ -111,7 +111,7 @@ class Posting extends CI_Controller {
                 $this->Posting_model->updatePost($id, $this->input->post('default'));
                 $this->session->set_flashdata('sukses', 'Berhasil Mengubah Posting');
                 redirect(base_url('posting'));
-            }            
+            }
         }
     }
 
@@ -128,11 +128,11 @@ class Posting extends CI_Controller {
 
     public function detail($id)
     {
-        $post           = $this->Posting_model->detailPost($id)->row_array();
-        $data = array(
-            'post'      => $post,
-        );
-        $this->load->view('Admin/Posting/detail', $data);
+					$post           = $this->Posting_model->detailPost($id)->row_array();
+					$data = array(
+							'post'      => $post,
+					);
+					$this->load->view('Admin/Posting/detail', $data);
     }
 
     public function validasi_gambar()

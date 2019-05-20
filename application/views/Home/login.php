@@ -31,7 +31,9 @@
                         <h2 class="text-center"><a href="<?php echo base_url('/'); ?>">Sosial Bencana</a></h2>
                     </div>
                     <div class="auth-register">
-                        <?php echo form_open('auth/proseslogin'); ?>
+                        <?php 
+                            echo form_open('auth/proseslogin'); 
+                        ?>
                             <div class="form-group">
                                 <!-- <label>Email address</label> -->
                                 <input type="text" name="user_kode" class="form-control <?php echo form_error('user_kode') ? 'is-invalid' : '' ?>" placeholder="Kode Relawan/User" value="<?php echo set_value('user_kode'); ?>">
@@ -70,6 +72,7 @@ if($this->session->flashdata('gagal'))
 			swal("'.$this->session->flashdata('gagal').'", "", "error");
 		</script>';
 }
+
 ?>
 <!-- //JAVASCRIPT -->
 </body>

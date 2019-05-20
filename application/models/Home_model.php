@@ -19,7 +19,17 @@ class Home_model extends CI_Model {
         $this->db->from('post');
         $this->db->order_by('id_post', 'DESC');
         $this->db->limit(6);
-        $res = $this->db->get();        
+        $res = $this->db->get();
+        return $res->result_array();
+    }
+
+    public function lmtPost()
+    {
+        $this->db->select('*');
+        $this->db->from('post');
+        $this->db->order_by('id_post', 'DESC');
+        $this->db->limit(4);
+        $res = $this->db->get();
         return $res->result_array();
     }
 }
