@@ -50,7 +50,7 @@ class Api_user extends CI_Controller {
                 {
                     echo json_encode(array(
                         'status'        => true,
-                        'data'       => $posting->row_array()
+                        'result'       => $posting->result()
                     ));
                 }
                 else

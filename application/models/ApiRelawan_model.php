@@ -10,6 +10,14 @@ class ApiRelawan_model extends CI_Model {
         return $data['slug_post']+1;
     }
 
+    public function getUserkodeRelawan($userkode)
+    {
+        $this->db->select('user_kode');
+        $this->db->from('user');
+        $this->db->where('user_kode', $userkode);
+        return $this->db->get();
+    }
+    
     public function getEmailRelawan($email)
     {
         $this->db->select('email');
@@ -22,8 +30,8 @@ class ApiRelawan_model extends CI_Model {
     {
         $data = array(
             'user_kode'         => $this->input->post('user_kode'),
-            'id_relawan'        => 2,
-            'id_status'         => 4,
+            'id_level'        => 2,
+            'id_status'         => 2,
             'email'             => $this->input->post('email'),
             'tanggal'           => date('Y-m-d H:i:s'),
         );
@@ -82,18 +90,14 @@ class ApiRelawan_model extends CI_Model {
 
     public function deletePost($where)
     {
-        $this->db->where($where);
-        $res=$this->db->delete('post');
-        return $res;
+        $this->db->where('slug_post', $where);
+        return $this->db->delete('post');
     }
 
-    public function getwhererow($row,$table,$where)
+    public function getwhererow($where)
     {
-        $this->db->select($row);
-        $this->db->from($table);
-        $this->db->where($where); 
-        $query = $this->db->get();
-        return $query->row();
+        $this->db->where('slug_post', $where);
+        return $this->db->get('post');
     }
 
     public function Update($table, $where, $isi)

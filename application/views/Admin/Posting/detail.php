@@ -123,7 +123,7 @@
     
     // ini adalah koordinat marker 
     L.marker([<?php echo $post['lttd_loc']; ?>, <?php echo $post['lgttd_loc']; ?>]).addTo(map)
-    .bindPopup("<b>Selamat Datang!</b> Posisi gambar disini.").openPopup();
+    .bindPopup("<b><?php echo $post['caption']; ?>.</b>").openPopup();
     
     var popup = L.popup();
     function onMapClick(e) {

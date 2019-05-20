@@ -92,10 +92,16 @@ class Api_relawan extends CI_Controller {
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         {
-            $email=$this->input->post('email');
-            $cek = $this->Apirelawan->getEmailRelawan($email);
-
-            if($cek->num_rows() == 0)
+            $userkode=$this->input->post('user_kode');
+            $email = $this->input->post('email');
+            $cekUserkode = $this->Apirelawan->getUserkodeRelawan($userkode);
+            $cekEmail = $this->Apirelawan->getEmailRelawan($email);
+            
+            if($cekUserkode->num_rows() > 0 || $cekEmail->num_rows() > 0)
+            {
+                echo "Kode Relawan/Email Telah Digunakan";
+            }
+            else
             {
                 if($this->Apirelawan->registerRelawan())
                 {
@@ -108,20 +114,10 @@ class Api_relawan extends CI_Controller {
                     $this->output->set_status_header(422);
                 }
             }
-            else
-            {
-                echo json_encode(array(
-                    'result' => 'Gagal Register',
-                    'message' => 'Maaf! Email Anda Telah Digunakan.'
-                ));
-            }
         }
         else
         {
-            echo json_encode(array(
-                'result' => 'Gagal Register',
-                'message' => 'Maaf! Registrasi Gagal Dilakukan.'
-            ));
+            echo "Siapa?";
         }
     }
 
