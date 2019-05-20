@@ -25,8 +25,19 @@
 	  <div class="about_main">
 		  <div class="col-md-6 col-sm-6 col-xs-6 about_agileits"></div>
 		  <div class="col-md-6 col-sm-6 col-xs-6 about_text_w3l">
-		    <h4>Lorem Ipsum</h4>
-			<P>Auris eget vestibulum augue. Integer sit amet tellus libero.Nam ac enim ut velit dictum congue. Integer vitae elit in risus laoreet porttitor non nec enim. Donec nec sapien odio. Nullam dictum, elit maximus vulputate venenatis, neque velit tincidunt mauris, ac facilisis ligula mi et neque. Vivamus ut felis sem. In eget diam lorem. Aliquam tincidunt. Aliquam venenatis  non orci egestas cursus. Phasellus venenatis blandit odio, in tincidunt ex trist.Integer sit amet tellus libero.Nam ac enim ut velit dictum congue. Integer vitae elit in risus laoreet porttitor non nec enim.
+		    <h4>Sosial Bencana</h4>
+			<P>Perkembangan dalam bidang informasi menuntut
+					kemudahan bagi manusia untuk mendapatkan dan
+					menyebarkan informasi yang didapatkan. Aplikasi berbasis
+					website memberikan kemudahan dalam mengakses informasi
+					ataupun memberikan informasi yang dimiliki. Hal ini juga
+					dipermudah dengan berkembangnya device untuk mengakses
+					informasi yang ada.
+					Maka dari itu kami mencoba membuat aplikasi Sosial
+					Bencana. Ide pembuatan aplikasi ini adalah, kami ingin
+					mempermudah warga Kota Semarang untuk mengetahui
+					tempat-tempat yang sering terjadi, dan pengguna juga dapat
+					melaporkan kejadian-kejadian bencana alam.
 			</P>
 		  </div>
 		  <div class="clearfix"></div>
@@ -133,12 +144,13 @@
 <!--team -->
 <div class="team agileits-w3layouts" id="team">
 	<div class="container">
-		<h3 class="title">our Team</h3>
+		<h3 class="title">Our Team</h3>
+		<!-- TEAM 1 -->
 		<div class="team-w3ls">
 			<div class="col-md-4 col-sm-4 col-xs-4 team-grid w3_agileits">
-				<img class="img-w3l t1-wthree img-responsive" src="images/t1.jpg" alt="">
-				<h5>Mercurio</h5>
-				<p>Lorem ipsum dolor sit amet.Cras rutrum iaculis enim, non convallis felis mattis.</p>
+				<img class="img-w3l t1-wthree img-responsive" src="images/abdiel.png" alt="">
+				<h5>Abdiel Reyhan</h5>
+				<p>Web Service & Real Time</p>
 				<div class="social-icons">
 					<ul>
 						<li><a href="#" class="fa fa-facebook icon icon-border facebook"> </a></li>
@@ -149,9 +161,9 @@
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-4 col-xs-4 team-grid w3_agileits t2">
-				<img class="img-w3l t1-wthree img-responsive" src="images/t2.jpg" alt="">
-				<h5>Clifford</h5>
-				<p>Lorem ipsum dolor sit amet.Cras rutrum iaculis enim, non convallis felis mattis.</p>
+				<img class="img-w3l t1-wthree img-responsive" src="images/wahyu.png" alt="">
+				<h5>Wahyu Rizky</h5>
+				<p>Web Service & Real Time</p>
 				<div class="social-icons">
 					<ul>
 						<li><a href="#" class="fa fa-facebook icon icon-border facebook"> </a></li>
@@ -162,9 +174,53 @@
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-4 col-xs-4 w3_agileits team-grid">
-				<img class="img-w3l t1-wthree img-responsive" src="images/t3.jpg" alt="">
-				<h5>Davidson</h5>
-				<p>Lorem ipsum dolor sit amet.Cras rutrum iaculis enim, non convallis felis mattis.</p>
+				<img class="img-w3l t1-wthree img-responsive" src="images/fahmi.png" alt="">
+				<h5>Fahmi Anwar</h5>
+				<p>Designer Database & Backend Developer</p>
+				<div class="social-icons agile">
+					<ul>
+						<li><a href="#" class="fa fa-facebook icon icon-border facebook"> </a></li>
+						<li><a href="#" class="fa fa-twitter icon icon-border twitter"> </a></li>
+						<li><a href="#" class="fa fa-google-plus icon icon-border googleplus"> </a></li>
+					</ul>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+		
+		<!-- TEAM 2 -->
+		<div class="team-w3ls">
+			<div class="col-md-4 col-sm-4 col-xs-4 team-grid w3_agileits">
+				<img class="img-w3l t1-wthree img-responsive" src="images/ira.png" alt="">
+				<h5>Ira Kusuma</h5>
+				<p>Backend Developer</p>
+				<div class="social-icons">
+					<ul>
+						<li><a href="#" class="fa fa-facebook icon icon-border facebook"> </a></li>
+						<li><a href="#" class="fa fa-twitter icon icon-border twitter"> </a></li>
+						<li><a href="#" class="fa fa-google-plus icon icon-border googleplus"> </a></li>
+					</ul>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-4 team-grid w3_agileits t2">
+				<img class="img-w3l t1-wthree img-responsive" src="images/fandi.png" alt="">
+				<h5>Afandi Maulana</h5>
+				<p>Frontend Developer</p>
+				<div class="social-icons">
+					<ul>
+						<li><a href="#" class="fa fa-facebook icon icon-border facebook"> </a></li>
+						<li><a href="#" class="fa fa-twitter icon icon-border twitter"> </a></li>
+						<li><a href="#" class="fa fa-google-plus icon icon-border googleplus"> </a></li>
+					</ul>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-4 w3_agileits team-grid">
+				<img class="img-w3l t1-wthree img-responsive" src="images/rusydi.png" alt="">
+				<h5>Rusydi Shabri</h5>
+				<p>Frontend Developer</p>
 				<div class="social-icons agile">
 					<ul>
 						<li><a href="#" class="fa fa-facebook icon icon-border facebook"> </a></li>

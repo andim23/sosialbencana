@@ -212,14 +212,14 @@ class Api_relawan extends CI_Controller {
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         {
             $where=array(
-                'user_kode'=>$this->input->post('userkode')
+                'user_kode'=>$this->input->post('user_kode')
             );
 
             $data = array(
                 'nama' => $this->input->post('nama'),
                 'email' => $this->input->post('email'),
                 'tgl_lahir' => $this->input->post('tgl_lahir'),
-                'j_kel' => $this->input->post('j_kel'),
+                // 'j_kel' => $this->input->post('j_kel'),
                 'phone' => $this->input->post('phone')
             );
             
