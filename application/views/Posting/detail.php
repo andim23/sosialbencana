@@ -14,17 +14,17 @@
 <div class="clearfix"></div>
 <div class="clear-fix"><br><br></div>
 <!-- breadcrumbs -->
-<div class="crumbs text-center">
+<div class="text-center">
   <div class="container">
     <div class="row">
       <ul class="btn-group btn-breadcrumb bc-list">
         <li class="btn ">
-          <a href="<?php echo base_url() ?>">
-            <i class="glyphicon glyphicon-home"></i>
-          </a>
+          <a href="<?php echo base_url() ?>" class="glyphicon glyphicon-home"></a>
+          <i class="arrow"></i>
         </li>
         <li class="btn ">
           <a href="<?php echo base_url('home') ?>">Posting</a>
+          <i class="arrow"></i>
         </li>
         <li class="btn ">
           <a href="<?php echo base_url('Home/post_detail/'.$post['id_post']) ?>"><?php echo $post['caption']; ?></a>
