@@ -6,9 +6,9 @@
       <ul class="rslides callbacks callbacks1" id="slider4">
         <li>
           <div style="background: url(<?php echo base_url('asset/front/images/1.jpg')?>) no-repeat center; background-size:cover;" class="banner_text_w3layouts<?php //if($i==1){ echo 'active'; } ?>" >
-            <h3>Maur egetire sit tmae.</h3>
+            <h3>Sosial Bencana</h3>
             <span> </span>
-            <p>Casp Eestibulum </p>
+            <p>Informasi Bencana</p>
           </div>
         </li>
       </ul>
@@ -88,7 +88,7 @@
  </div>
 <!-- //about -->
 <!-- gallery -->
-<div class="gallery_wthree" id="gallery">
+<!-- <div class="gallery_wthree" id="gallery">
  <div class="container">
       <h3 class="title">gallery</h3>
 	  <div class="gallery_grid agileits_w3layouts">
@@ -153,11 +153,11 @@
 		</div>
 		<div class="clearfix"></div>
 	  </div>
-</div>
+</div> -->
 </div>
 <!-- //gallery -->
 <!-- Tooltip -->
-<div class="tooltip-content">
+<!-- <div class="tooltip-content">
 	<div class="modal fade features-modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog modal-md">
 			<div class="modal-content">
@@ -172,14 +172,14 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 <!-- //Tooltip -->
 <!-- section -->
 <div class="w3layouts-section" id="blog">
 	<div class="container">
-		<h3 class="title">Let the creativity Begin</h3>
+		<!-- <h3 class="title">Let the creativity Begin</h3>
 		<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		<a href="#myModal" class="agilebtn" data-toggle="modal" data-target="#myModal"><span>Read More</span></a>
+		<a href="#myModal" class="agilebtn" data-toggle="modal" data-target="#myModal"><span>Read More</span></a> -->
 	</div>
 </div>
 <!-- //section -->

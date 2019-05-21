@@ -63,11 +63,6 @@
       <br>
       <table class="col-md-12">
         <tr>
-          <th class="col-lg-5">Api Gambar </th>
-          <td class="col-sm-1">:</td>
-          <td class="col-lg-7"><?php echo $post['api_img']; ?></td>
-        </tr>
-        <tr>
           <th class="col-lg-4">Slug </th>
           <td class="col-sm-1">:</td>
           <td class="col-lg-8"><?php echo $post['slug_post']; ?></td>
@@ -113,7 +108,7 @@
   </div>
   <div class="clear-fix"><br></div>
   <div class="text-center">
-    <a href="<?php echo base_url('posting'); ?>" class="btn btn-danger btn-sm"><i class="fa fa-rotate-left"></i> KEMBALI</a>
+    <a href="<?php echo base_url(''); ?>" class="btn btn-danger btn-sm"><i class="fa fa-rotate-left"></i> KEMBALI</a>
     <a class="btn btn-success btn-sm" target="_blank" href="//maps.google.com/maps?f=d&amp;daddr=<?php echo $post['lttd_loc']; ?>,<?php echo $post['lgttd_loc']; ?>&amp;hl=en">
       Buka Alamat pada GoogleMaps
     </a>

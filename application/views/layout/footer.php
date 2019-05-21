@@ -10,7 +10,7 @@
 			</ul>
 			<div class="clearfix"> </div>
 		</div>
-		<p>© 2017 candid. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+		<p>© 2019All rights reserved | SosialBencana</p>
 	</div>
 </div>
 <!-- //copy-right -->
