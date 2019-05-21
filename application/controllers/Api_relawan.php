@@ -151,59 +151,28 @@ class Api_relawan extends CI_Controller {
 
     public function delete_posting($slug)
     {
-        if($_SERVER['REQUEST_METHOD'] == 'GET')
-        {
-            if($slug == NULL)
-            {
-                echo json_encode(array(
-                    'status'        => false,
-                    'message'       => 'Data Tidak Ditemukan'
-                ));
-                $this->output->set_status_header(422);
-            }
-            else
-            {
-                $where=array('slug_post'=>$slug);
-                $file=$this->Apirelawan->getwhererow('nama_img','post',$where);
-                $linkfolder='./uploads/'.$file->nama_img;
-
-                if(isset($linkfolder))
-                {
-                    unlink($linkfolder);
-                    if($this->Apirelawan->deletePost($where))
-                    {
-                        echo json_encode(array(
-                            'status'        => TRUE,
-                            'message'       => 'Data Berhasil Dihapus'
-                        ));
-                        $this->output->set_status_header(200);
-                    }
-                    else
-                    {
-                        echo json_encode(array(
-                            'status'        => FALSE,
-                            'message'       => 'Data Gagal Dihapus'
-                        ));
-                        $this->output->set_status_header(422);
-                    }
-                }
-                else
-                {
-                    echo json_encode(array(
-                        'status'        => false,
-                        'message'       => 'Link Data Salah'
-                    ));
-                    $this->output->set_status_header(422);
-                }
-            }
-        }
-        else
+        if($slug == NULL)
         {
             echo json_encode(array(
                 'status'        => false,
-                'message'       => 'REQUEST DENIED'
+                'message'       => 'Data Tidak Ditemukan'
             ));
-            $this->output->set_status_header(422);
+        }
+        else
+        {
+            $where = $slug;
+            $cek = $this->Apirelawan->getwhererow($slug)->row_array();
+            $linkfolder=FCPATH.'/uploads/'.$cek['nama_img'];
+            unlink($linkfolder);
+            if($this->Apirelawan->deletePost($where))
+            {
+                echo "Sukses";
+            }
+            else
+            {
+                echo "Gagal";
+            }
+     
         }
     }
 
