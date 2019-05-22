@@ -70,7 +70,7 @@
 									<td><?php echo $post['caption']; ?></td>
 									<td><?php echo $post['tanggal']; ?></td>
 									<td>
-										<a href="#" onClick="show_image(<?php echo $post['id_post']; ?>)" data-toggle="modal" data-target="#imageModal" data-image="<?php echo $post['nama_img']; ?>" id="showimage<?php $post['id_post']; ?>" class="btn btn-success btn-circle waves-effect waves-light" title="Show Image"><i class="ico fa fa-image"></i></a>
+										<!-- <a href="#" onClick="show_image(<?php echo $post['id_post']; ?>)" data-toggle="modal" data-target="#imageModal" data-image="<?php echo $post['nama_img']; ?>" id="showimage<?php $post['id_post']; ?>" class="btn btn-success btn-circle waves-effect waves-light" title="Show Image"><i class="ico fa fa-image"></i></a> -->
 										<a href="<?php echo base_url('posting/detail/').$post['id_post']; ?>" class="btn btn-primary btn-circle waves-effect waves-light" title="Show Post"><i class="ico fa fa-info"></i></a>
 										<a href="<?php echo base_url('posting/edit/').$post['id_post']; ?>" class="btn btn-primary btn-circle waves-effect waves-light" title="Show Post"><i class="ico fa fa-edit"></i></a>
 										<a href="#" onClick="return hapus('<?php echo base_url('posting/hapus/').$post['id_post']; ?>');" class="btn btn-danger btn-circle waves-effect waves-light" title="Show Image"><i class="ico fa fa-times"></i></a>

@@ -39,14 +39,14 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Latitude</label>
-                                    <input type="text" class="form-control" id="latitude" name="latitude" readonly>
+                                    <input type="text" class="form-control" id="latitude" name="latitude">
                                     <?php echo form_error('latitude', '<p class="text-danger">', '</p>'); ?>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Longitude</label>
-                                    <input type="text" class="form-control" id="longitude" name="longitude" readonly>
+                                    <input type="text" class="form-control" id="longitude" name="longitude">
                                     <?php echo form_error('longitude', '<p class="text-danger">', '</p>'); ?>
                                 </div>
                             </div>
