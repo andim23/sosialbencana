@@ -192,7 +192,7 @@
 			<div class="col-md-4 col-sm-4 col-xs-4 team-grid w3_agileits">
 				<img class="img-w3l t1-wthree img-responsive" src="images/abdiel.png" alt="">
 				<h5>Abdiel Reyhan</h5>
-				<p>Web Service & Real Time</p>
+				<p>Web Service</p>
 				<div class="social-icons">
 					<ul>
 						<li><a href="#" class="fa fa-facebook icon icon-border facebook"> </a></li>
@@ -205,7 +205,7 @@
 			<div class="col-md-4 col-sm-4 col-xs-4 team-grid w3_agileits t2">
 				<img class="img-w3l t1-wthree img-responsive" src="images/wahyu.png" alt="">
 				<h5>Wahyu Rizky</h5>
-				<p>Web Service & Real Time</p>
+				<p>Web Service & Mobile Developer</p>
 				<div class="social-icons">
 					<ul>
 						<li><a href="#" class="fa fa-facebook icon icon-border facebook"> </a></li>

@@ -36,9 +36,6 @@ class Admin extends CI_Controller {
 
     public function test()
     {
-        $this->db->select_max('slug_post');
-        $a = $this->db->get('post')->row_array();
-        $b = $a['slug_post']+1;
-        print_r($b);
+        echo password_hash('123', PASSWORD_BCRYPT);
     }
 }
