@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2019 at 10:52 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.2.14
+-- Generation Time: May 28, 2019 at 04:58 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -73,13 +73,13 @@ CREATE TABLE `list_api` (
 --
 
 INSERT INTO `list_api` (`id`, `fungsi`, `api`) VALUES
-(1, 'getAllPost', 'https://dinusheroes.com/sosialbencana/Api_relawan/post'),
-(2, 'Login', 'https://dinusheroes.com/sosialbencana/Api_auth/proseslogin'),
-(3, 'detail post', 'https://dinusheroes.com/sosialbencana/Api_user/getPostdetail/$slug'),
-(4, 'register validasi email', 'https://dinusheroes.com/sosialbencana/Api_relawan/register'),
-(5, 'posting', 'https://dinusheroes.com/sosialbencana/Api_admin/posting'),
-(6, 'delete post', 'https://dinusheroes.com/sosialbencana/Api_relawan/delete_Posting/$slug'),
-(7, 'edit data diri', 'https://dinusheroes.com/sosialbencana/Api_relawan/update_datadiri');
+(1, 'getAllPost', '/sosialbencana/Api_relawan/post'),
+(2, 'Login', '/sosialbencana/Api_auth/proseslogin'),
+(3, 'detail post', '/sosialbencana/Api_user/getPostdetail/$slug'),
+(4, 'register validasi email', '/sosialbencana/Api_relawan/register'),
+(5, 'posting', '/sosialbencana/Api_admin/posting'),
+(6, 'delete post', '/sosialbencana/Api_relawan/delete_Posting/$slug'),
+(7, 'edit data diri', '/sosialbencana/Api_relawan/update_datadiri');
 
 -- --------------------------------------------------------
 
@@ -106,12 +106,9 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`id_post`, `nama_img`, `api_img`, `slug_post`, `lokasi`, `lttd_loc`, `lgttd_loc`, `caption`, `tanggal`, `waktu`, `user_kode`) VALUES
-(1, 'POST_20190519_192728_ce5d8ba7c23c69a395ccaa5d85a89e1d_106280320191553779847.jpg', 'http://192.168.137.1/sosialbencana/uploads/POST_20190519_192728_ce5d8ba7c23c69a395ccaa5d85a89e1d_106280320191553779847.jpg', '1', 'semarang', '-6.9932067', '110.48116859999999', 'Caption Postingan', '2019-05-19', '19:27:28', '106280320191553779847'),
-(2, 'POST_20190519_194229_11cf0b3c5eebe426eb6a22aaaf35d4af_106280320191553779847.jpg', 'http://192.168.137.1/sosialbencana/uploads/POST_20190519_194229_11cf0b3c5eebe426eb6a22aaaf35d4af_106280320191553779847.jpg', '2', 'Udinus', '-6.9981921', '110.4798464', 'Caption Postingan', '2019-05-19', '19:42:29', '106280320191553779847'),
-(3, 'POST_20190519_200012_a720ccaaba73edef7448900827c1726c_106280320191553779847.jpg', 'http://192.168.137.1/sosialbencana/uploads/POST_20190519_200012_a720ccaaba73edef7448900827c1726c_106280320191553779847.jpg', '3', 'Coba lokasi', '-6.993237', '110.4811206', 'Caption Postingan', '2019-05-19', '20:00:12', '106280320191553779847'),
-(4, 'POST_20190520_142216_4f40998a6b210a05f3c755c087b750e5_106280320191553779847.jpg', 'http://192.168.137.1/sosialbencana/uploads/POST_20190520_142216_4f40998a6b210a05f3c755c087b750e5_106280320191553779847.jpg', '4', 'semarang', '-7.791172500000001', '110.3606817', 'bugi anjing', '2019-05-20', '14:22:16', '106280320191553779847'),
-(5, 'POST_20190520_154423_8c9cced527970884e4f187ecf8867ca4_A11.2016.09356.jpg', 'http://192.168.137.1/sosialbencana/uploads/POST_20190520_154423_8c9cced527970884e4f187ecf8867ca4_A11.2016.09356.jpg', '5', '', '-6.9807869', '110.4089463', 'Hehehe', '2019-05-20', '15:44:23', 'A11.2016.09356'),
-(6, 'POST_20190520_154506_8828abec546e5f924c470e7cff15414e_A11.2016.09356.jpg', 'http://192.168.137.1/sosialbencana/uploads/POST_20190520_154506_8828abec546e5f924c470e7cff15414e_A11.2016.09356.jpg', '6', 'Jl. Arjuna No.34a, Pendrikan Kidul, Kec. Semarang Tengah, Kota Semarang, Jawa Tengah 50131, Indonesia', '-6.9807254', '110.4087823', 'Maen Hape Tiba2 Kesurupan', '2019-05-20', '15:45:06', 'A11.2016.09356');
+(6, 'POST_20190520_154506_8828abec546e5f924c470e7cff15414e_A11.2016.09356.jpg', 'http://192.168.43.186/sosialbencana/uploads/POST_20190520_154506_8828abec546e5f924c470e7cff15414e_A11.2016.09356.jpg', '6', 'Jl. Arjuna No.34a, Pendrikan Kidul, Kec. Semarang Tengah, Kota Semarang, Jawa Tengah 50131, Indonesia', '-6.9807254', '110.4087823', 'Maen Hape Tiba2 Kesurupan', '2019-05-20', '15:45:06', 'A11.2016.09356'),
+(7, 'POST_20190522_071652_e15644f87f7367efc29d376fd3432a50_A11.2016.09356.jpg', 'http://192.168.43.186/sosialbencana/uploads/POST_20190522_071652_e15644f87f7367efc29d376fd3432a50_A11.2016.09356.jpg', '7', 'Jl. Imam Bonjol No.207, Pendrikan Kidul, Kec. Semarang Tengah, Kota Semarang, Jawa Tengah 50131, Indonesia', '-6.9826892', '110.4085418', 'Seorang Mahasiswi Terkapar', '2019-05-22', '07:16:52', 'A11.2016.09356'),
+(8, 'POST_20190522_150029_5a13775c95013f5942a0f5db815cc5a5_A11.2016.09356.jpg', 'http://192.168.43.186/sosialbencana/uploads/POST_20190522_150029_5a13775c95013f5942a0f5db815cc5a5_A11.2016.09356.jpg', '8', 'Jl. Nakula 1 No.11, Pendrikan Kidul, Kec. Semarang Tengah, Kota Semarang, Jawa Tengah 50131, Indonesia', '-6.9803363', '110.4084747', 'Pohon tumbang Di Udinus', '2019-05-22', '15:00:29', 'A11.2016.09356');
 
 -- --------------------------------------------------------
 
@@ -176,10 +173,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `user_kode`, `id_level`, `id_status`, `nama`, `email`, `password`, `tgl_lahir`, `j_kel`, `phone`, `avatar`, `token`, `verifikasi`, `tanggal`) VALUES
-(3, '106280320191553779847', 1, 1, 'Admin', 'admin@sosben.com', '$2y$10$qZToRQVcpbLDaT23slaML.wbWcl2a3yIEgcVOeRmt4A07Suo.1xoe', '2019-03-28', 'Laki Laki', '08123456789', NULL, 'T9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQmT9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQmT9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQmT9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQm', '2019-03-28 13:33:23', '2019-03-28 13:30:49'),
-(5, '111201609356', 2, 1, NULL, '111201609356@mhs.dinus.ac.id', '$2y$10$.IJEJrcGPFS1v4oJGOloo.2SSm1gUsChJS2Tj/pv1wKorpJNtu5I6', NULL, NULL, NULL, NULL, 'w-_NYjLigbXh2ARksZdKICvetVaODpxTfuFl5oUz7c83GWJBnSrEqQ0yPHMm6194w-_NYjLigbXh2ARksZdKICvetVaODpxTfuFl5oUz7c83GWJBnSrEqQ0yPHMm6194w-_NYjLigbXh2ARksZdKICvetVaODpxTfuFl5oUz7c83GWJBnSrEqQ0yPHMm6194w-_NYjLigbXh2ARksZdKICvetVaODpxTfuFl5oUz7c83GWJBnSrEqQ0yPHMm6194', '2019-05-19 15:06:07', '2019-05-19 15:05:37'),
-(7, 'A11.2016.09357', 2, 1, NULL, 'wrep17@gmail.com', '$2y$10$/Z/GgOZewhc4jBB9AS401e43kqyrYumdrC4Qwo.jMCymE1z4wLzZ2', NULL, NULL, NULL, NULL, '', NULL, '2019-05-20 08:20:35'),
-(8, 'A11.2016.09356', 2, 1, NULL, 'abdielreyhan98@gmail.com', '$2y$10$ef3eo0eQ.Vn7KjBEJN8nHOZsTmtFV7i8KZ5m2/xYuUiKCHVKJhxWG', NULL, NULL, NULL, NULL, '', NULL, '2019-05-20 08:41:54');
+(3, 'admin', 1, 1, 'Admin', 'admin@sosben.com', '$2y$10$qZToRQVcpbLDaT23slaML.wbWcl2a3yIEgcVOeRmt4A07Suo.1xoe', '2019-03-28', 'Laki Laki', '08123456789', NULL, 'T9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQmT9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQmT9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQmT9Ehu5agCJ4-kHo1qjtrLVW3y62SIPRDfcOYU_pXMN7sb8dGKexF0wvliBnzAZQm', '2019-03-28 13:33:23', '2019-03-28 13:30:49'),
+(5, 'A11.2016.09356', 2, 1, 'Abdiel Reyhan', 'abdielreyhan98@gmail.com', '$2y$10$.WW5HbPiDNmYW6eeFc6Gu.FQT8OnZvSn9veaZJo9Iq/W9Nu/gujBG', NULL, NULL, NULL, NULL, '', NULL, '2019-05-22 07:53:15');
 
 --
 -- Indexes for dumped tables
@@ -258,7 +253,7 @@ ALTER TABLE `list_api`
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `reaction`
@@ -276,7 +271,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
