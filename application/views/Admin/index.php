@@ -114,38 +114,38 @@
 <!-- JAVASCRIPT -->
 <?php $this->load->view('Admin/include/js'); ?>
 
-<script>
-            $(function() {
-             "use strict";             
-             MorrisLineChart();    
-            });                    
-			
-            // LINE CHART
-            function MorrisLineChart() {
-             var line = new Morris.Line({
-                 element: 'line_chart',
-                 resize: true,
-                 data: [
-					 <?php foreach ($stastitik as $info) {  ?>
-						{
-                         tanggal: '<?php echo $info->tgl; ?>',
-                         jumlah: <?php echo $info->jumlah ?>
-					 	}, 
-					<?php } ?>                                        
-                 ], 
-                 xkey: 'tanggal',
-                 ykeys: ['jumlah'],
-                 labels: ['Jumlah posting'],
-                 parseTime:false,
-                 gridLineColor: '#eef0f2',
-                 lineColors: ['#78b83e'],
-                 lineWidth: 2,
-                 pointSize: 3,
-                 hideHover: 'auto'
-             });
-            }
-            
-        </script>
+<!-- <script>
+	$(function() {
+		"use strict";             
+		MorrisLineChart();    
+	});                    
+	
+	// LINE CHART
+	function MorrisLineChart() {
+		var line = new Morris.Line({
+			element: 'line_chart',
+			resize: true,
+			data: [
+				<?php // foreach ($stastitik as $info) {  ?>
+				{
+					tanggal: '<?php // echo $info->tgl; ?>',
+					jumlah: <?php // echo $info->jumlah ?>
+				}, 
+			<?php //} ?>                                        
+			], 
+			xkey: 'tanggal',
+			ykeys: ['jumlah'],
+			labels: ['Jumlah posting'],
+			parseTime:false,
+			gridLineColor: '#eef0f2',
+			lineColors: ['#78b83e'],
+			lineWidth: 2,
+			pointSize: 3,
+			hideHover: 'auto'
+		});
+	}
+	
+</script> -->
 <!-- JAVASCRIPT -->
 </body>
 </html>

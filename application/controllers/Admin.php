@@ -15,12 +15,12 @@ class Admin extends CI_Controller {
         $user           = $this->Jumlah_model->jumlahUser();
         $post           = $this->Jumlah_model->jumlahPost();
         $activity       = $this->Admin_model->activityUser()->result_array();
-        $stastitik      = $this->Admin_model->statistik_post();
+        // $stastitik      = $this->Admin_model->statistik_post();
         $data = array(
             'user'      => $user,
             'post'      => $post,
             'activity'  => $activity,
-            'stastitik' => $stastitik
+            // 'stastitik' => $stastitik
         );
         //echo var_dump($stastitik) ;
         $this->load->view('Admin/index', $data);
