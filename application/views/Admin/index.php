@@ -103,7 +103,7 @@
 			<!-- /.col-lg-6 col-xs-12 -->
 		</div>
 		<!-- ROW -->
-	
+
 		<footer class="footer">
 			<?php $this->load->view('Admin/include/footer'); ?>
 		</footer>
@@ -114,25 +114,25 @@
 <!-- JAVASCRIPT -->
 <?php $this->load->view('Admin/include/js'); ?>
 
-<!-- <script>
+<script>
 	$(function() {
-		"use strict";             
-		MorrisLineChart();    
-	});                    
-	
+		"use strict";
+		MorrisLineChart();
+	});
+
 	// LINE CHART
 	function MorrisLineChart() {
 		var line = new Morris.Line({
 			element: 'line_chart',
 			resize: true,
 			data: [
-				<?php // foreach ($stastitik as $info) {  ?>
+				<?php  foreach ($stastitik as $info) {  ?>
 				{
-					tanggal: '<?php // echo $info->tgl; ?>',
-					jumlah: <?php // echo $info->jumlah ?>
-				}, 
-			<?php //} ?>                                        
-			], 
+					tanggal: '<?php  echo $info->tgl; ?>',
+					jumlah: <?php  echo $info->jumlah ?>
+				},
+			<?php } ?>
+			],
 			xkey: 'tanggal',
 			ykeys: ['jumlah'],
 			labels: ['Jumlah posting'],
@@ -144,8 +144,8 @@
 			hideHover: 'auto'
 		});
 	}
-	
-</script> -->
+
+</script>
 <!-- JAVASCRIPT -->
 </body>
 </html>

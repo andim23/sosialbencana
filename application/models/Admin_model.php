@@ -18,15 +18,15 @@ class Admin_model extends CI_Model {
         return $this->db->get()->result_array();
     }
 
-    // public function statistik_post()
-    // {
-    //     $query = $this->db->query("SELECT DATE_FORMAT(tanggal,'%d') AS tgl,COUNT(id_post) AS jumlah FROM post WHERE MONTH(tanggal)=MONTH(CURDATE()) GROUP BY DATE(tanggal)");
+    public function statistik_post()
+    {
+        $query = $this->db->query("SELECT DATE_FORMAT(tanggal,'%d') AS tgl,COUNT(id_post) AS jumlah FROM post WHERE MONTH(tanggal)=MONTH(CURDATE()) GROUP BY DATE(tanggal)");
 
-    //     if($query->num_rows() > 0){
-    //         foreach($query->result() as $data){
-    //             $hasil[] = $data;
-    //         }
-    //         return $hasil;
-    //     }
-    // }
+        if($query->num_rows() > 0){
+            foreach($query->result() as $data){
+                $hasil[] = $data;
+            }
+            return $hasil;
+        }
+    }
 }
